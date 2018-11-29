@@ -5,19 +5,26 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.util.LogUtil;
 
 import application.recyclerviewdemo.R;
 import application.recyclerviewdemo.R2;
+import application.recyclerviewdemo.util.RecyclerViewConstant;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
+@Route(path = RecyclerViewConstant.RecyclerMainActivity)
 public class RecyclerMainActivity extends BaseActivity {
 
     @BindView(R2.id.activity_recycler_main)
     LinearLayout relativeLayout;
+
+    Unbinder unbinder = null;
 
     @Override
     public int getLayoutId() {
@@ -25,8 +32,9 @@ public class RecyclerMainActivity extends BaseActivity {
     }
 
     @Override
-        public void initView() {
-            ButterKnife.bind(this);
+    public void initView() {
+        unbinder = ButterKnife.bind(this);
+        ARouter.getInstance().inject(this);
     }
 
     @Override
@@ -46,7 +54,14 @@ public class RecyclerMainActivity extends BaseActivity {
         if (R.id.recycler == view.getId()) {
             Log.e("1111111", "2222222222222222222");
             Toast.makeText(this, "RecycerView", Toast.LENGTH_SHORT).show();
+            ARouter.getInstance().build(RecyclerViewConstant.LinearLayoutRecyclerViewActivity).navigation();
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+        unbinder = null;
+    }
 }

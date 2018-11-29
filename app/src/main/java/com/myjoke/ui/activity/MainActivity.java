@@ -19,7 +19,7 @@ import com.myjoke.util.ConstantPath;
 import java.io.File;
 import java.io.IOException;
 
-import application.recyclerviewdemo.ui.RecyclerMainActivity;
+import application.recyclerviewdemo.util.RecyclerViewConstant;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -186,7 +186,8 @@ public class MainActivity extends BaseActivity {
                 ARouter.getInstance().build(ConstantPath.MyActivity).navigation(this);
                 break;
             case R.id.recyclerModule:
-                startActivity(new Intent(MainActivity.this, RecyclerMainActivity.class));
+//                startActivity(new Intent(MainActivity.this, RecyclerMainActivity.class));
+                ARouter.getInstance().build(RecyclerViewConstant.RecyclerMainActivity).navigation(this);
                 break;
         }
     }

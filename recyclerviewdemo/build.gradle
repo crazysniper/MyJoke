@@ -13,6 +13,11 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -29,6 +34,9 @@ dependencies {
 
     compile "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
+
     compile project(':common')
     compile project(':baselibray')
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }
