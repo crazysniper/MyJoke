@@ -1,35 +1,63 @@
+// 声明Android程序
 apply plugin: 'com.android.application'
 
 android {
+    // 编译版本
     compileSdkVersion rootProject.ext.compileSdkVersion
+    // 构建工作的版本
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
+        // 应用包名
         applicationId "com.myjoke"
+        // 项目兼容最低版本
         minSdkVersion rootProject.ext.minSdkVersion
+        // 项目目标版本
         targetSdkVersion rootProject.ext.targetSdkVersion
+        // 项目版本号
         versionCode rootProject.ext.versionCode
+        // 项目版本名
         versionName rootProject.ext.versionName
+        // 把AndroidJUnitRunner设置成默认的testInstrumentationRunner
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
+            // 是否对代码进行混淆
             minifyEnabled false
+            // 指定混淆时使用的规则文件。
+            // proguard-android.txt是在Android SDK目录下，里面是所有项目通用的混淆规则（在sdk\tools\proguard下）。
+            // proguard-rules.pro是当前项目的根目录下，里面可以编写当前项目特有的混淆规则。
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
+    // 声明本地依赖，表示将libs目录下所有.jar后缀的文件都添加到项目的构建路径中
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    // 配置使用Android Testing Support Library
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support:cardview-v7:26.0.0-alpha1'
-    testCompile 'junit:junit:4.12'
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
 
+    compile "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
+//    compile 'com.jakewharton:butterknife:9.0.0-rc2'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
+
+    // 声明测试用例库
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
     if (!isDebug.toBoolean()) {
         compile project(':baselibray')
         compile project(':baseview')
+        compile project(':recyclerviewdemo')
     }
 }

@@ -27,4 +27,16 @@ public class LogUtil {
         }
     }
 
+    public static void d(String tag, String msg) {
+        if (logLevel < DEBUG) {
+            Log.d(tag, msg);
+        }
+    }
+
+    public static void e(String tag, String msg) {
+        if (logLevel < ERROR) {
+            Log.e(tag, msg);
+        }
+    }
+
 }

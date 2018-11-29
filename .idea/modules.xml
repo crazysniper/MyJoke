@@ -6,6 +6,10 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibray/baselibray.iml" filepath="$PROJECT_DIR$/baselibray/baselibray.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseview/baseview.iml" filepath="$PROJECT_DIR$/baseview/baseview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myannotations/myannotations.iml" filepath="$PROJECT_DIR$/myannotations/myannotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mycompiler/mycompiler.iml" filepath="$PROJECT_DIR$/mycompiler/mycompiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerviewdemo/recyclerviewdemo.iml" filepath="$PROJECT_DIR$/recyclerviewdemo/recyclerviewdemo.iml" />
     </modules>
   </component>
 </project>

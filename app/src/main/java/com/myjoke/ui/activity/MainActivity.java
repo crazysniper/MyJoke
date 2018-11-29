@@ -1,22 +1,29 @@
-package com.myjoke;
+package com.myjoke.ui.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.myjoke.R;
 import com.myjoke.app.MyApplication;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.SpUtil;
+import com.myjoke.baselibray.util.Util;
+import com.myjoke.util.ConstantPath;
 
 import java.io.File;
 import java.io.IOException;
 
+import application.recyclerviewdemo.ui.RecyclerMainActivity;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+@Route(path = ConstantPath.MainActivity)
 public class MainActivity extends BaseActivity {
 
     private int heightPixels = 0;
@@ -24,11 +31,15 @@ public class MainActivity extends BaseActivity {
     CardView cardView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
+    @Override
+    public void initView() {
+        ButterKnife.bind(this);
         SpUtil.clear();
+        Util.getData(this, "app");
 
         SpUtil.putBatch("key1", "value1").putBatch("key2", "value2").putBatch("key3", "value3");
 
@@ -154,47 +165,78 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        LogUtil.e("BaseActivity", clazzName + " requestCode=" + requestCode + "  resultCode=" + resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == 200) {
+            LogUtil.e("result==" + data.getStringExtra("result"));
+        }
+    }
+
+    @OnClick({R.id.view, R.id.recyclerModule})
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.view:
+                ARouter.getInstance().build(ConstantPath.MyActivity).navigation(this);
+                break;
+            case R.id.recyclerModule:
+                startActivity(new Intent(MainActivity.this, RecyclerMainActivity.class));
+                break;
+        }
+    }
+
+
     public void showToast(View v) {
+        ARouter.getInstance().build(ConstantPath.BitmapActivity).withString("key1", "value1")
+                .withInt("intKey", 1).navigation(this, 100);
 //        Intent intent = new Intent(this, MyReceiver.class);
 //        intent.putExtra("key", "value");
 //        sendBroadcast(intent);
-        Toast.makeText(MainActivity.this, "2/1=" + 2 / 1, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(MainActivity.this, "2/1=" + 2 / 1, Toast.LENGTH_SHORT).show();
 
-
-        AnimatorSet set = new AnimatorSet();
-        //包含平移、缩放和透明度动画
-        set.playTogether(
-                ObjectAnimator.ofFloat(btn, "translationX", 0, 100),
-                ObjectAnimator.ofFloat(btn, "translationY", 0, 1000),
-                ObjectAnimator.ofFloat(btn, "scaleX", 1f, 0f),
-                ObjectAnimator.ofFloat(btn, "scaleY", 1f, 0f),
-                ObjectAnimator.ofFloat(btn, "alpha", 1f, 0f));
-        set.setTarget(btn);
-
-        set.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                btn.setScaleX(1.0f);
-                btn.setScaleY(1.0f);
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        });
-        set.setDuration(5000);
-        set.start();
+//        startActivity(new Intent(MainActivity.this,BitmapActivity.class));
+//
+//
+//        AnimatorSet set = new AnimatorSet();
+//        //包含平移、缩放和透明度动画
+//        set.playTogether(
+//                ObjectAnimator.ofFloat(btn, "translationX", 0, 100),
+//                ObjectAnimator.ofFloat(btn, "translationY", 0, 1000),
+//                ObjectAnimator.ofFloat(btn, "scaleX", 1f, 0f),
+//                ObjectAnimator.ofFloat(btn, "scaleY", 1f, 0f),
+//                ObjectAnimator.ofFloat(btn, "alpha", 1f, 0f));
+//        set.setTarget(btn);
+//
+//        set.addListener(new Animator.AnimatorListener() {
+//            @Override
+//            public void onAnimationStart(Animator animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                btn.setScaleX(1.0f);
+//                btn.setScaleY(1.0f);
+//            }
+//
+//            @Override
+//            public void onAnimationCancel(Animator animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animator animation) {
+//
+//            }
+//        });
+//        set.setDuration(5000);
+//        set.start();
 
 //        ValueAnimator animator = ValueAnimator.ofFloat(0, 1);
 //
