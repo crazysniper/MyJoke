@@ -13,6 +13,7 @@ import com.myjoke.app.MyApplication;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.SpUtil;
+import com.myjoke.baselibray.util.ToastUtil;
 import com.myjoke.baselibray.util.Util;
 import com.myjoke.util.ConstantPath;
 
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity {
     private int heightPixels = 0;
     private Button btn;
     CardView cardView;
+    private long currentTime = 0;
 
     @Override
     public int getLayoutId() {
@@ -279,6 +281,17 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
 //        objectAnimator.start();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - currentTime > 1000) {
+            ToastUtil.getInstance().showToast(this, "连续点2次退出");
+            currentTime = System.currentTimeMillis();
+        } else {
+            super.onBackPressed();
+        }
 
     }
 }

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showToast"
-        android:text="Hello World!"
+        android:text="启动模式"
         android:textAllCaps="false" />
 
     <application.baseview.edittext.InputMoneyEditTextView

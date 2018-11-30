@@ -99,7 +99,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         LogUtil.e("BaseActivity", clazzName + " finish " + "  taskId=" + getTaskId());
-        overridePendingTransitionExit();
+        if (!"SplashActivity".equals(getClass().getSimpleName())) {
+            overridePendingTransitionExit();
+        }
     }
 
     @Override

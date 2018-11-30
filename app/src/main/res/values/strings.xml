@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">笑笑</string>
+
+    <string name="splash_duration">跳过%1$2ds</string>
 </resources>

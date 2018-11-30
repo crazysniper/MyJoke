@@ -1,19 +1,21 @@
 package application.recyclerviewdemo.ui;
 
-import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
+import com.myjoke.baselibray.util.LogUtil;
+import com.myjoke.baselibray.util.ScreenUtil;
 import com.myjoke.baselibray.util.ToastUtil;
 
 import application.recyclerviewdemo.R;
 import application.recyclerviewdemo.R2;
 import application.recyclerviewdemo.adapter.LinearLayoutAdapter;
+import application.recyclerviewdemo.divider.LinearLayoutItemDecoration;
 import application.recyclerviewdemo.util.DataUtil;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import butterknife.BindView;
@@ -50,34 +52,34 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
         adapter = new LinearLayoutAdapter(this, DataUtil.getDataList());
         recyclerView.setAdapter(adapter);
 
-        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-
-            // 可以实现类似padding的效果
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                super.getItemOffsets(outRect, view, parent, state);
-            }
-
-            @Override
-            public void getItemOffsets(Rect outRect, int itemPosition, RecyclerView parent) {
-                super.getItemOffsets(outRect, itemPosition, parent);
-            }
-
-            // 可以绘制在内容的上面，覆盖内容。
-            @Override
-            public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-                super.onDrawOver(c, parent, state);
-            }
-
-            // 实现类似绘制背景的效果，内容在上面。
-            @Override
-            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-                super.onDraw(c, parent, state);
-            }
-        });
+        recyclerView.addItemDecoration(new LinearLayoutItemDecoration());
 
         adapter.setLinearLayoutClickListener(this);
         adapter.setLinearLayoutLongClickListener(this);
+
+        RecyclerView.Adapter adapter2 = recyclerView.getAdapter();
+        LogUtil.e("LinearLayoutRecyclerViewActivity adapter==adapter2:" + Boolean.toString(adapter == adapter2));
+
+        LogUtil.e("LinearLayoutRecyclerViewActivity adapter.getItemCount()=" + adapter.getItemCount());
+        LogUtil.e("LinearLayoutRecyclerViewActivity ScreenUtil.getScreenHeight(this)="+ ScreenUtil.getScreenHeight(this));
+
+
+        recyclerView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LogUtil.e("LinearLayoutRecyclerViewActivity  postDelayed recyclerView.getChildCount()=" + recyclerView.getChildCount());
+                LogUtil.e("LinearLayoutRecyclerViewActivity  recyclerView.getBottom()=" + recyclerView.getBottom());
+            }
+        }, 1000);
+
+        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                LogUtil.e("LinearLayoutRecyclerViewActivity  recyclerView.getHeight()=" + recyclerView.getHeight());
+            }
+        });
+
     }
 
 
