@@ -2,6 +2,8 @@ package application.recyclerviewdemo.ui;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -41,6 +43,7 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
     public void initView() {
         unbinder = ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
+        registerForContextMenu(recyclerView);
     }
 
     @Override
@@ -61,7 +64,7 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
         LogUtil.e("LinearLayoutRecyclerViewActivity adapter==adapter2:" + Boolean.toString(adapter == adapter2));
 
         LogUtil.e("LinearLayoutRecyclerViewActivity adapter.getItemCount()=" + adapter.getItemCount());
-        LogUtil.e("LinearLayoutRecyclerViewActivity ScreenUtil.getScreenHeight(this)="+ ScreenUtil.getScreenHeight(this));
+        LogUtil.e("LinearLayoutRecyclerViewActivity ScreenUtil.getScreenHeight(this)=" + ScreenUtil.getScreenHeight(this));
 
 
         recyclerView.postDelayed(new Runnable() {
@@ -100,4 +103,19 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
         ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "长按=" + position);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.item_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (R.id.view == item.getItemId()) {
+            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 查看");
+        } else if (R.id.delete == item.getItemId()) {
+            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 删除");
+        }
+        return super.onContextItemSelected(item);
+    }
 }

@@ -1,6 +1,7 @@
 package application.recyclerviewdemo.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +33,13 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
 
     static class LinearLayoutViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
+        private CardView cardView;
+
 
         public LinearLayoutViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name);
+            cardView = (CardView) itemView.findViewById(R.id.cardView);
         }
     }
 
@@ -58,11 +62,11 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
             }
         });
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (longListener != null) {
-                    longListener.onLongClick(holder.itemView, position);
+                    longListener.onLongClick(holder.cardView, position);
                 }
                 return false;
             }

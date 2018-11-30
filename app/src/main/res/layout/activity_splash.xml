@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.myjoke.ui.activity.SplashActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/splash" />
+
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
