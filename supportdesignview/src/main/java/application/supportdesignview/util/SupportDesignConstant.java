@@ -9,4 +9,5 @@ public class SupportDesignConstant {
     private static final String BASE_PATH = "/supportdesign/";
     public static final String SupportDesignActivity = BASE_PATH + "SupportDesignActivity";
     public static final String ConstraintLayoutActivity = BASE_PATH + "ConstraintLayoutActivity";
+    public static final String AsyncTaskActivity = BASE_PATH + "AsyncTaskActivity";
 }

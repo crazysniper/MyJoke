@@ -47,14 +47,20 @@ dependencies {
 
     compile "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
-    // 声明测试用例库
-    testCompile 'junit:junit:4.12'
 
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
+
+
+    // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
     if (!isDebug.toBoolean()) {
         compile project(':baselibrary')
         compile project(':baseview')
         compile project(':recyclerviewdemo')
         compile project(':supportdesignview')
+        compile project(':systeminfo')
     }
 }

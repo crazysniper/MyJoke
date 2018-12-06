@@ -28,13 +28,14 @@ public class ToastUtil {
     }
 
     public void showToast(Context context, String msg) {
-        if (toast == null) {
-            toast = Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_SHORT);
-        } else {
-            toast.setText(msg);
-            toast.setDuration(Toast.LENGTH_SHORT);
-        }
-        toast.show();
+//        if (toast == null) {
+//            toast = Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_SHORT);
+//        } else {
+//            toast.setText(msg);
+//            toast.setDuration(Toast.LENGTH_SHORT);
+//        }
+//        toast.show();
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
 }

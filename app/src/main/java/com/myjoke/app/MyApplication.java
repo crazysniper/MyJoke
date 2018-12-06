@@ -9,6 +9,7 @@ import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.SpUtil;
 import com.myjoke.bean.PackageInfoBean;
 import com.myjoke.util.PackageUtil;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by Gao on 2018/10/5.
@@ -25,6 +26,13 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+
         LogUtil.e("BaseActivity","MyApplication onCreate="+this);
 
         ARouter.openLog();     // 打印日志

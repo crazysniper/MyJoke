@@ -14,7 +14,7 @@ import application.supportdesignview.util.SupportDesignConstant;
 @Route(path = SupportDesignConstant.SupportDesignActivity)
 public class SupportDesignActivity extends BaseActivity implements View.OnClickListener {
 
-    private Button constraintLayout;
+    private Button constraintLayout,asyncTaskLayout;
 
     @Override
     public int getLayoutId() {
@@ -25,8 +25,10 @@ public class SupportDesignActivity extends BaseActivity implements View.OnClickL
     public void initView() {
         ARouter.getInstance().inject(this);
         constraintLayout = findView(R.id.constraintLayout);
+        asyncTaskLayout = findView(R.id.asyncTaskLayout);
 
         constraintLayout.setOnClickListener(this);
+        asyncTaskLayout.setOnClickListener(this);
     }
 
     @Override
@@ -38,6 +40,8 @@ public class SupportDesignActivity extends BaseActivity implements View.OnClickL
     public void onClick(View v) {
         if (v.getId() == R.id.constraintLayout) {
             ARouter.getInstance().build(SupportDesignConstant.ConstraintLayoutActivity).navigation();
+        } else if (v.getId() == R.id.asyncTaskLayout) {
+            ARouter.getInstance().build(SupportDesignConstant.AsyncTaskActivity).navigation();
         }
     }
 }

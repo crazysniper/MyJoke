@@ -56,4 +56,10 @@
         android:layout_marginTop="10dp"
         android:text="跳转到SupportDesign Module"
         android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/sysModule"
+        style="@style/ButtonStyle"
+        android:text="跳转到获取系统信息Module" />
 </LinearLayout>

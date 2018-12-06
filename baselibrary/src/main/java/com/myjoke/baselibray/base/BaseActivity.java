@@ -29,6 +29,7 @@ import application.baselibrary.R;
 public abstract class BaseActivity extends AppCompatActivity {
 
     public String clazzName = "";
+    private static final String TAG = "LogUtil: BaseActivity";
     private NetworkConnectChangedReceiver receiver = null;
 
     @Override
@@ -37,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayoutId());
         clazzName = getClass().getSimpleName();
-        LogUtil.e("BaseActivity", clazzName + " onCreate " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onCreate " + "  taskId=" + getTaskId());
 
         EventBus.getDefault().register(this);
         ViewServer.get(this).addWindow(this);
@@ -58,13 +59,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        LogUtil.e("BaseActivity", clazzName + " onStart " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onStart " + "  taskId=" + getTaskId());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.e("BaseActivity", clazzName + " onResume " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onResume " + "  taskId=" + getTaskId());
         ViewServer.get(this).setFocusedWindow(this);
         if (receiver == null) {
             receiver = new NetworkConnectChangedReceiver();
@@ -79,39 +80,39 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtil.e("BaseActivity", clazzName + " onPause " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onPause " + "  taskId=" + getTaskId());
         unregisterReceiver(receiver);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.e("BaseActivity", clazzName + " onStop " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onStop " + "  taskId=" + getTaskId());
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        LogUtil.e("BaseActivity", clazzName + " onNewIntent " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onNewIntent " + "  taskId=" + getTaskId());
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        LogUtil.e("BaseActivity", clazzName + " onRestart " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onRestart " + "  taskId=" + getTaskId());
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.e("BaseActivity", clazzName + " onDestroy " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " onDestroy " + "  taskId=" + getTaskId());
         ViewServer.get(this).removeWindow(this);
         EventBus.getDefault().unregister(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LogUtil.e("BaseActivity", clazzName + " requestCode=" + requestCode + "  resultCode=" + resultCode);
+        LogUtil.e(TAG, clazzName + " requestCode=" + requestCode + "  resultCode=" + resultCode);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -123,7 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        LogUtil.e("BaseActivity", clazzName + " finish " + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " finish " + "  taskId=" + getTaskId());
         if (!"SplashActivity".equals(getClass().getSimpleName())) {
             overridePendingTransitionExit();
         }
@@ -132,7 +133,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean isFinishing() {
         boolean result = super.isFinishing();
-        LogUtil.e("BaseActivity", clazzName + " isFinishing result=" + result + "  taskId=" + getTaskId());
+        LogUtil.e(TAG, clazzName + " isFinishing result=" + result + "  taskId=" + getTaskId());
         return result;
     }
 

@@ -9,10 +9,14 @@
 
     <Button
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:layout_marginTop="0dp"
-        android:text="ConstraintLayout"
-        android:textAllCaps="false" />
+        android:text="ConstraintLayout" />
+
+    <Button
+        android:id="@+id/asyncTaskLayout"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="0dp"
+        android:text="AsyncTask" />
 
 </LinearLayout>

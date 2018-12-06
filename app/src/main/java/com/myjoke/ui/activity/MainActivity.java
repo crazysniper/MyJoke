@@ -24,6 +24,7 @@ import java.io.IOException;
 
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import application.supportdesignview.util.SupportDesignConstant;
+import application.systeminfo.util.SystemInfoConstant;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -198,7 +199,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule})
+    @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.view:
@@ -216,6 +217,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.supportDesignModule:
                 ARouter.getInstance().build(SupportDesignConstant.SupportDesignActivity).navigation(this);
+                break;
+            case R.id.sysModule:
+                ARouter.getInstance().build(SystemInfoConstant.SystemInfoActivity).navigation();
                 break;
         }
     }

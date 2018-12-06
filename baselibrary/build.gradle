@@ -32,7 +32,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
 
     compile 'com.alibaba:arouter-api:1.4.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
