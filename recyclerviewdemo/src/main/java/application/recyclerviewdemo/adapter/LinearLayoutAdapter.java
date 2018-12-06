@@ -44,7 +44,7 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
     }
 
     @Override
-    public LinearLayoutAdapter.LinearLayoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LinearLayoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_layout, parent, false);
         LinearLayoutViewHolder holder = new LinearLayoutViewHolder(view);
         return holder;

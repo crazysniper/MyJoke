@@ -9,6 +9,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
@@ -28,7 +29,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
-    compile project(':baselibray')
+    compile project(':baselibrary')
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

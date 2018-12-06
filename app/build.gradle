@@ -39,25 +39,20 @@ android {
 }
 
 dependencies {
-    // 声明本地依赖，表示将libs目录下所有.jar后缀的文件都添加到项目的构建路径中
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    // 配置使用Android Testing Support Library
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support:design:26.0.0-alpha1'
 
     compile "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
-//    compile 'com.jakewharton:butterknife:9.0.0-rc2'
-//    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
-
     // 声明测试用例库
     testCompile 'junit:junit:4.12'
+
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
     if (!isDebug.toBoolean()) {
-        compile project(':baselibray')
+        compile project(':baselibrary')
         compile project(':baseview')
         compile project(':recyclerviewdemo')
         compile project(':supportdesignview')

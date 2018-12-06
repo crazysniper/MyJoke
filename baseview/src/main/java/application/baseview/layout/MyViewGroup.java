@@ -37,7 +37,7 @@ public class MyViewGroup extends ViewGroup {
         }
         LogUtil.e("________________________________________________________");
 
-        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) getLayoutParams();
+        MarginLayoutParams layoutParams = (MarginLayoutParams) getLayoutParams();
         if (layoutParams != null) { // layoutParams为空，不执行
             int width = layoutParams.width;
             int height = layoutParams.height;
@@ -94,7 +94,7 @@ public class MyViewGroup extends ViewGroup {
         setMeasuredDimension(200, 200);
 
 
-        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) getLayoutParams();
+        MarginLayoutParams layoutParams = (MarginLayoutParams) getLayoutParams();
         if (layoutParams != null) {
             LogUtil.e("MyViewGroup onMeasure layoutParams.width==" + layoutParams.width); // 825
             LogUtil.e("MyViewGroup onMeasure layoutParams.height==" + layoutParams.height); // 825

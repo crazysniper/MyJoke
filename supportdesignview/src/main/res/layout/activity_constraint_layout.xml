@@ -2,48 +2,146 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_constraint_layout"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="application.supportdesignview.ui.ConstraintLayoutActivity">
+    tools:context="application.supportdesigndemo.MainActivity">
 
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐藏"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INVISIBLE"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <TextView
-        android:id="@+id/tv1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:background="#fd3"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="居中"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginStart="8dp"
-        android:text="马云:一年交税170多亿马云:一年交税170多亿马云:一年交税170多亿"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintLeft_toRightOf="@+id/tv1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="右上方"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintLeft_toRightOf="@+id/textView" />
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:text="8分钟前"
-        android:textColor="#333"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv1"
-        app:layout_constraintLeft_toRightOf="@+id/tv1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="左上方"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintRight_toLeftOf="@+id/textView" />
 
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="右下方"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_goneMarginLeft="20dp"
+        app:layout_goneMarginTop="20dp" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="右下方的右下方"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv2"
+        app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="左下方"
+        android:textSize="20sp"
+        app:layout_constraintRight_toLeftOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="垂直居中"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/bottomV1"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="第一个"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/bottomV2"
+        app:layout_constraintVertical_weight="1" />
+
+
+    <TextView
+        android:id="@+id/bottomV2"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="第二个"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/bottomV1"
+        app:layout_constraintRight_toLeftOf="@+id/bottomV3" />
+
+
+    <TextView
+        android:id="@+id/bottomV3"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="第三个"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/bottomV2"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
