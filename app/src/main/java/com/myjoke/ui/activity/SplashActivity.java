@@ -23,7 +23,7 @@ public class SplashActivity extends BaseActivity {
     private MyHandler handler = null;
     Unbinder unbinder = null;
 
-    private int countTime = 3;
+    private int countTime = 1;
 
     @Override
     public int getLayoutId() {

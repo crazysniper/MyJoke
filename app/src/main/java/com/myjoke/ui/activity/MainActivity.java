@@ -1,5 +1,6 @@
 package com.myjoke.ui.activity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -10,6 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.R;
 import com.myjoke.app.MyApplication;
+import com.myjoke.baselibray.NetworkConnectChangedReceiver;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.SpUtil;
@@ -21,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 
 import application.recyclerviewdemo.util.RecyclerViewConstant;
+import application.supportdesignview.util.SupportDesignConstant;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -36,6 +39,8 @@ public class MainActivity extends BaseActivity {
     public int getLayoutId() {
         return R.layout.activity_main;
     }
+
+    NetworkConnectChangedReceiver receiver;
 
     @Override
     public void initView() {
@@ -165,6 +170,18 @@ public class MainActivity extends BaseActivity {
             }
         }).start();
 
+//        receiver=  new NetworkConnectChangedReceiver();
+////
+//        IntentFilter intent = new IntentFilter();
+//        intent.addAction("hhhh");
+//        registerReceiver(receiver,intent);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        unregisterReceiver(receiver);
     }
 
     @Override
@@ -181,15 +198,24 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.view, R.id.recyclerModule})
+    @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.view:
-                ARouter.getInstance().build(ConstantPath.MyActivity).navigation(this);
+//                ARouter.getInstance().build(ConstantPath.MyActivity).navigation(this);
+                LogUtil.e("111111111111111");
+                Intent intent1 = new Intent();
+                intent1.setAction("hhhh2");
+                intent1.setComponent(new ComponentName(getPackageName(), NetworkConnectChangedReceiver.class.getName()));
+                intent1.putExtra("key1", "value1");
+                sendBroadcast(intent1);
                 break;
             case R.id.recyclerModule:
 //                startActivity(new Intent(MainActivity.this, RecyclerMainActivity.class));
                 ARouter.getInstance().build(RecyclerViewConstant.RecyclerMainActivity).navigation(this);
+                break;
+            case R.id.supportDesignModule:
+                ARouter.getInstance().build(SupportDesignConstant.SupportDesignActivity).navigation(this);
                 break;
         }
     }

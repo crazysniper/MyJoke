@@ -12,29 +12,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showToast"
+        android:textColor="@color/colorAccent"
         android:text="启动模式"
         android:textAllCaps="false" />
 
-    <application.baseview.edittext.InputMoneyEditTextView
-        android:id="@+id/ed_money"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:focusable="true"
-        android:hint="0"
-        android:textSize="24sp" />
+    <!--<application.baseview.edittext.InputMoneyEditTextView-->
+    <!--android:id="@+id/ed_money"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:focusable="true"-->
+    <!--android:hint="0"-->
+    <!--android:textSize="24sp" />-->
 
     <Button
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="自定义控件"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent" />
 
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="12345"
+        android:hint="测试" />
 
     <Button
         android:id="@+id/recyclerModule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="跳转到RecyclerView Module"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/supportDesignModule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="跳转到SupportDesign Module"
         android:textAllCaps="false" />
 </LinearLayout>

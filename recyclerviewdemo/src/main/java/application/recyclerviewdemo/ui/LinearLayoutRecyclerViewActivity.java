@@ -14,10 +14,14 @@ import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.ScreenUtil;
 import com.myjoke.baselibray.util.ToastUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import application.recyclerviewdemo.R;
 import application.recyclerviewdemo.R2;
 import application.recyclerviewdemo.adapter.LinearLayoutAdapter;
 import application.recyclerviewdemo.divider.LinearLayoutItemDecoration;
+import application.recyclerviewdemo.model.Student;
 import application.recyclerviewdemo.util.DataUtil;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import butterknife.BindView;
@@ -33,6 +37,8 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
     LinearLayoutAdapter adapter;
 
     Unbinder unbinder = null;
+    private int position = -1;
+    private List<Student> studentList = new ArrayList<>();
 
     @Override
     public int getLayoutId() {
@@ -48,11 +54,12 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
 
     @Override
     public void initData() {
+        studentList = DataUtil.getDataList();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new LinearLayoutAdapter(this, DataUtil.getDataList());
+        adapter = new LinearLayoutAdapter(this, studentList);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addItemDecoration(new LinearLayoutItemDecoration());
@@ -101,6 +108,7 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
     @Override
     public void onLongClick(View view, int position) {
         ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "长按=" + position);
+        this.position = position;
     }
 
     @Override
@@ -112,9 +120,12 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         if (R.id.view == item.getItemId()) {
-            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 查看");
+            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 查看=" + position);
         } else if (R.id.delete == item.getItemId()) {
-            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 删除");
+            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 删除=" + position);
+            studentList.remove(position);
+            adapter.notifyItemRemoved(position);
+
         }
         return super.onContextItemSelected(item);
     }
