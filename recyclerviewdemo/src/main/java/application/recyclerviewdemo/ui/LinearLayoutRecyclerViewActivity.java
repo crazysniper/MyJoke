@@ -17,6 +17,7 @@ import com.myjoke.baselibray.util.ToastUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.dialogdemo.dialog.MyDialog;
 import application.recyclerviewdemo.R;
 import application.recyclerviewdemo.R2;
 import application.recyclerviewdemo.adapter.LinearLayoutAdapter;
@@ -39,6 +40,8 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
     Unbinder unbinder = null;
     private int position = -1;
     private List<Student> studentList = new ArrayList<>();
+    private int id = 100;
+
 
     @Override
     public int getLayoutId() {
@@ -49,7 +52,7 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
     public void initView() {
         unbinder = ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
-        registerForContextMenu(recyclerView);
+        registerForContextMenu(recyclerView); // 给你指定View，添加上下文菜单
     }
 
     @Override
@@ -121,12 +124,28 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
     public boolean onContextItemSelected(MenuItem item) {
         if (R.id.view == item.getItemId()) {
             ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 查看=" + position);
+            new MyDialog.Builder(LinearLayoutRecyclerViewActivity.this, R.style.DialogTheme)
+                    .setCancelable(true).setCanceledOnTouchOutside(true)
+                    .setTitle("查看").setContent(studentList.get(position).toString()).show();
         } else if (R.id.delete == item.getItemId()) {
             ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 删除=" + position);
             studentList.remove(position);
             adapter.notifyItemRemoved(position);
-
+        } else if (R.id.add == item.getItemId()) {
+            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 添加=" + position);
+            Student student = new Student(id, "name");
+            studentList.add(student);
+            student = null;
+            adapter.notifyItemInserted(position);
+            id++;
+        } else if (R.id.update == item.getItemId()) {
+            ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "上下文菜单 修改=" + position);
+            Student student = studentList.get(position);
+            student.setName("修改名称=" + position);
+            adapter.notifyItemChanged(position);
         }
+
+
         return super.onContextItemSelected(item);
     }
 }

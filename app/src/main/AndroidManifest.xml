@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -44,7 +47,6 @@
             android:name=".ui.activity.MyActivity"
             android:screenOrientation="portrait" />
 
-
         <receiver
             android:name=".ui.activity.NetworkConnectChangedReceiver2"
             android:enabled="true"
@@ -52,7 +54,6 @@
             <intent-filter>
                 <action android:name="hhhh" />
             </intent-filter>
-
         </receiver>
     </application>
 

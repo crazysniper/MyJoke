@@ -10,7 +10,7 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="RecyclerViewDemo"
+        android:text="LinearLayoutRecyclerViewDemo"
         android:textAllCaps="false" />
 
 </LinearLayout>

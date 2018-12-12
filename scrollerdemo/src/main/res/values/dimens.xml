@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--左上角scrollerTo -->
+    <dimen name="scrollTozheng">100px</dimen>
+    <!--左上角scrollerBy -->
+    <dimen name="scrollByzheng">40px</dimen>
+
+    <!--右下角scrollerTo -->
+    <dimen name="scrollTofu">100px</dimen>
+    <!--右下角scrollerBy -->
+    <dimen name="scrollByfu">40px</dimen>
+
+</resources>

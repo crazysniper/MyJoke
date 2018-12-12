@@ -18,6 +18,7 @@ public class DataUtil {
         for (int index = 0; index < 30; index++) {
             student = new Student(index, "name=" + index);
             stuList.add(student);
+            student = null;
         }
 
         return stuList;

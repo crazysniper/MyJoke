@@ -35,7 +35,7 @@ public class ToastUtil {
 //            toast.setDuration(Toast.LENGTH_SHORT);
 //        }
 //        toast.show();
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
 }

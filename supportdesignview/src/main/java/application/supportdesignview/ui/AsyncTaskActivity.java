@@ -53,11 +53,11 @@ public class AsyncTaskActivity extends BaseActivity implements View.OnClickListe
             }
         } else if (v.getId() == R.id.pause) {
             if (task != null) {
-                task.cancel(false);
+                task.cancel(true);
             }
         } else if (v.getId() == R.id.button) {
             if (task != null) {
-                LogUtil.e("当前状态是=" + task.isCancelled());
+                LogUtil.e("MyAsyncTask  当前状态是=" + task.isCancelled());
             }
         }
     }
@@ -76,6 +76,9 @@ public class AsyncTaskActivity extends BaseActivity implements View.OnClickListe
             int i = 0;
             for (i = 0; i < 30; i++) {
                 LogUtil.e("MyAsyncTask  doInBackground i=" + i);
+                if (isCancelled()) {
+                    break;
+                }
                 publishProgress(i + "");
                 try {
                     Thread.sleep(1000);
@@ -88,9 +91,9 @@ public class AsyncTaskActivity extends BaseActivity implements View.OnClickListe
 
         @Override
         protected void onPostExecute(String s) {
+            super.onPostExecute(s);
             result.setText(s);
             LogUtil.e("MyAsyncTask  onPostExecute   s=" + s);
-            super.onPostExecute(s);
         }
 
         @Override

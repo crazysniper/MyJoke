@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_scroller_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="application.scrollerdemo.ui.ScrollerMainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/parent"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/scroller_bg">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/scroller_bg"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/scrollerTo"
+            style="@style/ButtonStyle"
+            android:layout_weight="1"
+            android:text="向右下角scrollerTo" />
+
+        <Button
+            android:id="@+id/scrollerBy"
+            style="@style/ButtonStyle"
+            android:layout_weight="1"
+            android:text="向右下角scrollerBy" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/scrollerToZheng"
+            style="@style/ButtonStyle"
+            android:layout_weight="1"
+            android:text="向左上角scrollerTo" />
+
+        <Button
+            android:id="@+id/scrollerByZheng"
+            style="@style/ButtonStyle"
+            android:layout_weight="1"
+            android:text="向左上角scrollerBy" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/getInfo"
+        style="@style/ButtonStyle"
+        android:text="获取关于scoller的坐标" />
+</LinearLayout>

@@ -8,7 +8,8 @@
         android:supportsRtl="true">
         <activity android:name=".ui.ConstraintLayoutActivity" />
         <activity android:name=".ui.SupportDesignActivity" />
-        <activity android:name=".ui.AsyncTaskActivity"></activity>
+        <activity android:name=".ui.AsyncTaskActivity" />
+        <activity android:name=".ui.TestDoubleClickActivity"></activity>
     </application>
 
 </manifest>

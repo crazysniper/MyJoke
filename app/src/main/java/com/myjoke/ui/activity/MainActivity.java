@@ -22,7 +22,9 @@ import com.myjoke.util.ConstantPath;
 import java.io.File;
 import java.io.IOException;
 
+import application.dialogdemo.utils.DialogConstant;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
+import application.scrollerdemo.util.ScrollerConstant;
 import application.supportdesignview.util.SupportDesignConstant;
 import application.systeminfo.util.SystemInfoConstant;
 import butterknife.ButterKnife;
@@ -199,7 +201,8 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule})
+    @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
+            R.id.dialogModule, R.id.scrollerModule})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.view:
@@ -220,6 +223,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.sysModule:
                 ARouter.getInstance().build(SystemInfoConstant.SystemInfoActivity).navigation();
+                break;
+            case R.id.dialogModule:
+                ARouter.getInstance().build(DialogConstant.DialogMainActivity).navigation();
+                break;
+            case R.id.scrollerModule:
+                ARouter.getInstance().build(ScrollerConstant.ScrollerMainActivity).navigation();
                 break;
         }
     }

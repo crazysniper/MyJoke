@@ -19,4 +19,9 @@
         android:layout_marginTop="0dp"
         android:text="AsyncTask" />
 
+    <Button
+        android:id="@+id/doubelClick"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="0dp"
+        android:text="测试连续点击多次" />
 </LinearLayout>

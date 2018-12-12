@@ -1,1 +1,1 @@
-include ':app', ':myannotations', ':common', ':baselibrary', ':supportdesignview', ':recyclerviewdemo', ':baseview', ':systeminfo'
+include ':app', ':myannotations', ':common', ':baselibrary', ':supportdesignview', ':recyclerviewdemo', ':baseview', ':systeminfo', ':mycompiler', ':dialogdemo', ':scrollerdemo', ':camerademo'

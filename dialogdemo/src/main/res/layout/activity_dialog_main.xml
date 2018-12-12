@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dialog_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="application.dialogdemo.ui.DialogMainActivity">
+
+    <Button
+        android:id="@+id/openDialog"
+        style="@style/ButtonStyle"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/openPopupWindow"
+        style="@style/ButtonStyle"
+        android:text="PopupWindow" />
+
+    <Button
+        android:id="@+id/openServiceDialog"
+        style="@style/ButtonStyle"
+        android:text="Service中打开Dialog" />
+</LinearLayout>

@@ -31,6 +31,6 @@ dependencies {
     compile project(':baselibrary')
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 }

@@ -1,5 +1,6 @@
 package application.supportdesignview.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +15,7 @@ import application.supportdesignview.util.SupportDesignConstant;
 @Route(path = SupportDesignConstant.SupportDesignActivity)
 public class SupportDesignActivity extends BaseActivity implements View.OnClickListener {
 
-    private Button constraintLayout,asyncTaskLayout;
+    private Button constraintLayout, asyncTaskLayout, doubelClick;
 
     @Override
     public int getLayoutId() {
@@ -26,9 +27,11 @@ public class SupportDesignActivity extends BaseActivity implements View.OnClickL
         ARouter.getInstance().inject(this);
         constraintLayout = findView(R.id.constraintLayout);
         asyncTaskLayout = findView(R.id.asyncTaskLayout);
+        doubelClick = findView(R.id.doubelClick);
 
         constraintLayout.setOnClickListener(this);
         asyncTaskLayout.setOnClickListener(this);
+        doubelClick.setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +45,8 @@ public class SupportDesignActivity extends BaseActivity implements View.OnClickL
             ARouter.getInstance().build(SupportDesignConstant.ConstraintLayoutActivity).navigation();
         } else if (v.getId() == R.id.asyncTaskLayout) {
             ARouter.getInstance().build(SupportDesignConstant.AsyncTaskActivity).navigation();
+        } else if (v.getId() == R.id.doubelClick) {
+            startActivity(new Intent(SupportDesignActivity.this, TestDoubleClickActivity.class));
         }
     }
 }

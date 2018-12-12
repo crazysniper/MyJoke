@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.myjoke.baselibray.util.LogUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +27,11 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
     private LinearLayoutClickListener listener;
     private LinearLayoutLongClickListener longListener;
 
-
     public LinearLayoutAdapter(Context context, List<Student> stuList) {
         this.stuList = stuList;
         layoutInflater = LayoutInflater.from(context);
+
+        LogUtil.e("LinearLayoutAdapter", "LinearLayoutAdapter构造方法");
     }
 
     static class LinearLayoutViewHolder extends RecyclerView.ViewHolder {
@@ -47,11 +50,13 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
     public LinearLayoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_layout, parent, false);
         LinearLayoutViewHolder holder = new LinearLayoutViewHolder(view);
+        LogUtil.e("LinearLayoutAdapter", "LinearLayoutViewHolder");
         return holder;
     }
 
     @Override
     public void onBindViewHolder(final LinearLayoutViewHolder holder, final int position) {
+        LogUtil.e("LinearLayoutAdapter", "onBindViewHolder  position=" + position + "     name=" + stuList.get(position));
         holder.name.setText(stuList.get(position).getName());
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +80,7 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
 
     @Override
     public int getItemCount() {
+        LogUtil.e("LinearLayoutAdapter", "getItemCount  getItemCount=" + stuList.size());
         return stuList.size();
     }
 
