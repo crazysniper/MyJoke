@@ -36,7 +36,5 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 
-    compile project(':common')
-    compile project(':baselibrary')
     compile project(':dialogdemo')
 }

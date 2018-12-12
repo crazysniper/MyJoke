@@ -43,10 +43,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     compile "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
-    // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
+
     if (!isDebug.toBoolean()) {
         compile project(':baselibrary')
         compile project(':baseview')
@@ -56,10 +57,11 @@ dependencies {
         compile project(':dialogdemo')
         compile project(':scrollerdemo')
     }
+
+    // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
     compile 'com.android.support:support-v4:26.0.0-alpha1'
-    compile 'com.google.android.gms:play-services:11.0.4'
+
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    //releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
