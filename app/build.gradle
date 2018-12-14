@@ -56,6 +56,7 @@ dependencies {
         compile project(':systeminfo')
         compile project(':dialogdemo')
         compile project(':scrollerdemo')
+        compile project(':eventdemo')
     }
 
     // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的

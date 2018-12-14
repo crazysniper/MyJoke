@@ -24,10 +24,12 @@ import java.io.File;
 import java.io.IOException;
 
 import application.dialogdemo.utils.DialogConstant;
+import application.eventdemo.util.EventConstant;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import application.scrollerdemo.util.ScrollerConstant;
 import application.supportdesignview.util.SupportDesignConstant;
 import application.systeminfo.util.SystemInfoConstant;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HomeFragment extends BaseFragment {
@@ -68,6 +70,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initView() {
         activity = getActivity();
+        ButterKnife.bind(this, view);
         SpUtil.clear();
         Util.getData(activity, "app");
 
@@ -211,7 +214,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
-            R.id.dialogModule, R.id.scrollerModule})
+            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.view:
@@ -238,6 +241,10 @@ public class HomeFragment extends BaseFragment {
                 break;
             case R.id.scrollerModule:
                 ARouter.getInstance().build(ScrollerConstant.ScrollerMainActivity).navigation();
+                break;
+            case R.id.eventModule:
+                Toast.makeText(activity, " 事件分发页面", Toast.LENGTH_SHORT).show();
+                ARouter.getInstance().build(EventConstant.EventMainActivity).navigation();
                 break;
         }
     }

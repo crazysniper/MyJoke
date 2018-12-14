@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_event_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="40dp"
+    tools:context="application.eventdemo.ui.EventInfoActivity">
+
+    <application.eventdemo.widget.LayoutX
+        android:layout_width="400dp"
+        android:id="@+id/layout"
+        android:layout_height="400dp"
+        android:background="#303F9F"
+        android:gravity="center">
+
+        <application.eventdemo.widget.TextViewX
+            android:id="@+id/view"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="#FF4081"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20sp" />
+
+    </application.eventdemo.widget.LayoutX>
+
+
+    <application.eventdemo.widget.TextViewX
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF4081"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+</LinearLayout>

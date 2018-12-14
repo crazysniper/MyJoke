@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (System.currentTimeMillis() - currentTime > 1000) {
+        if (System.currentTimeMillis() - currentTime > 1500) {
             ToastUtil.getInstance().showToast(this, "连续点2次退出");
             currentTime = System.currentTimeMillis();
         } else {

@@ -76,11 +76,15 @@
             style="@style/ButtonStyle"
             android:text="跳转到DialogModule" />
 
-
         <Button
             android:id="@+id/scrollerModule"
             style="@style/ButtonStyle"
             android:text="跳转到ScrollerModule" />
+
+        <Button
+            android:id="@+id/eventModule"
+            style="@style/ButtonStyle"
+            android:text="跳转到EventModule" />
     </LinearLayout>
 
 </ScrollView>
