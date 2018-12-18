@@ -7,4 +7,5 @@ package application.dialogdemo.utils;
 public class DialogConstant {
     private static final String BASE_PATH = "/dialogdemo/";
     public static final String DialogMainActivity = BASE_PATH + "DialogMainActivity";
+    public static final String ActionActivity = BASE_PATH + "ActionActivity";
 }

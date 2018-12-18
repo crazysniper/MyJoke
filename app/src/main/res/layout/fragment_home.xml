@@ -85,6 +85,11 @@
             android:id="@+id/eventModule"
             style="@style/ButtonStyle"
             android:text="跳转到EventModule" />
+
+        <Button
+            android:id="@+id/material"
+            style="@style/ButtonStyle"
+            android:text="跳转到Material Design" />
     </LinearLayout>
 
 </ScrollView>

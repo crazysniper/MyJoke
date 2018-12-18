@@ -25,6 +25,7 @@ import java.io.IOException;
 
 import application.dialogdemo.utils.DialogConstant;
 import application.eventdemo.util.EventConstant;
+import application.materialdemo.util.MaterialConstant;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import application.scrollerdemo.util.ScrollerConstant;
 import application.supportdesignview.util.SupportDesignConstant;
@@ -71,7 +72,7 @@ public class HomeFragment extends BaseFragment {
     protected void initView() {
         activity = getActivity();
         ButterKnife.bind(this, view);
-        SpUtil.clear();
+//        SpUtil.clear();
         Util.getData(activity, "app");
 
         SpUtil.putBatch("key1", "value1").putBatch("key2", "value2").putBatch("key3", "value3");
@@ -214,7 +215,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
-            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule})
+            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.view:
@@ -245,6 +246,9 @@ public class HomeFragment extends BaseFragment {
             case R.id.eventModule:
                 Toast.makeText(activity, " 事件分发页面", Toast.LENGTH_SHORT).show();
                 ARouter.getInstance().build(EventConstant.EventMainActivity).navigation();
+                break;
+            case R.id.material:
+                ARouter.getInstance().build(MaterialConstant.MaterialMainActivity).navigation();
                 break;
         }
     }

@@ -57,6 +57,7 @@ dependencies {
         compile project(':dialogdemo')
         compile project(':scrollerdemo')
         compile project(':eventdemo')
+        compile project(':materialdemo')
     }
 
     // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
@@ -65,4 +66,9 @@ dependencies {
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     //releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+
+    // 通过facebook开源工具Stetho查看
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 }

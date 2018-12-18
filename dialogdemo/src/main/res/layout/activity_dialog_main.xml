@@ -21,4 +21,23 @@
         android:id="@+id/openServiceDialog"
         style="@style/ButtonStyle"
         android:text="Service中打开Dialog" />
+
+    <Button
+        android:id="@+id/openAction"
+        style="@style/ButtonStyle"
+        android:text="打开Action" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="手机号码"
+        android:imeActionLabel="@string/finish"
+        android:imeOptions="actionDone"
+        android:inputType="phone"
+        android:lines="1"
+        android:textColor="#FF4081"
+        android:textColorHint="#878787"
+        android:textSize="16sp" />
+
 </LinearLayout>

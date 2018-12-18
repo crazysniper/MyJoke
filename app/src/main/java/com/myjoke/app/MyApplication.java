@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alipay.euler.andfix.patch.PatchManager;
+import com.facebook.stetho.Stetho;
 import com.myjoke.baselibray.base.LibraryApplication;
 import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.SpUtil;
@@ -26,6 +27,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Stetho.initializeWithDefaults(this);
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
