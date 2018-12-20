@@ -1,25 +1,27 @@
 package application.eventdemo.ui;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.myjoke.baselibray.base.BaseActivity;
 
 import application.eventdemo.R;
 import application.eventdemo.util.EventUtil;
 import application.eventdemo.widget.LayoutX;
 import application.eventdemo.widget.TextViewX;
 
-public class EventInfoActivity extends AppCompatActivity {
+public class EventInfoActivity extends BaseActivity {
 
     private LayoutX layout;
     private TextViewX view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_info);
+    public int getLayoutId() {
+        return R.layout.activity_event_info;
+    }
 
+    @Override
+    public void initView() {
         layout = (LayoutX) findViewById(R.id.layout);
         view = (TextViewX) findViewById(R.id.view);
 
@@ -52,6 +54,11 @@ public class EventInfoActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void initData() {
+
     }
 
 

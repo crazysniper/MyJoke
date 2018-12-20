@@ -1,6 +1,5 @@
 package com.myjoke.ui.fragment;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.core.LogisticsCenter;
+import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.R;
 import com.myjoke.app.MyApplication;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import application.dialogdemo.utils.DialogConstant;
 import application.eventdemo.util.EventConstant;
 import application.materialdemo.util.MaterialConstant;
+import application.permissiondemo.util.PermissionConstant;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import application.scrollerdemo.util.ScrollerConstant;
 import application.supportdesignview.util.SupportDesignConstant;
@@ -34,7 +36,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HomeFragment extends BaseFragment {
-    private Activity activity;
 
     private int heightPixels = 0;
     private Button btn;
@@ -70,7 +71,6 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        activity = getActivity();
         ButterKnife.bind(this, view);
 //        SpUtil.clear();
         Util.getData(activity, "app");
@@ -209,15 +209,20 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        LogUtil.e("Fragment requestCode=" + requestCode + "   resultCode=" + resultCode + "   data=" + data.getExtras().toString());
         if (requestCode == 100 && resultCode == 200) {
-            LogUtil.e("result==" + data.getStringExtra("result"));
+            Toast.makeText(activity, "Fragment result==" + data.getStringExtra("resultKey"), Toast.LENGTH_SHORT).show();
         }
     }
 
-    @OnClick({R.id.view, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
-            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material})
+    @OnClick({R.id.btn1, R.id.view, R.id.fragmentAroute, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
+            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission})
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.btn1:
+                ARouter.getInstance().build(ConstantPath.BitmapActivity).withString("key1", "value1")
+                        .withInt("intKey", 1).navigation(activity, 100);
+                break;
             case R.id.view:
 //                ARouter.getInstance().build(ConstantPath.MyActivity).navigation(this);
                 LogUtil.e("111111111111111");
@@ -227,12 +232,24 @@ public class HomeFragment extends BaseFragment {
                 intent1.putExtra("key1", "value1");
                 activity.sendBroadcast(intent1);
                 break;
+            case R.id.fragmentAroute:
+//                ARouter.getInstance().build(ConstantPath.ArouteActivity).withString("key1", "value1")
+//                        .withInt("intKey", 1).navigation();
+
+                Postcard postcard = ARouter.getInstance().build(ConstantPath.ArouteActivity);
+                LogisticsCenter.completion(postcard);
+                Class<?> destination = postcard.getDestination();
+
+                Intent intent = new Intent(activity, destination);
+                intent.putExtra("key1", "value1").putExtra("intKey", 1);
+                startActivityForResult(intent, 100);
+                break;
             case R.id.recyclerModule:
 //                startActivity(new Intent(MainActivity.this, RecyclerMainActivity.class));
-                ARouter.getInstance().build(RecyclerViewConstant.RecyclerMainActivity).navigation(activity);
+                ARouter.getInstance().build(RecyclerViewConstant.RecyclerMainActivity).navigation();
                 break;
             case R.id.supportDesignModule:
-                ARouter.getInstance().build(SupportDesignConstant.SupportDesignActivity).navigation(activity);
+                ARouter.getInstance().build(SupportDesignConstant.SupportDesignActivity).navigation();
                 break;
             case R.id.sysModule:
                 ARouter.getInstance().build(SystemInfoConstant.SystemInfoActivity).navigation();
@@ -250,12 +267,10 @@ public class HomeFragment extends BaseFragment {
             case R.id.material:
                 ARouter.getInstance().build(MaterialConstant.MaterialMainActivity).navigation();
                 break;
+            case R.id.permission:
+                ARouter.getInstance().build(PermissionConstant.PermissionMainActivity).navigation();
+                break;
         }
     }
 
-
-    public void showToast(View v) {
-        ARouter.getInstance().build(ConstantPath.BitmapActivity).withString("key1", "value1")
-                .withInt("intKey", 1).navigation(activity, 100);
-    }
 }

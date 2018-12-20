@@ -13,7 +13,7 @@ import com.myjoke.baselibray.util.ToastUtil;
 import application.materialdemo.R;
 import application.materialdemo.util.MaterialConstant;
 
-@Route(path = MaterialConstant.MaterialMainActivity)
+@Route(path = MaterialConstant.SnackBarActivity)
 public class SnackBarActivity extends BaseActivity implements View.OnClickListener {
 
     private Button btn1;
@@ -39,13 +39,16 @@ public class SnackBarActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn1) {
-            Snackbar.make(btn1, "你猜", Snackbar.LENGTH_SHORT).setAction("确定", new View.OnClickListener() {
+            Snackbar snackbar = Snackbar.make(btn1, "你猜", Snackbar.LENGTH_INDEFINITE).setAction("确定", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ToastUtil.getInstance().showToast(SnackBarActivity.this, "Snackbar确认了");
                 }
-            }).setActionTextColor(Color.RED)
-                    .show();
+            }).setActionTextColor(Color.RED);
+
+            snackbar.getView().setBackgroundColor(Color.BLUE);
+
+            snackbar.show();
         }
     }
 }

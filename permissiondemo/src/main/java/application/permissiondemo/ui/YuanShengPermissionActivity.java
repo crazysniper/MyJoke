@@ -1,18 +1,18 @@
-package application.materialdemo.ui;
+package application.permissiondemo.ui;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
 
-import application.materialdemo.R;
-import application.materialdemo.util.MaterialConstant;
+import application.permissiondemo.R;
+import application.permissiondemo.util.PermissionConstant;
 
-@Route(path = MaterialConstant.CardViewActivity)
-public class CardViewActivity extends BaseActivity {
+@Route(path = PermissionConstant.YuanShengPermissionActivity)
+public class YuanShengPermissionActivity extends BaseActivity {
 
-   @Override
+    @Override
     public int getLayoutId() {
-        return R.layout.activity_card_view;
+        return R.layout.activity_yuan_sheng_permission;
     }
 
     @Override

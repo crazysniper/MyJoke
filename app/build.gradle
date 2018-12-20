@@ -43,9 +43,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    // butterknife
     compile "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
+    // arouter
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 
     if (!isDebug.toBoolean()) {
@@ -58,17 +61,16 @@ dependencies {
         compile project(':scrollerdemo')
         compile project(':eventdemo')
         compile project(':materialdemo')
+        compile project(':permissiondemo')
     }
 
-    // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
+    // 通过facebook开源工具Stetho查看
     compile 'com.android.support:support-v4:26.0.0-alpha1'
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 
+    // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     //releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-
-
-    // 通过facebook开源工具Stetho查看
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 }

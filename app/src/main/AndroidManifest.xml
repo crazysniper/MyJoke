@@ -55,6 +55,8 @@
                 <action android:name="hhhh" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ui.activity.ArouteActivity"></activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.myjoke.baselibray.NetworkConnectChangedReceiver;
 import com.myjoke.baselibray.net.NetworkChangeEvent;
+import com.myjoke.baselibray.util.DoubleClickHelper;
 import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.viewserver.ViewServer;
 
@@ -38,7 +39,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayoutId());
         clazzName = getClass().getSimpleName();
-        LogUtil.e(TAG, clazzName + " onCreate " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onCreate " + "  taskId=" + getTaskId());
+        }
 
         EventBus.getDefault().register(this);
         ViewServer.get(this).addWindow(this);
@@ -59,13 +62,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        LogUtil.e(TAG, clazzName + " onStart " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onStart " + "  taskId=" + getTaskId());
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.e(TAG, clazzName + " onResume " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onResume " + "  taskId=" + getTaskId());
+        }
         ViewServer.get(this).setFocusedWindow(this);
         if (receiver == null) {
             receiver = new NetworkConnectChangedReceiver();
@@ -80,32 +87,42 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtil.e(TAG, clazzName + " onPause " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onPause " + "  taskId=" + getTaskId());
+        }
         unregisterReceiver(receiver);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.e(TAG, clazzName + " onStop " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onStop " + "  taskId=" + getTaskId());
+        }
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        LogUtil.e(TAG, clazzName + " onNewIntent " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onNewIntent " + "  taskId=" + getTaskId());
+        }
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        LogUtil.e(TAG, clazzName + " onRestart " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onRestart " + "  taskId=" + getTaskId());
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.e(TAG, clazzName + " onDestroy " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " onDestroy " + "  taskId=" + getTaskId());
+        }
         ViewServer.get(this).removeWindow(this);
         EventBus.getDefault().unregister(this);
     }
@@ -124,7 +141,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        LogUtil.e(TAG, clazzName + " finish " + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " finish " + "  taskId=" + getTaskId());
+        }
         if (!"SplashActivity".equals(getClass().getSimpleName())) {
             overridePendingTransitionExit();
         }
@@ -133,20 +152,43 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean isFinishing() {
         boolean result = super.isFinishing();
-        LogUtil.e(TAG, clazzName + " isFinishing result=" + result + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e(TAG, clazzName + " isFinishing result=" + result + "  taskId=" + getTaskId());
+        }
         return result;
     }
 
     @Override
     public boolean isDestroyed() {
         boolean result = super.isDestroyed();
-        LogUtil.e("BaseActivity", clazzName + " isDestroyed result=" + result + "  taskId=" + getTaskId());
+        if (isShowCycler()) {
+            LogUtil.e("BaseActivity", clazzName + " isDestroyed result=" + result + "  taskId=" + getTaskId());
+        }
         return result;
     }
 
+//    @Override
+//    public void startActivity(Intent intent) {
+//        LogUtil.e(TAG, "Activity startActivity=" + clazzName);
+//        if (isCheckActivityJump() && DoubleClickHelper.isOnDoubleClick(700)) {
+//            LogUtil.e(TAG, "startActivity=" + clazzName);
+//            return;
+//        }
+//        super.startActivity(intent);
+//        overridePendingTransitionEnter();
+//    }
+
+    // 查看源码得知 startActivity 最终也会调用 startActivityForResult
     @Override
-    public void startActivity(Intent intent) {
-        super.startActivity(intent);
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        if (isShowCycler()) {
+            LogUtil.e(TAG, "Activity startActivityForResult=" + clazzName);
+        }
+        if (isCheckActivityJump() && DoubleClickHelper.isOnDoubleClick(700)) {
+            LogUtil.e(TAG, "startActivityForResult 2次点击间隔太短，不跳转" + clazzName);
+            return;
+        }
+        super.startActivityForResult(intent, requestCode, options);
         overridePendingTransitionEnter();
     }
 
@@ -163,7 +205,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         hasNetWork(event.isConnected);
     }
 
-    protected boolean mCheckNetWork = true; //默认检查网络状态
+    protected boolean mCheckNetWork = false; //默认检查网络状态
 
     private void hasNetWork(boolean has) {
         if (isCheckNetWork()) {
@@ -177,5 +219,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public boolean isCheckNetWork() {
         return mCheckNetWork;
+    }
+
+    /**
+     * 是否检查 Activity 跳转频率，避免重复跳转
+     */
+    protected boolean isCheckActivityJump() {
+        // 默认需要检查和判断
+        return true;
+    }
+
+    protected boolean isShowCycler() {
+        return false;
     }
 }

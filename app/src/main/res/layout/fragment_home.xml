@@ -17,11 +17,14 @@
 
         <Button
             android:id="@+id/btn1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="showToast"
+            style="@style/ButtonStyle"
             android:text="启动模式"
-            android:textAllCaps="false"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/fragmentAroute"
+            style="@style/ButtonStyle"
+            android:text="在Fragment中使用Aroute"
             android:textColor="@color/colorAccent" />
 
         <!--<application.baseview.edittext.InputMoneyEditTextView-->
@@ -34,11 +37,8 @@
 
         <Button
             android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            style="@style/ButtonStyle"
             android:text="自定义控件"
-            android:textAllCaps="false"
             android:textColor="@color/colorAccent" />
 
 
@@ -50,20 +50,14 @@
 
         <Button
             android:id="@+id/recyclerModule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="跳转到RecyclerView Module"
-            android:textAllCaps="false" />
+            style="@style/ButtonStyle"
+            android:text="跳转到RecyclerView Module" />
 
 
         <Button
             android:id="@+id/supportDesignModule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="跳转到SupportDesign Module"
-            android:textAllCaps="false" />
+            style="@style/ButtonStyle"
+            android:text="跳转到SupportDesign Module" />
 
 
         <Button
@@ -90,6 +84,11 @@
             android:id="@+id/material"
             style="@style/ButtonStyle"
             android:text="跳转到Material Design" />
+
+        <Button
+            android:id="@+id/permission"
+            style="@style/ButtonStyle"
+            android:text="跳转到Permission Module" />
     </LinearLayout>
 
 </ScrollView>
