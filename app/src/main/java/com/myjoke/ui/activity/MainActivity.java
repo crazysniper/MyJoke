@@ -1,6 +1,5 @@
 package com.myjoke.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
@@ -8,14 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.R;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.base.BaseFragment;
-import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.ToastUtil;
 import com.myjoke.ui.fragment.ActivityFragment;
 import com.myjoke.ui.fragment.HomeFragment;
@@ -103,6 +100,7 @@ public class MainActivity extends BaseActivity {
                 getResources().getString(R.string.tab_title_message));
         tabItemList.add(tabItem);
 
+
         // 我的
         tabItem = new TabItem(MyFragment.class, R.drawable.tab_my, R.drawable.tab_my_selected,
                 getResources().getString(R.string.tab_title_my));
@@ -122,14 +120,14 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        LogUtil.e("MainActivity requestCode=" + requestCode + "   resultCode=" + resultCode + "   data=" + data.getExtras().toString());
-        if (requestCode == 100 && resultCode == 200) {
-            Toast.makeText(MainActivity.this, "MainActivity result==" + data.getStringExtra("resultKey"), Toast.LENGTH_SHORT).show();
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        LogUtil.e("MainActivity requestCode=" + requestCode + "   resultCode=" + resultCode + "   data=" + data.getExtras().toString());
+//        if (requestCode == 100 && resultCode == 200) {
+//            Toast.makeText(MainActivity.this, "MainActivity result==" + data.getStringExtra("resultKey"), Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
     @Override

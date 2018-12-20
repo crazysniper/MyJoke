@@ -43,6 +43,7 @@
 
 
         <EditText
+            android:id="@+id/ed_test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="12345"
@@ -68,7 +69,7 @@
         <Button
             android:id="@+id/dialogModule"
             style="@style/ButtonStyle"
-            android:text="跳转到DialogModule" />
+            android:text="跳转到DialogModule，以及Action" />
 
         <Button
             android:id="@+id/scrollerModule"
@@ -89,6 +90,10 @@
             android:id="@+id/permission"
             style="@style/ButtonStyle"
             android:text="跳转到Permission Module" />
+        <Button
+            android:id="@+id/okhttp"
+            style="@style/ButtonStyle"
+            android:text="跳转到OkHttp Module" />
     </LinearLayout>
 
 </ScrollView>

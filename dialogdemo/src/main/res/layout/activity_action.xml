@@ -17,6 +17,16 @@
             android:text="打开设置" />
 
         <Button
+            android:id="@+id/openSelfSetting"
+            style="@style/ButtonStyle"
+            android:text="打开本应用基础信息设置" />
+
+        <Button
+            android:id="@+id/openSelfPermissionSetting"
+            style="@style/ButtonStyle"
+            android:text="打开本应用权限设置" />
+
+        <Button
             android:id="@+id/openWifiSetting"
             style="@style/ButtonStyle"
             android:text="打开Wifi设置" />

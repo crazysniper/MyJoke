@@ -62,6 +62,8 @@ dependencies {
         compile project(':eventdemo')
         compile project(':materialdemo')
         compile project(':permissiondemo')
+        compile project(':okhttpdemo')
+
     }
 
     // 通过facebook开源工具Stetho查看

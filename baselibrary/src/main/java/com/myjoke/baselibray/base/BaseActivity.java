@@ -32,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public String clazzName = "";
     private static final String TAG = "LogUtil: BaseActivity";
     private NetworkConnectChangedReceiver receiver = null;
+    protected boolean mCheckNetWork = false; //默认检查网络状态
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,14 +75,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             LogUtil.e(TAG, clazzName + " onResume " + "  taskId=" + getTaskId());
         }
         ViewServer.get(this).setFocusedWindow(this);
-        if (receiver == null) {
-            receiver = new NetworkConnectChangedReceiver();
+
+        if (mCheckNetWork) {
+            if (receiver == null) {
+                receiver = new NetworkConnectChangedReceiver();
+            }
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+            intentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+            intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+            registerReceiver(receiver, intentFilter);
         }
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        intentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(receiver, intentFilter);
     }
 
     @Override
@@ -90,7 +94,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (isShowCycler()) {
             LogUtil.e(TAG, clazzName + " onPause " + "  taskId=" + getTaskId());
         }
-        unregisterReceiver(receiver);
+        if (mCheckNetWork) {
+            unregisterReceiver(receiver);
+        }
     }
 
     @Override
@@ -127,11 +133,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LogUtil.e(TAG, clazzName + " requestCode=" + requestCode + "  resultCode=" + resultCode);
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        LogUtil.e(TAG, clazzName + " requestCode=" + requestCode + "  resultCode=" + resultCode);
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 
     @Override
     public void onLowMemory() {
@@ -205,7 +211,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         hasNetWork(event.isConnected);
     }
 
-    protected boolean mCheckNetWork = false; //默认检查网络状态
 
     private void hasNetWork(boolean has) {
         if (isCheckNetWork()) {

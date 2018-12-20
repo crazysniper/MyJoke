@@ -4,9 +4,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.core.LogisticsCenter;
@@ -27,20 +26,22 @@ import java.io.IOException;
 import application.dialogdemo.utils.DialogConstant;
 import application.eventdemo.util.EventConstant;
 import application.materialdemo.util.MaterialConstant;
+import application.okhttpdemo.util.OkHttpConstant;
 import application.permissiondemo.util.PermissionConstant;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import application.scrollerdemo.util.ScrollerConstant;
 import application.supportdesignview.util.SupportDesignConstant;
 import application.systeminfo.util.SystemInfoConstant;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HomeFragment extends BaseFragment {
 
+    @BindView(R.id.ed_test)
+    EditText ed_test;
+
     private int heightPixels = 0;
-    private Button btn;
-    CardView cardView;
-    private long currentTime = 0;
 
     public HomeFragment() {
     }
@@ -164,9 +165,6 @@ public class HomeFragment extends BaseFragment {
 //            apatch.delete();
         }
 
-
-        btn = (Button) view.findViewById(R.id.btn1);
-
         heightPixels = getResources().getDisplayMetrics().heightPixels;
 
 
@@ -212,11 +210,13 @@ public class HomeFragment extends BaseFragment {
         LogUtil.e("Fragment requestCode=" + requestCode + "   resultCode=" + resultCode + "   data=" + data.getExtras().toString());
         if (requestCode == 100 && resultCode == 200) {
             Toast.makeText(activity, "Fragment result==" + data.getStringExtra("resultKey"), Toast.LENGTH_SHORT).show();
+            ed_test.setText(data.getStringExtra("resultKey"));
+            ed_test.setSelection(ed_test.getText().toString().length());
         }
     }
 
     @OnClick({R.id.btn1, R.id.view, R.id.fragmentAroute, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
-            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission})
+            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission,R.id.okhttp})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btn1:
@@ -269,6 +269,9 @@ public class HomeFragment extends BaseFragment {
                 break;
             case R.id.permission:
                 ARouter.getInstance().build(PermissionConstant.PermissionMainActivity).navigation();
+                break;
+            case R.id.okhttp:
+                ARouter.getInstance().build(OkHttpConstant.OkHttpMainActivity).navigation();
                 break;
         }
     }

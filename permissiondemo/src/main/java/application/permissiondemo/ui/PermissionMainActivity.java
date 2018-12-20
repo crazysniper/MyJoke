@@ -26,6 +26,9 @@ public class PermissionMainActivity extends BaseActivity implements View.OnClick
 
         button = (Button) findView(R.id.button);
         button2 = (Button) findView(R.id.button2);
+
+        button.setOnClickListener(this);
+        button2.setOnClickListener(this);
     }
 
     @Override

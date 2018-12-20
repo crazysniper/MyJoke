@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_yuan_sheng_permission"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="application.permissiondemo.ui.YuanShengPermissionActivity">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/openSelfSetting"
+            style="@style/ButtonStyle"
+            android:text="打开本应用基础信息设置" />
+
+        <Button
+            android:id="@+id/openSelfPermissionSetting"
+            style="@style/ButtonStyle"
+            android:text="打开本应用权限设置" />
+
+        <Button
+            android:id="@+id/openCamera"
+            style="@style/ButtonStyle"
+            android:text="打开相机" />
+
+        <Button
+            android:id="@+id/openSD"
+            style="@style/ButtonStyle"
+            android:text="打开SD卡扫描" />
+
+        <Button
+            android:id="@+id/openContact"
+            style="@style/ButtonStyle"
+            android:text="打开联系人" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="4dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/black" />
+
+    </LinearLayout>
+
+</ScrollView>
