@@ -12,6 +12,8 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/dialogdemo/dialogdemo.iml" filepath="$PROJECT_DIR$/dialogdemo/dialogdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/eventdemo/eventdemo.iml" filepath="$PROJECT_DIR$/eventdemo/eventdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fourmodule/fourmodule.iml" filepath="$PROJECT_DIR$/fourmodule/fourmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/glidedemo/glidedemo.iml" filepath="$PROJECT_DIR$/glidedemo/glidedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialdemo/materialdemo.iml" filepath="$PROJECT_DIR$/materialdemo/materialdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/myannotations/myannotations.iml" filepath="$PROJECT_DIR$/myannotations/myannotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/mycompiler/mycompiler.iml" filepath="$PROJECT_DIR$/mycompiler/mycompiler.iml" />

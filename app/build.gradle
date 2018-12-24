@@ -63,6 +63,9 @@ dependencies {
         compile project(':materialdemo')
         compile project(':permissiondemo')
         compile project(':okhttpdemo')
+        compile project(':glidedemo')
+        compile project(':fourmodule')
+
 
     }
 

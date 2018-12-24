@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_four_module_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="application.fourmodule.ui.FourModuleMainActivity">
+
+    <Button
+        android:id="@+id/service"
+        style="@style/ButtonStyle"
+        android:text="Service" />
+
+    <Button
+        android:id="@+id/broadcast"
+        style="@style/ButtonStyle"
+        android:text="BroadCastReceiver" />
+
+    <Button
+        android:id="@+id/contentProvider"
+        style="@style/ButtonStyle"
+        android:text="ContentProvider" />
+</LinearLayout>
