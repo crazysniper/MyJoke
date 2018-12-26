@@ -1,5 +1,6 @@
 package application.viewpagerdemo.ui;
 
+import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -10,9 +11,9 @@ import application.viewpagerdemo.R;
 import application.viewpagerdemo.util.ViewPagerConstant;
 
 @Route(path = ViewPagerConstant.ViewPagerMainActivity)
-public class ViewPagerMainActivity extends BaseActivity {
+public class ViewPagerMainActivity extends BaseActivity implements View.OnClickListener {
 
-    private Button btn1;
+    private Button btn1, btn2;
 
     @Override
     public int getLayoutId() {
@@ -23,10 +24,23 @@ public class ViewPagerMainActivity extends BaseActivity {
     public void initView() {
         ARouter.getInstance().inject(this);
         btn1 = findView(R.id.btn1);
+        btn2 = findView(R.id.btn2);
+
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
     }
 
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn1) {
+            ARouter.getInstance().build(ViewPagerConstant.ViewPager_View_Activity).navigation();
+        } else if (v.getId() == R.id.btn2) {
+            ARouter.getInstance().build(ViewPagerConstant.ViewPager_Fragment_Activity).navigation();
+        }
     }
 }

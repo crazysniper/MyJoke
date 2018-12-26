@@ -7,11 +7,13 @@
     android:orientation="vertical"
     tools:context="application.viewpagerdemo.ui.ViewPager_View_Activity">
 
-    <LinearLayout
-        android:id="@+id/tab_content"
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"></android.support.v4.view.ViewPager>
+
 
     <View
         android:id="@+id/line"
@@ -19,9 +21,11 @@
         android:layout_height="1dp"
         android:background="#3394de" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+    <LinearLayout
+        android:id="@+id/tab_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+        android:layout_height="60dp"
+        android:orientation="horizontal"></LinearLayout>
+
 
 </LinearLayout>
