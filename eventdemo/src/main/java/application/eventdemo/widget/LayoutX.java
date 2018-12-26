@@ -2,7 +2,6 @@ package application.eventdemo.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -31,12 +30,11 @@ public class LayoutX extends LinearLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(R.styleable.LayoutX);
 
-        typedArray.getResourceId(R.styleable.LayoutX_bgColor, -1);
-
-        int LayoutX_bgColor = typedArray.getColor(R.styleable.LayoutX_bgColor, Color.BLUE);
-        LogUtil.e("LayoutX LayoutX_bgColor=" + LayoutX_bgColor);
+        int LayoutX_bgColor = typedArray.getColor(R.styleable.LayoutX_bgColor, -1);
+        LogUtil.e("LayoutX LayoutX_bgColor=" + LayoutX_bgColor); // -1
         LogUtil.e("LayoutX_bg=" + getResources().getColor(R.color.LayoutX_bg));
 
+//        setBackgroundColor(context.getColor(R.color.LayoutX_bg));
 
         int type = typedArray.getType(R.styleable.LayoutX_bgColor);
         LogUtil.e("type=" + type);

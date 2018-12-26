@@ -2,7 +2,6 @@ package application.eventdemo.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -31,11 +30,11 @@ public class TextViewX extends View {
 
         TypedArray typedArray = context.obtainStyledAttributes(R.styleable.TextViewX);
 
-        int TextViewX_bgCollor = typedArray.getColor(R.styleable.TextViewX_bgCollor, Color.RED);
-        LogUtil.e("TextViewX TextViewX_bgCollor=" + TextViewX_bgCollor);
+        int TextViewX_bgColor = typedArray.getResourceId(R.styleable.TextViewX_bgColor2, -1);
+        LogUtil.e("TextViewX TextViewX_bgColor=" + TextViewX_bgColor);
 
         TypedValue value = new TypedValue();
-        boolean has = typedArray.getValue(R.styleable.TextViewX_bgCollor, value);
+        boolean has = typedArray.getValue(R.styleable.TextViewX_bgColor2, value);
         if (has) {
             LogUtil.e("TextViewX value.type=" + value.type);
             if (value.type == TypedValue.TYPE_FIRST_COLOR_INT) {

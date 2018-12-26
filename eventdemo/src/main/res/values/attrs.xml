@@ -6,7 +6,6 @@
     </declare-styleable>
 
     <declare-styleable name="TextViewX">
-        <attr name="bgCollor" format="color|reference" />
-
+        <attr name="bgColor2" format="color|reference"/>
     </declare-styleable>
 </resources>
