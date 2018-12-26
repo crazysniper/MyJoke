@@ -65,7 +65,7 @@ dependencies {
         compile project(':okhttpdemo')
         compile project(':glidedemo')
         compile project(':fourmodule')
-
+        compile project(':viewpagerdemo')
 
     }
 

@@ -32,6 +32,7 @@ import application.recyclerviewdemo.util.RecyclerViewConstant;
 import application.scrollerdemo.util.ScrollerConstant;
 import application.supportdesignview.util.SupportDesignConstant;
 import application.systeminfo.util.SystemInfoConstant;
+import application.viewpagerdemo.util.ViewPagerConstant;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -216,7 +217,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     @OnClick({R.id.btn1, R.id.view, R.id.fragmentAroute, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
-            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission,R.id.okhttp})
+            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission,R.id.okhttp,
+            R.id.viewpager})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btn1:
@@ -272,6 +274,9 @@ public class HomeFragment extends BaseFragment {
                 break;
             case R.id.okhttp:
                 ARouter.getInstance().build(OkHttpConstant.OkHttpMainActivity).navigation();
+                break;
+            case R.id.viewpager:
+                ARouter.getInstance().build(ViewPagerConstant.ViewPagerMainActivity).navigation();
                 break;
         }
     }

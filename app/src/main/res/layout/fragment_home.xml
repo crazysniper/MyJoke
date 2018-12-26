@@ -90,10 +90,16 @@
             android:id="@+id/permission"
             style="@style/ButtonStyle"
             android:text="跳转到Permission Module" />
+
         <Button
             android:id="@+id/okhttp"
             style="@style/ButtonStyle"
             android:text="跳转到OkHttp Module" />
+
+        <Button
+            android:id="@+id/viewpager"
+            style="@style/ButtonStyle"
+            android:text="跳转到ViewPager" />
     </LinearLayout>
 
 </ScrollView>
