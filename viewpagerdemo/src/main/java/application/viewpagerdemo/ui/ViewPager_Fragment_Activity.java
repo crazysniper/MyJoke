@@ -58,7 +58,9 @@ public class ViewPager_Fragment_Activity extends BaseActivity implements View.On
         int length = titles.length;
         for (int index = 0; index < length; index++) {
             addFragments(titles[index]);
-            TabItem tabItem = new TabItem(this, R.drawable.tab_wechat, R.drawable.tab_wechat_selected, titles[index], layoutParams);
+            TabItem tabItem = new TabItem(this, R.drawable.tab_wechat, R.drawable.tab_wechat_selected, titles[index], layoutParams,
+                    getColor(R.color.tab_wx_text_color), getColor(R.color.tab_wx_text_color_selected)
+            );
             tabItemList.add(tabItem);
             tab_content.addView(tabItem.getView());
             if (index == 0) {

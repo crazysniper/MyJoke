@@ -41,4 +41,9 @@ public class MyFragment extends BaseFragment {
     protected void initView() {
 
     }
+
+    @Override
+    protected void initData() {
+
+    }
 }

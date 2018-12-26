@@ -1,10 +1,16 @@
 package application.eventdemo.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.myjoke.baselibray.util.LogUtil;
+
+import application.eventdemo.R;
 import application.eventdemo.util.EventUtil;
 
 /**
@@ -13,15 +19,36 @@ import application.eventdemo.util.EventUtil;
 
 public class TextViewX extends View {
     public TextViewX(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public TextViewX(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public TextViewX(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.TextViewX);
+
+        int TextViewX_bgCollor = typedArray.getColor(R.styleable.TextViewX_bgCollor, Color.RED);
+        LogUtil.e("TextViewX TextViewX_bgCollor=" + TextViewX_bgCollor);
+
+        TypedValue value = new TypedValue();
+        boolean has = typedArray.getValue(R.styleable.TextViewX_bgCollor, value);
+        if (has) {
+            LogUtil.e("TextViewX value.type=" + value.type);
+            if (value.type == TypedValue.TYPE_FIRST_COLOR_INT) {
+                LogUtil.e("TextViewX 是颜色");
+            }
+            if (value.type == TypedValue.TYPE_REFERENCE) {
+                LogUtil.e("TextViewX 是引用");
+            }
+        } else {
+            LogUtil.e("TextViewX 没有");
+        }
+
+        typedArray.recycle();
 
 //        getParent().requestDisallowInterceptTouchEvent(true); // 阻止ViewGroup对其MOVE或UP事件进行拦截。
     }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tab_wx_text_color_selected">#1afa29</color>
+    <color name="tab_wx_text_color">#8a8a8a</color>
+
+</resources>

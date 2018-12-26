@@ -10,11 +10,12 @@
     tools:context="application.eventdemo.ui.EventInfoActivity">
 
     <application.eventdemo.widget.LayoutX
-        android:layout_width="400dp"
         android:id="@+id/layout"
+        android:layout_width="400dp"
         android:layout_height="400dp"
         android:background="#303F9F"
-        android:gravity="center">
+        android:gravity="center"
+        app:bgColor="@color/LayoutX_bg">
 
         <application.eventdemo.widget.TextViewX
             android:id="@+id/view"
@@ -23,7 +24,8 @@
             android:background="#FF4081"
             android:gravity="center"
             android:text="TextView"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:bgColor="#FF4081" />
 
     </application.eventdemo.widget.LayoutX>
 

@@ -206,6 +206,11 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         LogUtil.e("Fragment requestCode=" + requestCode + "   resultCode=" + resultCode + "   data=" + data.getExtras().toString());

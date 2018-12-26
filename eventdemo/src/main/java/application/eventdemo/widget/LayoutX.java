@@ -1,10 +1,16 @@
 package application.eventdemo.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
+import com.myjoke.baselibray.util.LogUtil;
+
+import application.eventdemo.R;
 import application.eventdemo.util.EventUtil;
 
 /**
@@ -13,15 +19,45 @@ import application.eventdemo.util.EventUtil;
 
 public class LayoutX extends LinearLayout {
     public LayoutX(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public LayoutX(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public LayoutX(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.LayoutX);
+
+        typedArray.getResourceId(R.styleable.LayoutX_bgColor, -1);
+
+        int LayoutX_bgColor = typedArray.getColor(R.styleable.LayoutX_bgColor, Color.BLUE);
+        LogUtil.e("LayoutX LayoutX_bgColor=" + LayoutX_bgColor);
+        LogUtil.e("LayoutX_bg=" + getResources().getColor(R.color.LayoutX_bg));
+
+
+        int type = typedArray.getType(R.styleable.LayoutX_bgColor);
+        LogUtil.e("type=" + type);
+
+
+        TypedValue value = new TypedValue();
+        boolean has = typedArray.getValue(R.styleable.LayoutX_bgColor, value);
+        if (has) {
+            LogUtil.e("LayoutX value.type=" + value.type);
+            if (value.type == TypedValue.TYPE_FIRST_COLOR_INT) {
+                LogUtil.e("LayoutX 是颜色");
+            }
+            if (value.type == TypedValue.TYPE_REFERENCE) {
+                LogUtil.e("LayoutX 是引用");
+            }
+        } else {
+            LogUtil.e("LayoutX 没有");
+        }
+
+        typedArray.recycle();
+
     }
 
     @Override

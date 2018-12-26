@@ -18,6 +18,9 @@ public class TabItem {
     private Context context;
     private int imageResId;
     private int selectedImgResId;
+    private int textColor;
+    private int selectedTextColor;
+
     private String title;
     private View view;
     private boolean selected;
@@ -25,19 +28,23 @@ public class TabItem {
     private TextView titleView;
     private ViewGroup.LayoutParams layoutParams;
 
-    public TabItem(Context context, int imageResId, int selectedImgResId, String title) {
+    public TabItem(Context context, int imageResId, int selectedImgResId, String title, int textColor, int selectedTextColor) {
         this.context = context;
         this.imageResId = imageResId;
         this.selectedImgResId = selectedImgResId;
         this.title = title;
+        this.textColor = textColor;
+        this.selectedTextColor = selectedTextColor;
     }
 
-    public TabItem(Context context, int imageResId, int selectedImgResId, String title, ViewGroup.LayoutParams layoutParams) {
+    public TabItem(Context context, int imageResId, int selectedImgResId, String title, ViewGroup.LayoutParams layoutParams, int textColor, int selectedTextColor) {
         this.context = context;
         this.imageResId = imageResId;
         this.selectedImgResId = selectedImgResId;
         this.title = title;
         this.layoutParams = layoutParams;
+        this.textColor = textColor;
+        this.selectedTextColor = selectedTextColor;
     }
 
     public void setLayoutParams(ViewGroup.LayoutParams layoutParams) {
@@ -49,13 +56,20 @@ public class TabItem {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
+        LogUtil.e("textColor=" + textColor + "      selectedTextColor=" + selectedTextColor);
         if (selected) {
             if (imageView != null) {
                 imageView.setImageResource(selectedImgResId);
             }
+            if (titleView != null) {
+                titleView.setTextColor(selectedTextColor);
+            }
         } else {
             if (imageView != null) {
                 imageView.setImageResource(imageResId);
+            }
+            if (titleView != null) {
+                titleView.setTextColor(textColor);
             }
         }
     }
@@ -75,6 +89,10 @@ public class TabItem {
 
             if (layoutParams != null) {
                 view.setLayoutParams(layoutParams);
+            }
+
+            if (textColor > 0) {
+                titleView.setTextColor(textColor);
             }
         }
         return view;

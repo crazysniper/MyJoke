@@ -3,7 +3,7 @@ package application.viewpagerdemo.ui.fragment;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.myjoke.baselibray.base.BaseFragment;
+import com.myjoke.baselibray.base.BaseViewFragment;
 import com.myjoke.baselibray.util.LogUtil;
 
 import application.viewpagerdemo.R;
@@ -12,7 +12,7 @@ import application.viewpagerdemo.R;
  * Created by Gao on 2018/12/26.
  */
 
-public class TabFragment extends BaseFragment {
+public class TabFragment extends BaseViewFragment {
 
     private String title;
 
@@ -30,7 +30,6 @@ public class TabFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             title = getArguments().getString("title");
-            LogUtil.e("title=" + title);
         }
     }
 
@@ -41,7 +40,13 @@ public class TabFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        LogUtil.e("title=" + title);
         TextView titleView = view.findViewById(R.id.textView);
         titleView.setText(title);
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

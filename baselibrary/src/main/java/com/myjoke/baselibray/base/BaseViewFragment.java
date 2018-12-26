@@ -9,21 +9,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.myjoke.baselibray.util.LogUtil;
+
 /**
  * Created by Gao on 2018/12/12.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseViewFragment extends Fragment {
     protected Activity activity;
 
     protected View view;
+
+
+    /**
+     * Fragment当前状态是否可见
+     */
+    private boolean isVisible = false;
+
+    /**
+     * 标志位，标志已经初始化完成
+     */
+    private boolean isPrepared;
+
+    /**
+     * 是否已被加载过一次，第二次就不再去请求数据了
+     */
+    private boolean mHasLoadedOnce;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
+            isPrepared = true;
             view = inflater.inflate(getLayoutId(), container, false);
-            activity = getActivity();
+            LogUtil.e("onCreateView   isPrepared=" + isPrepared + "       isVisible=" + isVisible + "     mHasLoadedOnce=" + mHasLoadedOnce);
             init();
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
@@ -34,11 +53,29 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        LogUtil.e("setUserVisibleHint   isVisibleToUser=" + isVisibleToUser + "  isPrepared=" + isPrepared + "       isVisible=" + isVisible + "     mHasLoadedOnce=" + mHasLoadedOnce);
+        if (isVisibleToUser) {
+            isVisible = true;
+            init();
+        } else {
+            isVisible = false;
+        }
+    }
 
     private void init() {
+        LogUtil.e("init   isPrepared=" + isPrepared + "       isVisible=" + isVisible + "     mHasLoadedOnce=" + mHasLoadedOnce);
+        if (!isPrepared || !isVisible || mHasLoadedOnce) {
+            return;
+        }
+        activity = getActivity();
         initView();
         initData();
+        mHasLoadedOnce = true;
     }
+
 
     protected abstract int getLayoutId();
 

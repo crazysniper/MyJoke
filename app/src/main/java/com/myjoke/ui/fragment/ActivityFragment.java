@@ -41,4 +41,9 @@ public class ActivityFragment extends BaseFragment {
 
     }
 
+    @Override
+    protected void initData() {
+
+    }
+
 }
