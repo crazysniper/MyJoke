@@ -28,7 +28,7 @@ public class LayoutX extends LinearLayout {
     public LayoutX(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.LayoutX);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LayoutX);
 
         int attrsCount = attrs.getAttributeCount();
 

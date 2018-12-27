@@ -7,10 +7,18 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LinearLayoutRecyclerViewDemo"
-        android:textAllCaps="false" />
+        android:id="@+id/listRecycler"
+        style="@style/ButtonStyle"
+        android:text="LinearLayoutRecyclerViewDemo" />
+
+    <Button
+        android:id="@+id/gridRecycler"
+        style="@style/ButtonStyle"
+        android:text="GridRecyclerViewDemo" />
+
+    <Button
+        android:id="@+id/staggeredRecycler"
+        style="@style/ButtonStyle"
+        android:text="StaggeredRecyclerViewDemo" />
 
 </LinearLayout>

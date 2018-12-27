@@ -49,12 +49,20 @@ public class RecyclerMainActivity extends BaseActivity {
 //        });
     }
 
-    @OnClick({R2.id.recycler})
+    @OnClick({R2.id.listRecycler, R2.id.gridRecycler,R2.id.staggeredRecycler})
     public void click(View view) {
         if (R.id.recycler == view.getId()) {
             Log.e("1111111", "2222222222222222222");
             Toast.makeText(this, "RecycerView", Toast.LENGTH_SHORT).show();
             ARouter.getInstance().build(RecyclerViewConstant.LinearLayoutRecyclerViewActivity).navigation();
+        } else if (R.id.gridRecycler == view.getId()) {
+            Log.e("1111111", "2222222222222222222");
+            Toast.makeText(this, "RecycerView", Toast.LENGTH_SHORT).show();
+            ARouter.getInstance().build(RecyclerViewConstant.GridLayoutRecyclerViewActivity).navigation();
+        } else if (R.id.staggeredRecycler == view.getId()) {
+            Log.e("1111111", "2222222222222222222");
+            Toast.makeText(this, "RecycerView", Toast.LENGTH_SHORT).show();
+            ARouter.getInstance().build(RecyclerViewConstant.StaggeredLayoutRecyclerViewActivity).navigation();
         }
     }
 

@@ -20,7 +20,13 @@ import application.recyclerviewdemo.model.Student;
  * Created by Gao on 2018/11/29.
  */
 
-public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapter.LinearLayoutViewHolder> {
+public class LinearLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    //item类型
+    public static final int ITEM_TYPE_HEADER = 0;
+    public static final int ITEM_TYPE_CONTENT = 1;
+    public static final int ITEM_TYPE_FOOTER = 2;
+
 
     private List<Student> stuList = new ArrayList<>();
     private LayoutInflater layoutInflater = null;
@@ -34,6 +40,14 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
         LogUtil.e("LinearLayoutAdapter", "LinearLayoutAdapter构造方法");
     }
 
+    static class HeaderViewHolder extends RecyclerView.ViewHolder {
+
+        public HeaderViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+
     static class LinearLayoutViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private CardView cardView;
@@ -46,36 +60,69 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<LinearLayoutAdapte
         }
     }
 
-    @Override
-    public LinearLayoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.item_layout, parent, false);
-        LinearLayoutViewHolder holder = new LinearLayoutViewHolder(view);
-        LogUtil.e("LinearLayoutAdapter", "LinearLayoutViewHolder");
-        return holder;
+    static class FooterViewHolder extends RecyclerView.ViewHolder {
+
+        public FooterViewHolder(View itemView) {
+            super(itemView);
+        }
     }
 
     @Override
-    public void onBindViewHolder(final LinearLayoutViewHolder holder, final int position) {
-        LogUtil.e("LinearLayoutAdapter", "onBindViewHolder  position=" + position + "     name=" + stuList.get(position));
-        holder.name.setText(stuList.get(position).getName());
-        holder.name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onClick(holder.itemView, position);
-                }
-            }
-        });
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LogUtil.e("LinearLayoutAdapter", "LinearLayoutViewHolder");
+        View view = null;
+        switch (viewType) {
+            case ITEM_TYPE_HEADER:
+                view = layoutInflater.inflate(R.layout.item_layout, parent, false);
+                return new HeaderViewHolder(view);
 
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (longListener != null) {
-                    longListener.onLongClick(holder.cardView, position);
+            case ITEM_TYPE_CONTENT:
+                view = layoutInflater.inflate(R.layout.item_layout, parent, false);
+                return new LinearLayoutViewHolder(view);
+            case ITEM_TYPE_FOOTER:
+                view = layoutInflater.inflate(R.layout.item_layout, parent, false);
+                return new FooterViewHolder(view);
+        }
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+        LogUtil.e("LinearLayoutAdapter", "onBindViewHolder  position=" + position + "     name=" + stuList.get(position));
+
+        if (holder instanceof HeaderViewHolder) {
+
+        } else if (holder instanceof LinearLayoutViewHolder) {
+
+            ((LinearLayoutViewHolder) holder).name.setText(stuList.get(position).getName());
+            ((LinearLayoutViewHolder) holder).name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.onClick(((LinearLayoutViewHolder) holder).itemView, position);
+                    }
                 }
-                return false;
-            }
-        });
+            });
+
+            ((LinearLayoutViewHolder) holder).cardView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (longListener != null) {
+                        longListener.onLongClick(((LinearLayoutViewHolder) holder).cardView, position);
+                    }
+                    return false;
+                }
+            });
+        } else if (holder instanceof FooterViewHolder) {
+
+        }
+
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+//        return super.getItemViewType(position);
+        return ITEM_TYPE_CONTENT;
     }
 
     @Override
