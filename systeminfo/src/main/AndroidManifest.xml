@@ -3,13 +3,42 @@
     package="application.systeminfo">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
+
+    <permission android:name="com.myjoke.permission" />
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-
+        <activity android:name=".ui.SystemMainActivity" />
         <activity android:name=".ui.SystemInfoActivity" />
+        <activity android:name=".ui.PackageInfoActivity" />
+        <activity android:name=".ui.ActivityInfoActivity">
+            <meta-data
+                android:name="key"
+                android:value="value" />
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aa"
+                    android:port="8080"
+                    android:scheme="http" />
+
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".ui.ApplicationInfoActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ServiceInfoActivity" />
+        <activity android:name=".ui.ResolveInfoActivity"></activity>
     </application>
 
 </manifest>

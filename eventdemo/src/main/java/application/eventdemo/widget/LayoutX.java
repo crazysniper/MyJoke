@@ -30,6 +30,18 @@ public class LayoutX extends LinearLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(R.styleable.LayoutX);
 
+        int attrsCount = attrs.getAttributeCount();
+
+        String classAttribute = attrs.getClassAttribute();
+        LogUtil.e("LayoutX  classAttribute==" + classAttribute);
+
+        for (int index = 0; index < attrsCount; index++) {
+            String attName = attrs.getAttributeName(index);
+            String value = attrs.getAttributeValue(index);
+            LogUtil.e("LayoutX index=" + index + "  attName=" + attName + "  value=" + value);
+        }
+        LogUtil.e("________________________________________________________");
+
         int LayoutX_bgColor = typedArray.getColor(R.styleable.LayoutX_bgColor, -1);
         LogUtil.e("LayoutX LayoutX_bgColor=" + LayoutX_bgColor); // -1
         LogUtil.e("LayoutX_bg=" + getResources().getColor(R.color.LayoutX_bg));

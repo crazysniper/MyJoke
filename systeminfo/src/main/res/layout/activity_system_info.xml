@@ -5,22 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="application.systeminfo.ui.SystemInfoActivity">
+    tools:context="application.systeminfo.ui.SystemMainActivity">
+
+    <Button
+        android:id="@+id/ask"
+        style="@style/ButtonStyle"
+        android:text="申请权限"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/ButtonStyle"
         android:text="TextView"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/runtime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:text="runtime"
-        android:textSize="16sp" />
+
 </LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_system_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="application.systeminfo.ui.SystemMainActivity">
+
+    <Button
+        android:id="@+id/textView"
+        style="@style/ButtonStyle"
+        android:text="TextView"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/runtime"
+        style="@style/ButtonStyle"
+        android:text="runtime"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/packageInfo"
+        style="@style/ButtonStyle"
+        android:text="PackageInfo" />
+
+    <Button
+        android:id="@+id/applicationInfo"
+        style="@style/ButtonStyle"
+        android:text="ApplicationInfo" />
+
+    <Button
+        android:id="@+id/activityInfo"
+        style="@style/ButtonStyle"
+        android:text="ActivityInfo" />
+
+    <Button
+        android:id="@+id/serviceInfo"
+        style="@style/ButtonStyle"
+        android:text="ServiceInfo" />
+
+    <Button
+        android:id="@+id/resolveInfo"
+        style="@style/ButtonStyle"
+        android:text="ResolveInfo" />
+</LinearLayout>

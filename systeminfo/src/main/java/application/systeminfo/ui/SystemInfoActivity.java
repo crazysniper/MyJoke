@@ -1,38 +1,107 @@
 package application.systeminfo.ui;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.myjoke.baselibray.base.BaseActivity;
+import com.myjoke.baselibray.util.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import application.systeminfo.R;
 import application.systeminfo.util.SystemInfoConstant;
 import application.systeminfo.util.TelephoneUtil;
 
-@Route(path = SystemInfoConstant.SystemInfoActivity)
-public class SystemInfoActivity extends AppCompatActivity {
+/**
+ * Created by Gao on 2018/12/27.
+ */
 
-    private TextView textView, runtime;
+@Route(path = SystemInfoConstant.SystemInfoActivity)
+public class SystemInfoActivity extends BaseActivity implements View.OnClickListener {
+
+    private TextView textView;
+    private Button ask;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_system_info);
+    public int getLayoutId() {
+        return R.layout.activity_system_info;
+    }
+
+    private String[] permissions;
+
+    @Override
+    public void initView() {
         ARouter.getInstance().inject(this);
+        textView = findView(R.id.textView);
+        ask = findView(R.id.ask);
 
-        textView = (TextView) findViewById(R.id.textView);
-        runtime = (TextView) findViewById(R.id.runtime);
+        permissions = new String[]{Manifest.permission.READ_PHONE_NUMBERS, Manifest.permission.READ_SMS, Manifest.permission.READ_PHONE_STATE};
 
+        ask.setOnClickListener(this);
+    }
+
+    @Override
+    public void initData() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            ToastUtil.getInstance().showToast(SystemInfoActivity.this, "6.0及以上版本，需要动态申请权限");
+        } else {
+            hasPermission();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.ask) {
+            checkPermission();
+        }
+    }
+
+    private void hasPermission() {
         textView.setText(TelephoneUtil.getPhoneInfo(this).toString());
+    }
 
-        long freeMemory = Runtime.getRuntime().freeMemory(); // 返回的单位是字节
-        long totalMemory = Runtime.getRuntime().totalMemory();
-        long maxMemory = Runtime.getRuntime().maxMemory();
+    private void checkPermission() {
+        List<String> list = new ArrayList<>();
+        if (permissions != null) {
+            for (String permission : permissions) {
+                int checkPermission = ContextCompat.checkSelfPermission(this, permission);
+                if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+                    list.add(permission);
+                }
+            }
+        }
 
-        runtime.setText("freeMemory=" + 1.00 * freeMemory / 1024 / 1024 + "M\n"
-                + "totalMemory=" + 1.00 * totalMemory / 1024 / 1024 + "M\n"
-                + "maxMemory=" + 1.00 * maxMemory / 1024 / 1024 + "M\n");
+        if (list.size() > 0) {
+            ActivityCompat.requestPermissions(this, list.toArray(new String[list.size()]), 100);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        boolean hasPermission = true;
+        switch (requestCode) {
+            case 100:
+                for (int index = 0; index < grantResults.length; index++) {
+                    if (grantResults[index] != PackageManager.PERMISSION_GRANTED) {
+                        ToastUtil.getInstance().showToast(SystemInfoActivity.this, permissions[index] + "被拒绝了");
+                        hasPermission = false;
+                    }
+                }
+                if (hasPermission) {
+                    hasPermission();
+                }
+                break;
+        }
     }
 }

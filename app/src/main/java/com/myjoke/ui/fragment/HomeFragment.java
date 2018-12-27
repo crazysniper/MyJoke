@@ -259,7 +259,7 @@ public class HomeFragment extends BaseFragment {
                 ARouter.getInstance().build(SupportDesignConstant.SupportDesignActivity).navigation();
                 break;
             case R.id.sysModule:
-                ARouter.getInstance().build(SystemInfoConstant.SystemInfoActivity).navigation();
+                ARouter.getInstance().build(SystemInfoConstant.SystemMainActivity).navigation();
                 break;
             case R.id.dialogModule:
                 ARouter.getInstance().build(DialogConstant.DialogMainActivity).navigation();
