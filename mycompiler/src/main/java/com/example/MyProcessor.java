@@ -3,8 +3,14 @@ package com.example;
 import com.example.annotations.MyBindView;
 import com.example.annotations.MyOnClick;
 import com.google.auto.service.AutoService;
+import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeSpec;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -16,6 +22,7 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.Name;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
@@ -81,7 +88,7 @@ public class MyProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         // 返回指定给定注解的元素。
-        Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(MyBindView.class);
+        Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(MyBindView.class); // 拿到所有RouteAnnotation注解标注的类
         for (Element element : elements) {
             // 判断注解类型
             if (element.getKind() == ElementKind.CLASS) {
@@ -91,8 +98,56 @@ public class MyProcessor extends AbstractProcessor {
                 int value = typeElement.getAnnotation(MyBindView.class).value(); // 属性值
                 System.out.println("name=" + name + "   value=" + value);
             }
+
+            MyBindView annotation = element.getAnnotation(MyBindView.class);
+            int name = annotation.value();
         }
 
         return false;
     }
+
+
+
+    private void generateJavaFile(Map<String, String> nameMap) {
+        //generate constructor
+        MethodSpec.Builder constructorBuidler = MethodSpec.constructorBuilder()
+                .addModifiers(Modifier.PUBLIC)
+                .addStatement("routeMap = new $T<>()", HashMap.class);
+        for (String key : nameMap.keySet()) {
+            String name = nameMap.get(key);
+            constructorBuidler.addStatement("routeMap.put(\"$N\", \"$N\")", key, name);
+        }
+        MethodSpec constructorName = constructorBuidler.build();
+
+        //generate getActivityRouteName method
+        MethodSpec routeName = MethodSpec.methodBuilder("getActivityName")
+                .addModifiers(Modifier.PUBLIC)
+                .returns(String.class)
+                .addParameter(String.class, "routeName")
+                .beginControlFlow("if (null != routeMap && !routeMap.isEmpty())")
+                .addStatement("return (String)routeMap.get(routeName)")
+                .endControlFlow()
+                .addStatement("return \"\"")
+                .build();
+
+        //generate class
+        TypeSpec typeSpec = TypeSpec.classBuilder("AnnotationRoute$Finder")
+                .addModifiers(Modifier.PUBLIC)
+                .addMethod(constructorName)
+                .addMethod(routeName)
+                .addSuperinterface(Provider.class)
+                .addField(HashMap.class, "routeMap", Modifier.PRIVATE)
+                .build();
+
+
+        JavaFile javaFile = JavaFile.builder("com.example.juexingzhe.annotaioncompiletest", typeSpec).build();
+        try {
+            javaFile.writeTo(mFiler);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

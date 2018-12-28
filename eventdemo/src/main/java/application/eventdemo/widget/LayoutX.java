@@ -32,9 +32,6 @@ public class LayoutX extends LinearLayout {
 
         int attrsCount = attrs.getAttributeCount();
 
-        String classAttribute = attrs.getClassAttribute();
-        LogUtil.e("LayoutX  classAttribute==" + classAttribute);
-
         for (int index = 0; index < attrsCount; index++) {
             String attName = attrs.getAttributeName(index);
             String value = attrs.getAttributeValue(index);
@@ -42,11 +39,11 @@ public class LayoutX extends LinearLayout {
         }
         LogUtil.e("________________________________________________________");
 
-        int LayoutX_bgColor = typedArray.getColor(R.styleable.LayoutX_bgColor, -1);
-        LogUtil.e("LayoutX LayoutX_bgColor=" + LayoutX_bgColor); // -1
+        int LayoutX_bgColor = typedArray.getResourceId(R.styleable.LayoutX_bgColor, -1);
+        LogUtil.e("LayoutX getColor LayoutX_bgColor=" + LayoutX_bgColor); // -1
         LogUtil.e("LayoutX_bg=" + getResources().getColor(R.color.LayoutX_bg));
 
-//        setBackgroundColor(context.getColor(R.color.LayoutX_bg));
+        setBackgroundResource(LayoutX_bgColor);
 
         int type = typedArray.getType(R.styleable.LayoutX_bgColor);
         LogUtil.e("type=" + type);
@@ -56,12 +53,13 @@ public class LayoutX extends LinearLayout {
         boolean has = typedArray.getValue(R.styleable.LayoutX_bgColor, value);
         if (has) {
             LogUtil.e("LayoutX value.type=" + value.type);
-            if (value.type == TypedValue.TYPE_FIRST_COLOR_INT) {
-                LogUtil.e("LayoutX 是颜色");
-            }
             if (value.type == TypedValue.TYPE_REFERENCE) {
                 LogUtil.e("LayoutX 是引用");
             }
+            if (value.type == TypedValue.TYPE_INT_COLOR_RGB8) {
+                LogUtil.e("LayoutX 是颜色");
+            }
+
         } else {
             LogUtil.e("LayoutX 没有");
         }

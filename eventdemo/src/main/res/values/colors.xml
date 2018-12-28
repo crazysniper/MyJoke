@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="LayoutX_bg">#000</color>
+    <color name="LayoutX_bg">#ac2727</color>
     <color name="TextViewX_bg">#FF4081</color>
 </resources>

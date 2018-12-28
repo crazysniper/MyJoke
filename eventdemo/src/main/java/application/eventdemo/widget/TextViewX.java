@@ -28,16 +28,27 @@ public class TextViewX extends View {
     public TextViewX(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.TextViewX);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextViewX);
 
-        int TextViewX_bgColor = typedArray.getResourceId(R.styleable.TextViewX_bgColor2, -1);
-        LogUtil.e("TextViewX TextViewX_bgColor=" + TextViewX_bgColor);
+
+        int attrsCount = attrs.getAttributeCount();
+
+        for (int index = 0; index < attrsCount; index++) {
+            String attName = attrs.getAttributeName(index);
+            String value = attrs.getAttributeValue(index);
+            LogUtil.e("TextViewX index=" + index + "  attName=" + attName + "  value=" + value);
+        }
+
+        int TextViewX_bgColor = typedArray.getColor(R.styleable.TextViewX_bgColor2, -1);
+        LogUtil.e("TextViewX getResourceId TextViewX_bgColor=" + TextViewX_bgColor);
+
+        setBackgroundColor(TextViewX_bgColor);
 
         TypedValue value = new TypedValue();
         boolean has = typedArray.getValue(R.styleable.TextViewX_bgColor2, value);
         if (has) {
             LogUtil.e("TextViewX value.type=" + value.type);
-            if (value.type == TypedValue.TYPE_FIRST_COLOR_INT) {
+            if (value.type == TypedValue.TYPE_INT_COLOR_RGB8) {
                 LogUtil.e("TextViewX 是颜色");
             }
             if (value.type == TypedValue.TYPE_REFERENCE) {
