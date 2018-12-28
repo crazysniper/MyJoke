@@ -2,14 +2,17 @@ package com.myjoke.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.annotations.MyBindView;
 import com.myjoke.R;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.base.BaseFragment;
@@ -24,6 +27,7 @@ import com.myjoke.util.ConstantPath;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.mybind.MyBind;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,6 +38,12 @@ public class MainActivity extends BaseActivity {
 
     @BindView(android.R.id.tabhost)
     FragmentTabHost tabHost;
+
+    @MyBindView(R.id.linearLayout)
+    LinearLayout linearLayout2;
+
+    @MyBindView(android.R.id.tabhost)
+    FragmentTabHost tabHost2;
 
     private List<TabItem> tabItemList = new ArrayList<>();
 
@@ -46,6 +56,8 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        Log.e("MyBind", "开始绑定");
+        MyBind.bind(this);
         ARouter.getInstance().inject(this);
 
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);

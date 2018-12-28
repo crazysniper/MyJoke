@@ -3,8 +3,12 @@ package com.example;
 import com.example.annotations.MyBindView;
 import com.example.annotations.MyOnClick;
 import com.google.auto.service.AutoService;
+import com.squareup.javapoet.ClassName;
+import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeSpec;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -22,8 +26,11 @@ import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.Name;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
+
+import static com.google.auto.common.MoreElements.getPackage;
 
 /**
  * Created by Gao on 2018/11/21.
@@ -44,6 +51,7 @@ public class MyProcessor extends AbstractProcessor {
     // 列出了我们在处理应用程序的Java文件时要查询的注释。
     @Override
     public Set<String> getSupportedAnnotationTypes() {
+        System.out.println("MyProcessor getSupportedAnnotationTypes");
         Set<String> types = new LinkedHashSet<>();
 
         //需要全类名
@@ -55,6 +63,7 @@ public class MyProcessor extends AbstractProcessor {
     // 2、确认支持哪种jdk的版本
     @Override
     public SourceVersion getSupportedSourceVersion() {
+        System.out.println("MyProcessor getSupportedSourceVersion");
         return SourceVersion.latestSupported();
     }
 
@@ -62,6 +71,8 @@ public class MyProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
+
+        System.out.println("MyProcessor init");
 
         filer = processingEnv.getFiler();
         messager = processingEnv.getMessager();
@@ -84,25 +95,73 @@ public class MyProcessor extends AbstractProcessor {
      */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        // 返回指定给定注解的元素。
-        Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(MyBindView.class); // 拿到所有RouteAnnotation注解标注的类
-        for (Element element : elements) {
-            // 判断注解类型
-            if (element.getKind() == ElementKind.CLASS) {
-                TypeElement typeElement = (TypeElement) element;
+        System.out.println("MyProcessor process annotations=" + annotations);
+        if (annotations != null && annotations.size() != 0) {
 
-                Name name = typeElement.getSimpleName(); // 元素名称
-                int value = typeElement.getAnnotation(MyBindView.class).value(); // 属性值
-                System.out.println("name=" + name + "   value=" + value);
+            // 返回指定给定注解的元素。
+            Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(MyBindView.class); // 拿到所有RouteAnnotation注解标注的类
+
+            System.out.println("MyProcessor process elements=" + elements);
+
+            String packageName = null;
+            TypeSpec.Builder builder = null;
+
+            for (Element element : elements) {
+                // 判断注解类型
+                System.out.println("MyProcessor process element=" + element);
+                System.out.println("MyProcessor process filer=" + filer);
+                System.out.println("MyProcessor process element.getKind()=" + element.getKind());
+                if (element.getKind() == ElementKind.FIELD) {
+                    VariableElement variableElement = (VariableElement) element;
+                    TypeElement enclosingElement = (TypeElement) variableElement.getEnclosingElement();
+
+
+                    // 回此类型元素的完全限定名称。更准确地说，返回规范 名称。对于没有规范名称的局部类和匿名类，返回一个空名称.
+                    // 一般类型的名称不包括对其形式类型参数的任何引用。例如，接口 java.util.Set<E> 的完全限定名称是 "java.util.Set"
+                    Name qualifiedName = enclosingElement.getQualifiedName();
+                    Name simpleName = variableElement.getSimpleName();
+
+                    packageName = getPackage(enclosingElement).getQualifiedName().toString();
+
+                    String className = enclosingElement.getQualifiedName().toString().substring(
+                            packageName.length() + 1).replace('.', '$');
+
+                    ClassName bindingClassName = ClassName.get(packageName, className + "_MyViewBinding");
+
+                    Name name = variableElement.getSimpleName(); // 元素名称
+                    int value = variableElement.getAnnotation(MyBindView.class).value(); // 属性值
+                    System.out.println("qualifiedName=" + qualifiedName + "name=" + name + "   value=" + value);
+                    System.out.println("packageName=" + packageName + "className=" + className + "   bindingClassName=" + bindingClassName);
+
+
+                    MethodSpec main = MethodSpec.methodBuilder(simpleName.toString())
+                            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                            .returns(void.class)
+                            .addParameter(String[].class, "args")
+                            .addStatement("$T.out.println($S)", System.class, "Hello, JavaPoet!")
+                            .build();
+
+                    if (builder == null) {
+                        builder = TypeSpec.classBuilder(bindingClassName)
+                                .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
+                    }
+                    builder.addMethod(main);
+                }
+            }
+            if (builder != null) {
+                TypeSpec helloWorld = builder.build();
+                JavaFile javaFile = JavaFile.builder(packageName, helloWorld).build();
+                try {
+                    javaFile.writeTo(filer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
-            MyBindView annotation = element.getAnnotation(MyBindView.class);
-            int name = annotation.value();
-        }
 
+        }
         return false;
     }
-
 
 
     private void generateJavaFile(Map<String, String> nameMap) {
@@ -144,7 +203,6 @@ public class MyProcessor extends AbstractProcessor {
 //            e.printStackTrace();
 //        }
     }
-
 
 
 }

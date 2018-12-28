@@ -68,6 +68,10 @@ dependencies {
 
     }
 
+    compile project(':mybind')
+    compile project(':myannotations')
+    annotationProcessor project(':mycompiler')
+
     // 通过facebook开源工具Stetho查看
     compile 'com.android.support:support-v4:26.0.0-alpha1'
     compile 'com.facebook.stetho:stetho:1.5.0'

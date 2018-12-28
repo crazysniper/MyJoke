@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/glidedemo/glidedemo.iml" filepath="$PROJECT_DIR$/glidedemo/glidedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialdemo/materialdemo.iml" filepath="$PROJECT_DIR$/materialdemo/materialdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/myannotations/myannotations.iml" filepath="$PROJECT_DIR$/myannotations/myannotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybind/mybind.iml" filepath="$PROJECT_DIR$/mybind/mybind.iml" />
       <module fileurl="file://$PROJECT_DIR$/mycompiler/mycompiler.iml" filepath="$PROJECT_DIR$/mycompiler/mycompiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttpdemo/okhttpdemo.iml" filepath="$PROJECT_DIR$/okhttpdemo/okhttpdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/permissiondemo/permissiondemo.iml" filepath="$PROJECT_DIR$/permissiondemo/permissiondemo.iml" />

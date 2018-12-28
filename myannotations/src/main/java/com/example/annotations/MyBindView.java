@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Created by Gao on 2018/11/21.
  */
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.CLASS)
 public @interface MyBindView {
     int value();
 }
