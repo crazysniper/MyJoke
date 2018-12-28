@@ -39,4 +39,7 @@ ext {
     //Dependencies
     supportLibraryVersion = '26.0.0-alpha1'
     bufferknifeVersion = '8.5.1'
+
+    arouterApiVersion = '1.4.0'
+    arouterCompilerVersion = '1.2.1'
 }

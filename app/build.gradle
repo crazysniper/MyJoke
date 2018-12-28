@@ -45,7 +45,6 @@ dependencies {
     })
 
     // butterknife
-    compile "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
     // arouter

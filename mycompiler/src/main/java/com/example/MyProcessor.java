@@ -3,11 +3,8 @@ package com.example;
 import com.example.annotations.MyBindView;
 import com.example.annotations.MyOnClick;
 import com.google.auto.service.AutoService;
-import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.TypeSpec;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -131,21 +128,21 @@ public class MyProcessor extends AbstractProcessor {
                 .build();
 
         //generate class
-        TypeSpec typeSpec = TypeSpec.classBuilder("AnnotationRoute$Finder")
-                .addModifiers(Modifier.PUBLIC)
-                .addMethod(constructorName)
-                .addMethod(routeName)
-                .addSuperinterface(Provider.class)
-                .addField(HashMap.class, "routeMap", Modifier.PRIVATE)
-                .build();
-
-
-        JavaFile javaFile = JavaFile.builder("com.example.juexingzhe.annotaioncompiletest", typeSpec).build();
-        try {
-            javaFile.writeTo(mFiler);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        TypeSpec typeSpec = TypeSpec.classBuilder("AnnotationRoute$Finder")
+//                .addModifiers(Modifier.PUBLIC)
+//                .addMethod(constructorName)
+//                .addMethod(routeName)
+//                .addSuperinterface(Provider.class)
+//                .addField(HashMap.class, "routeMap", Modifier.PRIVATE)
+//                .build();
+//
+//
+//        JavaFile javaFile = JavaFile.builder("com.example.juexingzhe.annotaioncompiletest", typeSpec).build();
+//        try {
+//            javaFile.writeTo(mFiler);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
