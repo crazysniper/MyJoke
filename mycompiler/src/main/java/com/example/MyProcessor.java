@@ -121,11 +121,13 @@ public class MyProcessor extends AbstractProcessor {
                     Name qualifiedName = enclosingElement.getQualifiedName();
                     Name simpleName = variableElement.getSimpleName();
 
-                    packageName = getPackage(enclosingElement).getQualifiedName().toString();
+                    packageName = getPackage(enclosingElement).getQualifiedName().toString(); // 获取该enclosingElement就是父节点所在的包名称
 
                     String className = enclosingElement.getQualifiedName().toString().substring(
-                            packageName.length() + 1).replace('.', '$');
+                            packageName.length() + 1).replace('.', '$');  //类名字
 
+                    //根据包名称和类名称获取bindingClassName实体
+                    //并且加入了_ViewBinding
                     ClassName bindingClassName = ClassName.get(packageName, className + "_MyViewBinding");
 
                     Name name = variableElement.getSimpleName(); // 元素名称

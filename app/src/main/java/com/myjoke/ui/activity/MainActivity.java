@@ -27,7 +27,6 @@ import com.myjoke.util.ConstantPath;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.mybind.MyBind;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -57,7 +56,7 @@ public class MainActivity extends BaseActivity {
     public void initView() {
         ButterKnife.bind(this);
         Log.e("MyBind", "开始绑定");
-        MyBind.bind(this);
+//        MyBind.bind(this);
         ARouter.getInstance().inject(this);
 
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
