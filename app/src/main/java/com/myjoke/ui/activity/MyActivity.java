@@ -44,7 +44,7 @@ public class MyActivity extends BaseActivity {
         LogUtil.e("屏幕密度比例==" + ScreenUtil.getDensity(this));
     }
 
-    @OnClick({R.id.myView, R.id.myViewGroup})
+    @OnClick({R.id.myView, R.id.myViewGroup, R.id.flexLayout})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.myView:
@@ -52,6 +52,9 @@ public class MyActivity extends BaseActivity {
                 break;
             case R.id.myViewGroup:
                 Toast.makeText(MyActivity.this, "MyViewGroup", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.flexLayout:
+                ARouter.getInstance().build(ConstantPath.FlexLayoutActivity).navigation();
                 break;
         }
     }

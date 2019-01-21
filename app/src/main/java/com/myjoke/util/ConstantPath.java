@@ -12,4 +12,8 @@ public class ConstantPath {
     public static final String ThirdActivity = BASE_PATH + "ThirdActivity";
     public static final String MyActivity = BASE_PATH + "MyActivity";
     public static final String ArouteActivity = BASE_PATH + "ArouteActivity";
+    public static final String FlexLayoutActivity = BASE_PATH + "FlexLayoutActivity";
+
+
+    public static final String LoginActivity = BASE_PATH + "LoginActivity";
 }

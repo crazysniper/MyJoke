@@ -36,6 +36,12 @@
         <!--android:textSize="24sp" />-->
 
         <Button
+            android:id="@+id/broadcast"
+            style="@style/ButtonStyle"
+            android:text="广播"
+            android:textColor="@color/colorAccent" />
+
+        <Button
             android:id="@+id/view"
             style="@style/ButtonStyle"
             android:text="自定义控件"

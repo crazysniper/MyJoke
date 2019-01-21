@@ -37,7 +37,7 @@
         android:background="#FF4081"
         android:gravity="center"
         android:text="TextView"
-        app:bgColor2="#000002"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:bgColor2="#000002" />
 
 </LinearLayout>

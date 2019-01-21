@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.R;
 import com.myjoke.baselibray.base.BaseActivity;
+import com.myjoke.baselibray.util.SpUtil;
 import com.myjoke.util.ConstantPath;
 
 import butterknife.BindView;
@@ -24,6 +25,7 @@ public class SplashActivity extends BaseActivity {
     Unbinder unbinder = null;
 
     private int countTime = 1;
+    private boolean isLogined;
 
     @Override
     public int getLayoutId() {
@@ -38,6 +40,8 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        isLogined = SpUtil.get("isLogined", false);
+
         handler = new MyHandler();
         handler.sendEmptyMessage(1);
     }
@@ -61,7 +65,11 @@ public class SplashActivity extends BaseActivity {
                         countTime--;
                         handler.sendEmptyMessageDelayed(1, 1000);
                     } else {
-                        ARouter.getInstance().build(ConstantPath.MainActivity).navigation();
+                        if (isLogined) {
+                            ARouter.getInstance().build(ConstantPath.MainActivity).navigation();
+                        } else {
+                            ARouter.getInstance().build(ConstantPath.LoginActivity).navigation();
+                        }
                         SplashActivity.this.finish();
                     }
                     break;

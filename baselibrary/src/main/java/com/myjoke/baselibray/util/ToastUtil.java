@@ -1,5 +1,6 @@
 package com.myjoke.baselibray.util;
 
+import android.app.Application;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -11,9 +12,14 @@ public class ToastUtil {
 
     private Toast toast = null;
     private static ToastUtil toastUtil = null;
+    private Context context;
 
     private ToastUtil() {
 
+    }
+
+    public void setAppContext(Application appContext) {
+        this.context = appContext;
     }
 
     public static ToastUtil getInstance() {
@@ -36,6 +42,10 @@ public class ToastUtil {
 //        }
 //        toast.show();
         Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showToast(String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
 }

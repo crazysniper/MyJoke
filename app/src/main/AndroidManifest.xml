@@ -56,7 +56,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.activity.ArouteActivity"></activity>
+        <activity android:name=".ui.activity.ArouteActivity" />
+        <activity android:name=".ui.activity.FlexLayoutActivity" />
+        <activity android:name=".ui.activity.login.LoginActivity"></activity>
     </application>
 
 </manifest>

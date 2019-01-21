@@ -33,10 +33,15 @@ public class TextViewX extends View {
 
         int attrsCount = attrs.getAttributeCount();
 
+        String id = attrs.getIdAttribute();
+        String classAttribute = attrs.getClassAttribute();
+        LogUtil.e("TextViewX attrsCount=" + attrsCount + "    id=" + id + "   classAttribute=" + classAttribute);
+
         for (int index = 0; index < attrsCount; index++) {
             String attName = attrs.getAttributeName(index);
+            int namespace = attrs.getAttributeNameResource(index);
             String value = attrs.getAttributeValue(index);
-            LogUtil.e("TextViewX index=" + index + "  attName=" + attName + "  value=" + value);
+            LogUtil.e("TextViewX index=" + index + "  attName=" + attName + "  value=" + value + "    namespace=" + namespace);
         }
 
         int TextViewX_bgColor = typedArray.getColor(R.styleable.TextViewX_bgColor2, -1);

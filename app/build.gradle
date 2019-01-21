@@ -73,12 +73,14 @@ dependencies {
     annotationProcessor project(':mycompiler')
 
     // 通过facebook开源工具Stetho查看
+    
+
+    // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
+    //releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     compile 'com.android.support:support-v4:26.0.0-alpha1'
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
-
-    // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    //releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

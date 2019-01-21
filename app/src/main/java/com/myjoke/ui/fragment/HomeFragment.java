@@ -221,8 +221,8 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn1, R.id.view, R.id.fragmentAroute, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
-            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission,R.id.okhttp,
+    @OnClick({R.id.btn1, R.id.broadcast, R.id.view, R.id.fragmentAroute, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
+            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission, R.id.okhttp,
             R.id.viewpager})
     public void click(View view) {
         switch (view.getId()) {
@@ -230,14 +230,16 @@ public class HomeFragment extends BaseFragment {
                 ARouter.getInstance().build(ConstantPath.BitmapActivity).withString("key1", "value1")
                         .withInt("intKey", 1).navigation(activity, 100);
                 break;
-            case R.id.view:
-//                ARouter.getInstance().build(ConstantPath.MyActivity).navigation(this);
+            case R.id.broadcast:
                 LogUtil.e("111111111111111");
                 Intent intent1 = new Intent();
                 intent1.setAction("hhhh2");
                 intent1.setComponent(new ComponentName(activity.getPackageName(), NetworkConnectChangedReceiver.class.getName()));
                 intent1.putExtra("key1", "value1");
                 activity.sendBroadcast(intent1);
+                break;
+            case R.id.view:
+                ARouter.getInstance().build(ConstantPath.MyActivity).navigation();
                 break;
             case R.id.fragmentAroute:
 //                ARouter.getInstance().build(ConstantPath.ArouteActivity).withString("key1", "value1")

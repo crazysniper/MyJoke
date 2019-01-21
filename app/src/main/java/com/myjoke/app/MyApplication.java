@@ -8,6 +8,7 @@ import com.facebook.stetho.Stetho;
 import com.myjoke.baselibray.base.LibraryApplication;
 import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.SpUtil;
+import com.myjoke.baselibray.util.ToastUtil;
 import com.myjoke.bean.PackageInfoBean;
 import com.myjoke.util.PackageUtil;
 import com.squareup.leakcanary.LeakCanary;
@@ -27,6 +28,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        ToastUtil.getInstance().setAppContext(this);
+
         Stetho.initializeWithDefaults(this);
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
