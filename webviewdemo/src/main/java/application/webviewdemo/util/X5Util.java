@@ -12,9 +12,8 @@ import com.tencent.smtt.sdk.QbSdk;
 public class X5Util {
 
     public static void initX5(Context context) {
-        //非wifi情况下，主动下载x5内核
-        QbSdk.setDownloadWithoutWifi(true);
-        LogUtil.e("开启TBS===1111111111111");
+//        QbSdk.setDownloadWithoutWifi(true); //非wifi情况下，主动下载x5内核
+
         //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
             @Override
