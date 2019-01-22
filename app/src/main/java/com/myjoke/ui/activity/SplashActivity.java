@@ -48,9 +48,13 @@ public class SplashActivity extends BaseActivity {
 
     @OnClick(R.id.time)
     public void onClick(View view) {
-        ARouter.getInstance().build(ConstantPath.MainActivity).navigation();
 //        handler.removeMessages(1); // 可以
         handler.removeCallbacksAndMessages(null); // 可以
+        if (isLogined) {
+            ARouter.getInstance().build(ConstantPath.MainActivity).navigation();
+        } else {
+            ARouter.getInstance().build(ConstantPath.LoginActivity).navigation();
+        }
         SplashActivity.this.finish();
     }
 

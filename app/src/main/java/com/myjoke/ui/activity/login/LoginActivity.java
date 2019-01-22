@@ -40,6 +40,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void initView() {
         ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
+        etName.setText("1");
+        etPwd.setText("1");
 
         loginPresenter = new LoginPresenterImpl();
         loginPresenter.attachView(this);

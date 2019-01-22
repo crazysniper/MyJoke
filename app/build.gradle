@@ -25,6 +25,11 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+
+
+        ndk {
+            abiFilters "armeabi","armeabi-v7a","x86", "mips"
+        }
     }
     buildTypes {
         release {
@@ -65,6 +70,7 @@ dependencies {
         compile project(':glidedemo')
         compile project(':fourmodule')
         compile project(':viewpagerdemo')
+        compile project(':webviewdemo')
 
     }
 

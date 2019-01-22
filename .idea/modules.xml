@@ -25,6 +25,7 @@
       <module fileurl="file://$PROJECT_DIR$/supportdesignview/supportdesignview.iml" filepath="$PROJECT_DIR$/supportdesignview/supportdesignview.iml" />
       <module fileurl="file://$PROJECT_DIR$/systeminfo/systeminfo.iml" filepath="$PROJECT_DIR$/systeminfo/systeminfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/viewpagerdemo/viewpagerdemo.iml" filepath="$PROJECT_DIR$/viewpagerdemo/viewpagerdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webviewdemo/webviewdemo.iml" filepath="$PROJECT_DIR$/webviewdemo/webviewdemo.iml" />
     </modules>
   </component>
 </project>
