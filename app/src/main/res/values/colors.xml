@@ -6,8 +6,6 @@
 
     <color name="tab_title_selected_color">#FF4081</color>
     <color name="tab_title_default_color">#878787</color>
-    <color name="fragment_bg_color">#fff</color>
-
     <color name="tab_bg_color">#f5f5f5</color>
 
 </resources>

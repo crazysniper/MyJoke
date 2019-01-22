@@ -79,6 +79,11 @@ dependencies {
         compile project(':viewpagerdemo')
         compile project(':webviewdemo')
 
+
+        compile project(':newsmodule')
+        compile project(':activitymodule')
+        compile project(':messagemodule')
+        compile project(':mymodule')
     }
 
     compile project(':mybind')

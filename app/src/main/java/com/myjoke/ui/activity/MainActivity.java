@@ -21,12 +21,12 @@ import com.myjoke.ui.fragment.ActivityFragment;
 import com.myjoke.ui.fragment.HomeFragment;
 import com.myjoke.ui.fragment.MessageFragment;
 import com.myjoke.ui.fragment.MyFragment;
-import com.myjoke.ui.fragment.NewsFragment;
 import com.myjoke.util.ConstantPath;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import application.newsmodule.fragment.NewsFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
             TabHost.TabSpec tabSpec = tabHost.newTabSpec(tabItem.getTitle()).setIndicator(tabItem.getTabView());
             tabHost.addTab(tabSpec, tabItem.getFragment(), tabItem.getBundle());
 
-            tabHost.getTabWidget().getChildAt(index).setBackgroundColor(getColor(R.color.tab_bg_color));
+            tabHost.getTabWidget().getChildAt(index).setBackgroundColor(getResources().getColor(R.color.tab_bg_color));
             if (index == 0) {
                 tabItem.setSelected(true);
             }

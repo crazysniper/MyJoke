@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyJoke.iml" filepath="$PROJECT_DIR$/MyJoke.iml" />
+      <module fileurl="file://$PROJECT_DIR$/activitymodule/activitymodule.iml" filepath="$PROJECT_DIR$/activitymodule/activitymodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibray/baselibray.iml" filepath="$PROJECT_DIR$/baselibray/baselibray.iml" />
@@ -15,9 +16,12 @@
       <module fileurl="file://$PROJECT_DIR$/fourmodule/fourmodule.iml" filepath="$PROJECT_DIR$/fourmodule/fourmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/glidedemo/glidedemo.iml" filepath="$PROJECT_DIR$/glidedemo/glidedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialdemo/materialdemo.iml" filepath="$PROJECT_DIR$/materialdemo/materialdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/messagemodule/messagemodule.iml" filepath="$PROJECT_DIR$/messagemodule/messagemodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/myannotations/myannotations.iml" filepath="$PROJECT_DIR$/myannotations/myannotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybind/mybind.iml" filepath="$PROJECT_DIR$/mybind/mybind.iml" />
       <module fileurl="file://$PROJECT_DIR$/mycompiler/mycompiler.iml" filepath="$PROJECT_DIR$/mycompiler/mycompiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mymodule/mymodule.iml" filepath="$PROJECT_DIR$/mymodule/mymodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newsmodule/newsmodule.iml" filepath="$PROJECT_DIR$/newsmodule/newsmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttpdemo/okhttpdemo.iml" filepath="$PROJECT_DIR$/okhttpdemo/okhttpdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/permissiondemo/permissiondemo.iml" filepath="$PROJECT_DIR$/permissiondemo/permissiondemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerviewdemo/recyclerviewdemo.iml" filepath="$PROJECT_DIR$/recyclerviewdemo/recyclerviewdemo.iml" />
