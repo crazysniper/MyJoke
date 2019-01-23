@@ -13,6 +13,7 @@ import java.util.List;
 import application.newsmodule.R;
 import application.newsmodule.R2;
 import application.newsmodule.adapter.ItemViewFragmentPagerAdapter;
+import application.newsmodule.bean.NewsFragmentItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -83,8 +84,12 @@ public class NewsFragment extends BaseFragment {
             item = new NewsFragmentItem(name);
 
             fragment = new NewItemFragment();
+
+
             Bundle bundle = new Bundle();
-            bundle.putString("name", name);
+//            bundle.putString("name", name);
+            bundle.putParcelable("name", item);
+
             fragment.setArguments(bundle);
             fragmentList.add(fragment);
             fragment = null;
@@ -93,18 +98,4 @@ public class NewsFragment extends BaseFragment {
         adapter.notifyDataSetChanged();
     }
 
-
-    class NewsFragmentItem {
-        private String name;
-        private String url;
-
-        public NewsFragmentItem(String name) {
-            this.name = name;
-        }
-
-        public NewsFragmentItem(String name, String url) {
-            this.name = name;
-            this.url = url;
-        }
-    }
 }

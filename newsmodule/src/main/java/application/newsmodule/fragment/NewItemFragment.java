@@ -9,8 +9,11 @@ import com.myjoke.baselibray.util.LogUtil;
 
 import application.newsmodule.R;
 import application.newsmodule.R2;
+import application.newsmodule.bean.NewsFragmentItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.R.attr.name;
 
 /**
  * Created by Gao on 2019/1/22.
@@ -19,6 +22,7 @@ import butterknife.ButterKnife;
 public class NewItemFragment extends BaseLazyFragment {
     @BindView(R2.id.tv)
     TextView tv;
+    private NewsFragmentItem newsFragmentItem;
     private String name;
 
     @Override
@@ -26,7 +30,8 @@ public class NewItemFragment extends BaseLazyFragment {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            name = bundle.getString("name");
+            newsFragmentItem = bundle.getParcelable("name");
+            name = newsFragmentItem == null ? "" : newsFragmentItem.getName();
         }
         LogUtil.e("NewItemFragment  onCreate    name=" + name);
     }

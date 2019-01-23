@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.newsmodule.bean.NewsFragmentItem;
 import application.newsmodule.fragment.NewItemFragment;
 
 /**
@@ -36,6 +37,7 @@ public class ItemViewFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return fragmentList.get(position).getArguments().getString("name");
+        NewsFragmentItem itemBean = fragmentList.get(position).getArguments().getParcelable("name");
+        return itemBean == null ? null : itemBean.getName();
     }
 }
