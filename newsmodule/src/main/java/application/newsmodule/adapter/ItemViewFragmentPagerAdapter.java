@@ -33,4 +33,9 @@ public class ItemViewFragmentPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return fragmentList.size();
     }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return fragmentList.get(position).getArguments().getString("name");
+    }
 }

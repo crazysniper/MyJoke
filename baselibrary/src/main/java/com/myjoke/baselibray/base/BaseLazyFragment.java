@@ -15,7 +15,7 @@ import com.myjoke.baselibray.util.LogUtil;
  * Created by Gao on 2018/12/12.
  */
 
-public abstract class BaseViewFragment extends Fragment {
+public abstract class BaseLazyFragment extends Fragment {
     protected Activity activity;
 
     protected View view;

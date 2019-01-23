@@ -3,7 +3,7 @@ package application.viewpagerdemo.ui.fragment;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.myjoke.baselibray.base.BaseViewFragment;
+import com.myjoke.baselibray.base.BaseLazyFragment;
 import com.myjoke.baselibray.util.LogUtil;
 
 import application.viewpagerdemo.R;
@@ -12,7 +12,7 @@ import application.viewpagerdemo.R;
  * Created by Gao on 2018/12/26.
  */
 
-public class TabFragment extends BaseViewFragment {
+public class TabFragment extends BaseLazyFragment {
 
     private String title;
 

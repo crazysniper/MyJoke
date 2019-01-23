@@ -69,6 +69,8 @@ public class NewsFragment extends BaseFragment {
         ButterKnife.bind(this, view);
 
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        adapter = new ItemViewFragmentPagerAdapter(getChildFragmentManager(), fragmentList);
+        viewPager.setAdapter(adapter);
 
         tablayout.setupWithViewPager(viewPager);
     }
@@ -88,8 +90,7 @@ public class NewsFragment extends BaseFragment {
             fragment = null;
             tablayout.addTab(tablayout.newTab().setText(name));
         }
-        adapter = new ItemViewFragmentPagerAdapter(getChildFragmentManager(), fragmentList);
-
+        adapter.notifyDataSetChanged();
     }
 
 
