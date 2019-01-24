@@ -1,10 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
 
 buildscript {
     repositories {
 //        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
         jcenter()
         mavenCentral()
+//        maven { url 'https://maven.google.com' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
@@ -19,12 +21,36 @@ allprojects {
     repositories {
 //        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
         jcenter()
+        mavenCentral()
+//        maven { url 'https://maven.google.com' }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//configurations.all {
+//    resolutionStrategy {
+//        force 'com.android.support:support-v4:26.0.0-alpha1'
+//        force 'com.android.support:design:26.0.0-alpha1'
+//        force 'com.android.support:appcompat-v7:26.0.0-alpha1'
+//    }
+//}
+
+//// 保证dex_files文件中指定的文件都加载到Main Dex中
+//afterEvaluate {
+//    tasks.matching {
+//        it.name.startsWith('dex')
+//    }.each { dx ->
+//        if (dx.additionalParameters == null) {
+//            dx.additionalParameters = []
+//        }
+//        // dx.additionalParameters += '--multi-dex'
+//        // dx.additionalParameters += "--main-dex-list=$projectDir/dex_files".toString()
+//        dx.additionalParameters += '--set-max-idx-number=48000'
+//    }
+//}
 
 ext {
     // SDK And Tools

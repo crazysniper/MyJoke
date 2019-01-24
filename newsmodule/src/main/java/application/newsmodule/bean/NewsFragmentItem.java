@@ -9,7 +9,7 @@ import android.os.Parcelable;
 
 public class NewsFragmentItem implements Parcelable {
     private String name;
-    private String url;
+    private String type;
 
     public NewsFragmentItem(String name) {
         this.name = name;
@@ -17,7 +17,7 @@ public class NewsFragmentItem implements Parcelable {
 
     public NewsFragmentItem(String name, String url) {
         this.name = name;
-        this.url = url;
+        this.type = url;
     }
 
     public static Creator getCREATOR() {
@@ -32,12 +32,12 @@ public class NewsFragmentItem implements Parcelable {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getType() {
+        return type;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
@@ -47,13 +47,13 @@ public class NewsFragmentItem implements Parcelable {
 
     public NewsFragmentItem(Parcel parcel) {
         name = parcel.readString();
-        url = parcel.readString();
+        type = parcel.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(url);
+        dest.writeString(type);
     }
 
     public static final Parcelable.Creator CREATOR = new Creator<NewsFragmentItem>() {

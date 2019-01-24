@@ -79,4 +79,10 @@ public class MyApplication extends Application {
         patchManager.init(bean.getVersionName());//current version
         patchManager.loadPatch();
     }
+
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(base);
+//        MultiDex.install(this);
+//    }
 }

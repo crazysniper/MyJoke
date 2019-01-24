@@ -35,4 +35,5 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
     compile project(':baselibrary')
     compile project(':viewpagerdemo')
+    compile project(':okhttpdemo')
 }

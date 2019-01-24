@@ -1,0 +1,10 @@
+ext {
+    android = [
+            compileSdkVersion: 26
+
+    ]
+
+    dependencies = [
+
+    ]
+}

@@ -1,6 +1,9 @@
 // 声明Android程序
 apply plugin: 'com.android.application'
 
+
+def cfg = rootProject.ext.android // 工程配置
+
 android {
     // 编译版本
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -29,8 +32,15 @@ android {
         ndk {
             abiFilters "armeabi","armeabi-v7a","x86", "mips"
         }
+
+//         multiDexEnabled true  // 添加多dex分包支持
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+//            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
             // 是否对代码进行混淆
             minifyEnabled false
@@ -40,6 +50,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // 保证其他的lib没有被preDex
+//    dexOptions {
+//        preDexLibraries = false
+//    }
+
+//    dexOptions {
+//        dexInProcess true
+//        preDexLibraries true
+//        javaMaxHeapSize "4g"//越大越好 javaMaxHeapSize对应正则表达式是"\\d+[kKmMgGtT]?"4g指4G字节。
+//        incremental true
+//    }
 
     //android studio默认so文件加载目录为:src/main/jniLibs
     //如在module的build.gradle按照如下方式,自定义了so文件加载目录请确保对应目录下只有armeabi目录
@@ -52,9 +74,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
 
     // butterknife
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
@@ -81,24 +100,29 @@ dependencies {
 
 
         compile project(':newsmodule')
-        compile project(':activitymodule')
-        compile project(':messagemodule')
-        compile project(':mymodule')
+//        compile project(':activitymodule')
+//        compile project(':messagemodule')
+//        compile project(':mymodule')
     }
 
     compile project(':mybind')
     compile project(':myannotations')
     annotationProcessor project(':mycompiler')
 
-    // 通过facebook开源工具Stetho查看
-    
+
+    compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+
 
     // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
     //releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    compile 'com.android.support:support-v4:26.0.0-alpha1'
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+
+    // 通过facebook开源工具Stetho查看
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
+
+
+    // MultiDex的依赖
+//     compile'com.android.support:multidex:1.0.0'
 }
