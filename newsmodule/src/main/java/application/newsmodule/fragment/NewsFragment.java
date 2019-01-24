@@ -94,7 +94,7 @@ public class NewsFragment extends BaseFragment {
         }
         adapter.notifyDataSetChanged();
 
-        reflex(tablayout);
+//        reflex(tablayout);
     }
 
     private List<NewsFragmentItem> initTabLayout() {

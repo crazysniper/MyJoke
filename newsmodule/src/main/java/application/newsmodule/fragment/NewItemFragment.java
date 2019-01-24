@@ -3,25 +3,35 @@ package application.newsmodule.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.myjoke.baselibray.base.BaseLazyFragment;
 import com.myjoke.baselibray.util.LogUtil;
+import com.myjoke.baselibray.util.ToastUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import application.newsmodule.R;
 import application.newsmodule.R2;
+import application.newsmodule.adapter.NewsAdapter;
+import application.newsmodule.bean.News;
 import application.newsmodule.bean.NewsFragmentItem;
 import application.newsmodule.util.Constant;
 import application.okhttpdemo.bean.ResultBean;
 import application.okhttpdemo.callback.ResultCallBack;
 import application.okhttpdemo.util.HttpUtil;
+import application.webviewdemo.util.WebViewConstant;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,10 +39,14 @@ import butterknife.ButterKnife;
  * Created by Gao on 2019/1/22.
  */
 
-public class NewItemFragment extends BaseLazyFragment {
-    @BindView(R2.id.tv)
-    TextView tv;
+public class NewItemFragment extends BaseLazyFragment implements NewsAdapter.OnItemClickListener {
+    @BindView(R2.id.recyclerView)
+    RecyclerView recyclerView;
+
     private NewsFragmentItem newsFragmentItem;
+    private NewsAdapter adapter;
+
+    public List<News.ResultBean.DataBean> dataList = new ArrayList<>();
     private String name;
 
     @Override
@@ -56,19 +70,27 @@ public class NewItemFragment extends BaseLazyFragment {
     protected void initView() {
         LogUtil.e("NewItemFragment  initView    name=" + name);
         ButterKnife.bind(this, view);
+        ARouter.getInstance().inject(this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new NewsAdapter(dataList);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(this);
     }
 
     @Override
     protected void initData() {
         LogUtil.e("NewItemFragment  initData    name=" + name);
-        tv.setText(name);
 
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "APPCODE " + Constant.APP_CODE);
 
         Map<String, String> queries = new HashMap<>();
-        headers.put("type", newsFragmentItem.getType());
-
+        queries.put("type", newsFragmentItem.getType());
 
 
         HttpUtil.getInstance().doGet(Constant.HOST, null, headers, queries, new ResultCallBack() {
@@ -80,9 +102,38 @@ public class NewItemFragment extends BaseLazyFragment {
             @Override
             public void success(ResultBean bean) {
                 LogUtil.e("success=" + bean.getCode() + " = " + bean.getBody());
+
+                News news = new Gson().fromJson(bean.getBody(), new TypeToken<News>() {
+                }.getType());
+
+                if (!"0".equals(news.getError_code())) {
+                    News.ResultBean resultBean = news.getResult();
+                    if ("1".equals(resultBean.getStat())) {
+                        List<News.ResultBean.DataBean> list = resultBean.getData();
+                        dataList.clear();
+                        dataList.addAll(list);
+
+                        LogUtil.e("size==" + list.size());
+//                        for (News.ResultBean.DataBean dataBean : list) {
+//                            LogUtil.e("title=" + dataBean.getTitle());
+//                            LogUtil.e("date=" + dataBean.getDate());
+//                            LogUtil.e("author_name=" + dataBean.getAuthor_name());
+//                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                } else {
+                    ToastUtil.getInstance().showToast(news.getReason());
+                }
             }
         });
+    }
 
+
+    @Override
+    public void onItemLClick(int position) {
+        ARouter.getInstance().build(WebViewConstant.NewsDetailActivity)
+                .withString("url", dataList.get(position).getUrl())
+                .navigation();
     }
 
     @Nullable
@@ -145,4 +196,5 @@ public class NewItemFragment extends BaseLazyFragment {
         LogUtil.e("NewItemFragment  onDetach    name=" + name);
         super.onDetach();
     }
+
 }

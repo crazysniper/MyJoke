@@ -33,7 +33,9 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
+
     compile project(':baselibrary')
     compile project(':viewpagerdemo')
     compile project(':okhttpdemo')
+    compile project(':webviewdemo')
 }

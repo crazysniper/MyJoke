@@ -9,4 +9,5 @@ public class WebViewConstant {
     public static final String WebViewMainActivity = BASE_PATH + "WebViewMainActivity";
     public static final String X5Activity = BASE_PATH + "X5Activity";
     public static final String MainActivity = BASE_PATH + "MainActivity";
+    public static final String NewsDetailActivity = BASE_PATH + "NewsDetailActivity";
 }
