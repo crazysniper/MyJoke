@@ -9,4 +9,5 @@ public class Constant {
     public static final String APP_SECRET = "";
     public static final String APP_CODE = "";
 
+    public static final String HOST = "";
 }
