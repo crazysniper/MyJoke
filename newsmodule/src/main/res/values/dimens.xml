@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="news_item_padding_left">12dp</dimen>
-    <dimen name="news_item_padding_top">12dp</dimen>
+    <dimen name="news_item_padding_top">10dp</dimen>
     <dimen name="news_item_padding_right">10dp</dimen>
 
+    <dimen name="title_size">14sp</dimen>
+    <dimen name="author_size">12sp</dimen>
 
 </resources>

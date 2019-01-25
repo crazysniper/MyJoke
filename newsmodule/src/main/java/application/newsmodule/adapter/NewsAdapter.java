@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.myjoke.baselibray.util.TimeUtil;
+
+import java.text.ParseException;
 import java.util.List;
 
 import application.newsmodule.R;
@@ -53,7 +56,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     public void onBindViewHolder(NewsHolder holder, final int position) {
         holder.tvTitle.setText(dataList.get(position).getTitle());
         holder.tvAuthor.setText(dataList.get(position).getAuthor_name());
-        holder.tvDate.setText(dataList.get(position).getDate());
+        try {
+            holder.tvDate.setText(TimeUtil.setTimeDesc(dataList.get(position).getDate()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

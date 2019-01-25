@@ -22,14 +22,15 @@ import application.newsmodule.R;
 public class NewsItemDecoration extends RecyclerView.ItemDecoration {
 
     private ColorDrawable colorDrawable = null;
-    private int paddingLeft, paddingRight;
-    private int lineHeight = 4;
+    private int paddingLeft, paddingRight, paddingTop;
+    private int lineHeight = 2;
 
     public NewsItemDecoration(Context context) {
         super();
         colorDrawable = new ColorDrawable(Color.parseColor("#d8d8d8"));
         paddingLeft = ScreenUtil.getDimensionPixelSize(context, R.dimen.news_item_padding_left);
         paddingRight = ScreenUtil.getDimensionPixelSize(context, R.dimen.news_item_padding_right);
+        paddingTop = ScreenUtil.getDimensionPixelSize(context, R.dimen.news_item_padding_top);
     }
 
     /*设置间隔的大小的，修改ourRect这个参数即可，里边有left，right，top，bottom属性
@@ -44,6 +45,7 @@ public class NewsItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildAdapterPosition(view);
+        LogUtil.e("position=" + position + "    paddingLeft=" + paddingLeft + "    paddingRight=" + paddingRight + "   lineHeight=" + lineHeight);
         if (position == 0) {
             outRect.set(paddingLeft, 0, paddingRight, 0);
         } else {
@@ -67,7 +69,7 @@ public class NewsItemDecoration extends RecyclerView.ItemDecoration {
                 int top = child.getBottom();
                 int right = child.getRight();
                 int bottom = top + lineHeight;
-                LogUtil.e("left=" + left + "    top=" + top + "   right=" + right + "   bottom=" + bottom);
+                LogUtil.e("position=" + i + "    left=" + left + "    top=" + top + "   right=" + right + "   bottom=" + bottom);
                 colorDrawable.setBounds(left, top, right, bottom);
                 colorDrawable.draw(c);
             }
