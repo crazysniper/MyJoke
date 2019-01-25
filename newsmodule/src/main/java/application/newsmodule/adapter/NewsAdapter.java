@@ -44,7 +44,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     @Override
     public NewsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.new_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false);
         NewsHolder holder = new NewsHolder(itemView);
         return holder;
     }
@@ -63,6 +63,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
                 }
             }
         });
+    }
+
+    public void addNews(List<News.ResultBean.DataBean> dataList) {
+        this.dataList.addAll(dataList);
+        this.notifyDataSetChanged();
     }
 
     @Override

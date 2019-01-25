@@ -27,6 +27,8 @@ import application.newsmodule.R2;
 import application.newsmodule.adapter.NewsAdapter;
 import application.newsmodule.bean.News;
 import application.newsmodule.bean.NewsFragmentItem;
+import application.newsmodule.recyclerview.NewsItemAnimator;
+import application.newsmodule.recyclerview.NewsItemDecoration;
 import application.newsmodule.util.Constant;
 import application.okhttpdemo.bean.ResultBean;
 import application.okhttpdemo.callback.ResultCallBack;
@@ -76,6 +78,9 @@ public class NewItemFragment extends BaseLazyFragment implements NewsAdapter.OnI
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
+        recyclerView.addItemDecoration(new NewsItemDecoration(activity));
+        recyclerView.setItemAnimator(new NewsItemAnimator());
+
         adapter = new NewsAdapter(dataList);
         recyclerView.setAdapter(adapter);
 
@@ -110,8 +115,10 @@ public class NewItemFragment extends BaseLazyFragment implements NewsAdapter.OnI
                     News.ResultBean resultBean = news.getResult();
                     if ("1".equals(resultBean.getStat())) {
                         List<News.ResultBean.DataBean> list = resultBean.getData();
-                        dataList.clear();
-                        dataList.addAll(list);
+//                        dataList.clear();
+//                        dataList.addAll(list);
+
+                        adapter.addNews(list);
 
                         LogUtil.e("size==" + list.size());
 //                        for (News.ResultBean.DataBean dataBean : list) {
@@ -119,7 +126,7 @@ public class NewItemFragment extends BaseLazyFragment implements NewsAdapter.OnI
 //                            LogUtil.e("date=" + dataBean.getDate());
 //                            LogUtil.e("author_name=" + dataBean.getAuthor_name());
 //                        }
-                        adapter.notifyDataSetChanged();
+//                        adapter.notifyDataSetChanged();
                     }
                 } else {
                     ToastUtil.getInstance().showToast(news.getReason());
