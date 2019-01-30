@@ -28,10 +28,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
 
-    compile project(':dialogdemo')
+    implementation project(':dialogdemo')
 }

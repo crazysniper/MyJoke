@@ -30,12 +30,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
-    compile project(':baselibrary')
-    compile project(':viewpagerdemo')
-    compile project(':okhttpdemo')
-    compile project(':webviewdemo')
+    api project(':baselibrary')
+    api project(':viewpagerdemo')
+    api project(':okhttpdemo')
+    api project(':webviewdemo')
 }

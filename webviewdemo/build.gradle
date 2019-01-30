@@ -30,11 +30,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
-    compile project(':baselibrary')
-    compile files('libs/tbs.jar')
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    api project(':baselibrary')
 }

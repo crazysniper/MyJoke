@@ -30,9 +30,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
-    compile project(':newsmodule')
+    api project(':newsmodule')
 }

@@ -33,7 +33,7 @@ android {
             abiFilters "armeabi","armeabi-v7a","x86", "mips"
         }
 
-//         multiDexEnabled true  // 添加多dex分包支持
+         multiDexEnabled true  // 添加多dex分包支持
     }
     buildTypes {
 //        debug {
@@ -73,7 +73,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
 
     // butterknife
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
@@ -82,48 +84,47 @@ dependencies {
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
 
     if (!isDebug.toBoolean()) {
-        compile project(':baselibrary')
-        compile project(':baseview')
-        compile project(':recyclerviewdemo')
-        compile project(':supportdesignview')
-        compile project(':systeminfo')
-        compile project(':dialogdemo')
-        compile project(':scrollerdemo')
-        compile project(':eventdemo')
-        compile project(':materialdemo')
-        compile project(':permissiondemo')
-        compile project(':okhttpdemo')
-        compile project(':glidedemo')
-        compile project(':fourmodule')
-        compile project(':viewpagerdemo')
-        compile project(':webviewdemo')
+        api project(':baselibrary')
+        implementation project(':baseview')
+        implementation project(':recyclerviewdemo')
+        implementation project(':supportdesignview')
+        implementation project(':systeminfo')
+        implementation project(':dialogdemo')
+        implementation project(':scrollerdemo')
+        implementation project(':eventdemo')
+        implementation project(':materialdemo')
+        implementation project(':permissiondemo')
+        implementation project(':okhttpdemo')
+        implementation project(':glidedemo')
+        implementation project(':fourmodule')
+        implementation project(':viewpagerdemo')
+        implementation project(':webviewdemo')
 
 
-        compile project(':newsmodule')
-        compile project(':toutiaomodule')
+        implementation project(':newsmodule')
+        implementation project(':toutiaomodule')
 //        compile project(':activitymodule')
 //        compile project(':messagemodule')
 //        compile project(':mymodule')
     }
 
-    compile project(':mybind')
-    compile project(':myannotations')
+    implementation project(':mybind')
+    implementation project(':myannotations')
     annotationProcessor project(':mycompiler')
 
 
-    compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-
-
     // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
-    //releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    //releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    // Optional, if you use support library fragments:
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
 
     // 通过facebook开源工具Stetho查看
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 
 
     // MultiDex的依赖
-//     compile'com.android.support:multidex:1.0.0'
+    api 'com.android.support:multidex:1.0.0'
 }
