@@ -100,6 +100,7 @@ dependencies {
 
 
         compile project(':newsmodule')
+        compile project(':toutiaomodule')
 //        compile project(':activitymodule')
 //        compile project(':messagemodule')
 //        compile project(':mymodule')

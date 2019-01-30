@@ -37,4 +37,23 @@ public class TimeUtil {
         return timeStr;
     }
 
+    public static String setTimeDesc(long behot_time) throws ParseException {
+        long timeGap = System.currentTimeMillis() - behot_time;
+        LogUtil.e("timeGap=" + timeGap);
+        String timeStr = null;
+        if (timeGap > YEAR) {
+            timeStr = timeGap / YEAR + "年前";
+        } else if (timeGap > MONTH) {
+            timeStr = timeGap / MONTH + "个月前";
+        } else if (timeGap > DAY) {
+            timeStr = timeGap / DAY + "天前";
+        } else if (timeGap > HOUR) {
+            timeStr = timeGap / HOUR + "小时前";
+        } else if (timeGap > MINUTE) {
+            timeStr = timeGap / MINUTE + "分钟前";
+        } else {
+            timeStr = "刚刚";
+        }
+        return timeStr;
+    }
 }

@@ -96,6 +96,12 @@ public class MainActivity extends BaseActivity {
                 getResources().getString(R.string.tab_title_home));
         tabItemList.add(tabItem);
 
+
+        // 头条
+        tabItem = new TabItem(HomeFragment.class, R.drawable.tab_home, R.drawable.tab_home_selected,
+                getResources().getString(R.string.tab_title_toutiao));
+        tabItemList.add(tabItem);
+
         // 新闻
         tabItem = new TabItem(NewsFragment.class, R.drawable.tab_news, R.drawable.tab_news_selected,
                 getResources().getString(R.string.tab_title_news));

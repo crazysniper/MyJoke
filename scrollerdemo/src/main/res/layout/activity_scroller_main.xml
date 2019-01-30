@@ -65,4 +65,37 @@
         android:id="@+id/getInfo"
         style="@style/ButtonStyle"
         android:text="获取关于scoller的坐标" />
+
+    <Button
+        android:id="@+id/getLeft"
+        style="@style/ButtonStyle"
+        android:text="获取关于Left、Right、Top、Bottom的坐标" />
+
+    <TextView
+        android:id="@+id/left"
+        style="@style/ButtonStyle" />
+
+    <Button
+        android:id="@+id/getX"
+        style="@style/ButtonStyle"
+        android:text="获取关于x,y的坐标" />
+
+    <TextView
+        android:id="@+id/x"
+        style="@style/ButtonStyle" />
+
+    <Button
+        android:id="@+id/getX2"
+        style="@style/ButtonStyle"
+        android:text="获取关于translationX,translationY的坐标" />
+
+    <TextView
+        android:id="@+id/translationX"
+        style="@style/ButtonStyle" />
+
+    <Button
+        android:id="@+id/anim"
+        style="@style/ButtonStyle"
+        android:text="开启动画" />
+
 </LinearLayout>

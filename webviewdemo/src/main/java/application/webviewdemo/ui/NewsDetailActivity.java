@@ -7,8 +7,11 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 import application.webviewdemo.R;
 import application.webviewdemo.R2;
@@ -83,5 +86,18 @@ public class NewsDetailActivity extends BaseActivity {
 
         // this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension
         // settings 的设计
+
+        webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
+//                super.onReceivedSslError(webView, sslErrorHandler, sslError);
+                sslErrorHandler.proceed(); // 继续利用当前证书加载
+//                sslErrorHandler.cancel(); // 终止本次的所有请求
+            }
+
+        });
+
+
     }
 }
