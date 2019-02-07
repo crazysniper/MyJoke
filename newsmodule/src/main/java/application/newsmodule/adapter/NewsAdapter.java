@@ -13,6 +13,9 @@ import java.util.List;
 
 import application.newsmodule.R;
 import application.newsmodule.bean.News;
+import application.newsmodule.R2;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Gao on 2019/1/25.
@@ -28,20 +31,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     }
 
     public static class NewsHolder extends RecyclerView.ViewHolder {
-        //        @BindView(R2.id.title)
-        private TextView tvTitle;
-        //        @BindView(R2.id.author)
-        private TextView tvAuthor;
-        //        @BindView(R2.id.date)
-        private TextView tvDate;
+        @BindView(R2.id.title)
+        TextView tvTitle;
+        @BindView(R2.id.author)
+        TextView tvAuthor;
+        @BindView(R2.id.date)
+        TextView tvDate;
 
         public NewsHolder(View itemView) {
             super(itemView);
-//            ButterKnife.bind(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.title);
-            tvAuthor = (TextView) itemView.findViewById(R.id.author);
-            tvDate = (TextView) itemView.findViewById(R.id.date);
-
+            ButterKnife.bind(this, itemView);
         }
     }
 

@@ -5,6 +5,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 
 import com.myjoke.baselibray.util.LogUtil;
+import com.myjoke.baselibray.util.ToastUtil;
 
 import java.io.IOException;
 import java.util.Map;
@@ -42,9 +43,9 @@ public class HttpUtil {
 
 
     public static HttpUtil getInstance() {
-        synchronized (HttpUtil.class) {
-            if (httpUtil == null) {
-                synchronized (HttpUtil.class) {
+        if (httpUtil == null) {
+            synchronized (HttpUtil.class) {
+                if (httpUtil == null) {
                     if (httpUtil == null) {
                         httpUtil = new HttpUtil();
                     }

@@ -36,4 +36,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
     api project(':baselibrary')
+
+    // 解决状态栏被设置成白色后看不到系统状态的问题
+    implementation 'com.githang:status-bar-compat:latest.integration'
 }

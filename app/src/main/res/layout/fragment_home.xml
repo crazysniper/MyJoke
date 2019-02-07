@@ -16,6 +16,11 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/four"
+            style="@style/ButtonStyle"
+            android:text="跳转到四大组件" />
+
+        <Button
             android:id="@+id/btn1"
             style="@style/ButtonStyle"
             android:text="启动模式"

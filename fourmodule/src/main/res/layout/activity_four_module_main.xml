@@ -21,4 +21,9 @@
         android:id="@+id/contentProvider"
         style="@style/ButtonStyle"
         android:text="ContentProvider" />
+
+    <Button
+        android:id="@+id/contact"
+        style="@style/ButtonStyle"
+        android:text="联系人" />
 </LinearLayout>

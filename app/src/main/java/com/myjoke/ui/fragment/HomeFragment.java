@@ -25,6 +25,7 @@ import java.io.IOException;
 
 import application.dialogdemo.utils.DialogConstant;
 import application.eventdemo.util.EventConstant;
+import application.fourmodule.util.FourModuleConstant;
 import application.materialdemo.util.MaterialConstant;
 import application.okhttpdemo.util.OkHttpConstant;
 import application.permissiondemo.util.PermissionConstant;
@@ -224,9 +225,12 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick({R.id.btn1, R.id.broadcast, R.id.view, R.id.fragmentAroute, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
             R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission, R.id.okhttp,
-            R.id.viewpager,R.id.webview})
+            R.id.viewpager, R.id.webview, R.id.four})
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.four:
+                ARouter.getInstance().build(FourModuleConstant.FourModuleMainActivity).navigation();
+                break;
             case R.id.btn1:
                 ARouter.getInstance().build(ConstantPath.BitmapActivity).withString("key1", "value1")
                         .withInt("intKey", 1).navigation(activity, 100);
