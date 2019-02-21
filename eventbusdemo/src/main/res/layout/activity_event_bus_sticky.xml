@@ -10,4 +10,9 @@
         android:id="@+id/register"
         style="@style/ButtonStyle"
         android:text="注册Register" />
+
+    <Button
+        android:id="@+id/unregister"
+        style="@style/ButtonStyle"
+        android:text="解绑Register" />
 </LinearLayout>

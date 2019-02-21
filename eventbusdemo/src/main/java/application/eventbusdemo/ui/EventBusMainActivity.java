@@ -59,32 +59,40 @@ public class EventBusMainActivity extends BaseActivity {
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
     public void main(String message) {
         main.setRightText(message);
         LogUtil.e("main=" + message);
     }
 
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    @Subscribe(threadMode = ThreadMode.MAIN, priority = 110)
+    public void main2(String message) {
+        main.setRightText(message);
+        LogUtil.e("main2=" + message);
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND, priority = 90)
     public void background(String message) {
         LogUtil.e("background=" + message);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
+    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED, priority = 80)
     public void mainOrdered(String message) {
         LogUtil.e("mainOrdered=" + message);
-
     }
 
-    @Subscribe(threadMode = ThreadMode.POSTING)
+    @Subscribe(threadMode = ThreadMode.POSTING, priority = 70)
     public void posting(String message) {
         LogUtil.e("posting=" + message);
-
     }
 
-    @Subscribe(threadMode = ThreadMode.ASYNC)
+    @Subscribe(threadMode = ThreadMode.POSTING, priority = 120)
+    public void posting2(String message) {
+        LogUtil.e("posting2=" + message);
+    }
+
+    @Subscribe(threadMode = ThreadMode.ASYNC, priority = 60)
     public void async(String message) {
         LogUtil.e("async=" + message);
-
     }
 }

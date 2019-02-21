@@ -15,7 +15,10 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//                arguments = [AROUTER_MODULE_NAME: project.getName()]
+
+                arguments = [AROUTER_MODULE_NAME: project.getName(),
+                             eventBusIndex:"application.eventbusdemo.MyEventBusIndex"]
             }
         }
 
@@ -32,9 +35,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
+
+    annotationProcessor "org.greenrobot:eventbus-annotation-processor:$rootProject.eventbusVersion"
 
     api project(':baselibrary')
     implementation project(':baseview')

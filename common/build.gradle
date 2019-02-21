@@ -15,7 +15,8 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName(),
+                             eventBusIndex:project.getName()]
             }
         }
     }
@@ -53,7 +54,8 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
     // eventbus
-    api 'org.greenrobot:eventbus:3.1.1'
+    api "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+    annotationProcessor "org.greenrobot:eventbus-annotation-processor:$rootProject.eventbusVersion"
 
     // okhttp3
     api 'com.squareup.okhttp3:okhttp:3.12.0'

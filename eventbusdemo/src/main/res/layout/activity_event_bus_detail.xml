@@ -7,6 +7,16 @@
     tools:context=".ui.EventBusMainActivity">
 
     <Button
+        android:id="@+id/register"
+        style="@style/ButtonStyle"
+        android:text="注册Register" />
+
+    <Button
+        android:id="@+id/unregister"
+        style="@style/ButtonStyle"
+        android:text="解绑Register" />
+
+    <Button
         android:id="@+id/postString"
         style="@style/ButtonStyle"
         android:text="发送String" />
