@@ -85,8 +85,9 @@ public class MyLinearView extends LinearLayout {
             rightTextView = new TextView(context);
             rightTextView.setText(rightText);
             rightTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);// TextView.setTextSize默认单位是sp
-            leftTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             rightTextView.setTextColor(rightTextColor);
+
             addView(rightTextView);
 
             LinearLayout.LayoutParams rightLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT);
