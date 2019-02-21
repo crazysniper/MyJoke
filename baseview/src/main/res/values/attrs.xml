@@ -9,15 +9,32 @@
             <enum name="horizontal" value="0" />
             <enum name="vertical" value="1" />
         </attr>
+        <attr name="bg" format="color" />
+
         <attr name="leftVisible" format="boolean" />
         <attr name="leftTextSize" format="dimension" />
         <attr name="leftText" format="string" />
         <attr name="leftTextColor" format="color" />
 
+        <attr name="leftWidth" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="leftLayoutWeight" format="float" />
+
         <attr name="rightVisible" format="boolean" />
         <attr name="rightTextSize" format="dimension" />
         <attr name="rightText" format="string" />
         <attr name="rightTextColor" format="color" />
+        <attr name="rightLayoutWeight" format="float" />
+
+
+        <attr name="rightWidth" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
 
     </declare-styleable>
 

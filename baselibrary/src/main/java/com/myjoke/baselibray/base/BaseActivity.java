@@ -53,10 +53,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             LogUtil.e(TAG, clazzName + " onCreate " + "  taskId=" + getTaskId());
         }
 
-        EventBus.getDefault().register(this);
         ViewServer.get(this).addWindow(this);
+        register();
         initView();
         initData();
+    }
+
+    protected void register() {
+        EventBus.getDefault().register(this);
     }
 
     public abstract int getLayoutId();
@@ -139,6 +143,10 @@ public abstract class BaseActivity extends AppCompatActivity {
             LogUtil.e(TAG, clazzName + " onDestroy " + "  taskId=" + getTaskId());
         }
         ViewServer.get(this).removeWindow(this);
+        unregister();
+    }
+
+    protected void unregister() {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }

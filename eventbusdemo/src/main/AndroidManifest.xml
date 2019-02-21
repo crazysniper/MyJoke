@@ -4,7 +4,8 @@
 
     <application>
         <activity android:name=".ui.EventBusMainActivity" />
-        <activity android:name=".ui.EventBusDetailActivity"></activity>
+        <activity android:name=".ui.EventBusDetailActivity" />
+        <activity android:name=".ui.EventBusStickyActivity"></activity>
     </application>
 
 </manifest>

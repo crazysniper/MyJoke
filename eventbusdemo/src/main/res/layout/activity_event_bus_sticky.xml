@@ -7,17 +7,7 @@
     tools:context=".ui.EventBusMainActivity">
 
     <Button
-        android:id="@+id/postString"
+        android:id="@+id/register"
         style="@style/ButtonStyle"
-        android:text="发送String" />
-
-    <Button
-        android:id="@+id/toNext"
-        style="@style/ButtonStyle"
-        android:text="跳转到下一个页面" />
-
-    <Button
-        android:id="@+id/postSticky"
-        style="@style/ButtonStyle"
-        android:text="发送黏性事件" />
+        android:text="注册Register" />
 </LinearLayout>

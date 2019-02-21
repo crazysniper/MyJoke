@@ -4,9 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.myjoke.baselibray.util.LogUtil;
 
 import application.baseview.R;
 
@@ -36,24 +40,34 @@ public class MyLinearView extends LinearLayout {
         int orientation = typedArray.getInt(R.styleable.MyLinearView_orientation, 0);
         setOrientation(orientation);
 
+        int bgColor = typedArray.getColor(R.styleable.MyLinearView_bg, Color.WHITE);
+        setBackgroundColor(bgColor);
+
         boolean leftVisible = typedArray.getBoolean(R.styleable.MyLinearView_leftVisible, false);
         leftTextSize = typedArray.getDimensionPixelSize(R.styleable.MyLinearView_leftTextSize, leftTextSize);
         String leftText = typedArray.getString(R.styleable.MyLinearView_leftText);
-        int leftTextColor = typedArray.getColor(R.styleable.MyLinearView_leftTextColor, Color.WHITE);
+        int leftTextColor = typedArray.getColor(R.styleable.MyLinearView_leftTextColor, Color.BLACK);
 
         boolean rightVisible = typedArray.getBoolean(R.styleable.MyLinearView_rightVisible, false);
         rightTextSize = typedArray.getDimensionPixelSize(R.styleable.MyLinearView_rightTextSize, rightTextSize);
         String rightText = typedArray.getString(R.styleable.MyLinearView_rightText);
-        int rightTextColor = typedArray.getColor(R.styleable.MyLinearView_rightTextColor, Color.WHITE);
+        int rightTextColor = typedArray.getColor(R.styleable.MyLinearView_rightTextColor, Color.BLACK);
 
         typedArray.recycle();
 
 
+        LogUtil.e("字体大小=" + leftTextSize);
+
         if (leftVisible) {
             leftTextView = new TextView(context);
             leftTextView.setText(leftText);
-            leftTextView.setTextSize(leftTextSize);
+            leftTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTextSize);// TextView.setTextSize默认单位是sp
+            leftTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
             leftTextView.setTextColor(leftTextColor);
+
+            LinearLayout.LayoutParams leftLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            leftTextView.setLayoutParams(leftLayoutParams);
+
             addView(leftTextView);
 
             leftTextView.setOnClickListener(new OnClickListener() {
@@ -70,9 +84,14 @@ public class MyLinearView extends LinearLayout {
         if (rightVisible) {
             rightTextView = new TextView(context);
             rightTextView.setText(rightText);
-            rightTextView.setTextSize(rightTextSize);
+            rightTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);// TextView.setTextSize默认单位是sp
+            leftTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             rightTextView.setTextColor(rightTextColor);
             addView(rightTextView);
+
+            LinearLayout.LayoutParams rightLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT);
+            rightLayoutParams.weight = 1;
+            rightTextView.setLayoutParams(rightLayoutParams);
 
             rightTextView.setOnClickListener(new OnClickListener() {
                 @Override

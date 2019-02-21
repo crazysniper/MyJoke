@@ -13,12 +13,28 @@
         android:text="跳转到EventBus" />
 
     <application.baseview.layout.MyLinearView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:leftText="Main"
-        app:leftTextSize="14sp"
-        app:leftVisible="true"
-        app:rightTextSize="14sp"
-        app:rightVisible="true" />
+        android:id="@+id/main"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="Main" />
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/background"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="BACKGROUND" />
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/mainOrdered"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="MAIN_ORDERED" />
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/posting"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="POSTING" />
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/async"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="ASYNC" />
 
 </LinearLayout>
