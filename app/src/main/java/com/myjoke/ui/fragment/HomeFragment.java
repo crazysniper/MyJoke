@@ -27,6 +27,7 @@ import application.dialogdemo.utils.DialogConstant;
 import application.eventdemo.util.EventConstant;
 import application.fourmodule.util.FourModuleConstant;
 import application.materialdemo.util.MaterialConstant;
+import application.notificationdemo.util.NotificationUtil;
 import application.okhttpdemo.util.OkHttpConstant;
 import application.permissiondemo.util.PermissionConstant;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
@@ -223,9 +224,9 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn1, R.id.broadcast, R.id.view, R.id.fragmentAroute, R.id.recyclerModule, R.id.supportDesignModule, R.id.sysModule,
-            R.id.dialogModule, R.id.scrollerModule, R.id.eventModule, R.id.material, R.id.permission, R.id.okhttp,
-            R.id.viewpager, R.id.webview, R.id.four})
+    @OnClick({R.id.btn1, R.id.broadcast, R.id.view, R.id.fragmentAroute, R.id.recyclerModule,
+            R.id.supportDesignModule, R.id.sysModule, R.id.dialogModule, R.id.scrollerModule,
+            R.id.eventModule, R.id.viewpager, R.id.four, R.id.notification, R.id.openSource})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.four:
@@ -278,20 +279,14 @@ public class HomeFragment extends BaseFragment {
                 Toast.makeText(activity, " 事件分发页面", Toast.LENGTH_SHORT).show();
                 ARouter.getInstance().build(EventConstant.EventMainActivity).navigation();
                 break;
-            case R.id.material:
-                ARouter.getInstance().build(MaterialConstant.MaterialMainActivity).navigation();
-                break;
-            case R.id.permission:
-                ARouter.getInstance().build(PermissionConstant.PermissionMainActivity).navigation();
-                break;
-            case R.id.okhttp:
-                ARouter.getInstance().build(OkHttpConstant.OkHttpMainActivity).navigation();
-                break;
             case R.id.viewpager:
                 ARouter.getInstance().build(ViewPagerConstant.ViewPagerMainActivity).navigation();
                 break;
-            case R.id.webview:
-                ARouter.getInstance().build(WebViewConstant.WebViewMainActivity).navigation();
+            case R.id.notification:
+                ARouter.getInstance().build(NotificationUtil.NotificationMainActivity).navigation();
+                break;
+            case R.id.openSource:
+                ARouter.getInstance().build(ConstantPath.OpenSourceActivity).navigation();
                 break;
         }
     }

@@ -1,6 +1,8 @@
 package com.myjoke.app;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alipay.euler.andfix.patch.PatchManager;
@@ -80,9 +82,9 @@ public class MyApplication extends Application {
         patchManager.loadPatch();
     }
 
-//    @Override
-//    protected void attachBaseContext(Context base) {
-//        super.attachBaseContext(base);
-//        MultiDex.install(this);
-//    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 }

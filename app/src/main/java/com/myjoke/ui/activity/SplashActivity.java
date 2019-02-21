@@ -27,6 +27,8 @@ public class SplashActivity extends BaseActivity {
     private int countTime = 1;
     private boolean isLogined;
 
+    private boolean isQuickIn;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_splash;
@@ -49,6 +51,7 @@ public class SplashActivity extends BaseActivity {
     @OnClick(R.id.time)
     public void onClick(View view) {
 //        handler.removeMessages(1); // 可以
+        isQuickIn = true;
         handler.removeCallbacksAndMessages(null); // 可以
         if (isLogined) {
             ARouter.getInstance().build(ConstantPath.MainActivity).navigation();
@@ -68,7 +71,7 @@ public class SplashActivity extends BaseActivity {
                     if (countTime > 0) {
                         countTime--;
                         handler.sendEmptyMessageDelayed(1, 1000);
-                    } else {
+                    } else if (!isQuickIn) {
                         if (isLogined) {
                             ARouter.getInstance().build(ConstantPath.MainActivity).navigation();
                         } else {

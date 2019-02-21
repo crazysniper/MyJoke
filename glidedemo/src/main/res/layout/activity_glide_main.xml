@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="application.glidedemo.GlideMainActivity">
+    tools:context="application.glidedemo.ui.GlideMainActivity">
+
+    <Button
+        android:id="@+id/glide"
+        style="@style/ButtonStyle"
+        android:text="Glide" />
 
 </LinearLayout>

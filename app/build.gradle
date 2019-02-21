@@ -1,8 +1,7 @@
 // 声明Android程序
 apply plugin: 'com.android.application'
 
-
-def cfg = rootProject.ext.android // 工程配置
+//def cfg = rootProject.ext.android // 工程配置
 
 android {
     // 编译版本
@@ -30,10 +29,10 @@ android {
         }
 
         ndk {
-            abiFilters "armeabi","armeabi-v7a","x86", "mips"
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
 
-         multiDexEnabled true  // 添加多dex分包支持
+        multiDexEnabled true  // 添加多dex分包支持
     }
     buildTypes {
 //        debug {
@@ -78,6 +77,7 @@ dependencies {
     implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
 
     // butterknife
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 
     // arouter
@@ -99,6 +99,8 @@ dependencies {
         implementation project(':fourmodule')
         implementation project(':viewpagerdemo')
         implementation project(':webviewdemo')
+        implementation project(':notificationdemo')
+        implementation project(':eventbusdemo')
 
 
         implementation project(':newsmodule')
@@ -112,7 +114,6 @@ dependencies {
     implementation project(':myannotations')
     annotationProcessor project(':mycompiler')
 
-
     // LeakCanary 检测内存泄漏，只在debug下面有效，不会影响release的
     //releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
@@ -124,7 +125,6 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 
-
     // MultiDex的依赖
-    api 'com.android.support:multidex:1.0.0'
+    api 'com.android.support:multidex:1.0.1'
 }

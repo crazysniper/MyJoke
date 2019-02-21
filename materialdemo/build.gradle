@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     android {
@@ -35,4 +36,5 @@ dependencies {
     api project(':baselibrary')
 
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
 }

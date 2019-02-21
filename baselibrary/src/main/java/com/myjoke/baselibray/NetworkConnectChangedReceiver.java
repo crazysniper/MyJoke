@@ -20,6 +20,7 @@ public class NetworkConnectChangedReceiver extends BroadcastReceiver {
         LogUtil.e("NetworkConnectChangedReceiver value1==" + intent.getStringExtra("key1"));
         boolean isConnected = NetUtils.isConnected(context);
         LogUtil.e("NetworkConnectChangedReceiver onReceive: 当前网络 " + isConnected);
+
         EventBus.getDefault().post(new NetworkChangeEvent(isConnected));
     }
 }

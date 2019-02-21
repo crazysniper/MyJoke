@@ -1,5 +1,7 @@
 package application.systeminfo.ui;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -56,9 +58,15 @@ public class SystemMainActivity extends BaseActivity implements View.OnClickList
         long totalMemory = Runtime.getRuntime().totalMemory();
         long maxMemory = Runtime.getRuntime().maxMemory();
 
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        int memoryClass = activityManager.getMemoryClass();
+        int largeMemoryClass = activityManager.getLargeMemoryClass();
+
         runtime.setText("freeMemory=" + 1.00 * freeMemory / 1024 / 1024 + "M\n"
                 + "totalMemory=" + 1.00 * totalMemory / 1024 / 1024 + "M\n"
-                + "maxMemory=" + 1.00 * maxMemory / 1024 / 1024 + "M\n");
+                + "maxMemory=" + 1.00 * maxMemory / 1024 / 1024 + "M\n"
+                + "memoryClass=" + memoryClass + "M\n"
+                + "largeMemoryClass=" + largeMemoryClass + "M\n");
 
 
         PackageManager packageManager = getPackageManager();

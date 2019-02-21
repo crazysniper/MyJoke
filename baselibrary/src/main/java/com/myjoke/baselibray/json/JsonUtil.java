@@ -6,7 +6,7 @@ import java.lang.reflect.ParameterizedType;
 
 public class JsonUtil<T> {
 
-    private static JsonUtil jsonUtil = null;
+    private static volatile JsonUtil jsonUtil = null;
     private static Gson gson = null;
 
     private JsonUtil() {
@@ -29,7 +29,6 @@ public class JsonUtil<T> {
     public String toJson(T t) {
         return gson.toJson(t);
     }
-
 
 
     public T fromJson(String json) {
