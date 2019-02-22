@@ -15,4 +15,14 @@
         android:id="@+id/unregister"
         style="@style/ButtonStyle"
         android:text="解绑Register" />
+
+    <Button
+        android:id="@+id/getStickyEvent"
+        style="@style/ButtonStyle"
+        android:text="获取指定黏性事件" />
+
+    <Button
+        android:id="@+id/removeSticky"
+        style="@style/ButtonStyle"
+        android:text="删除所有黏性事件" />
 </LinearLayout>
