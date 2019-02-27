@@ -3,13 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.DeviceDetailActivity">
 
     <application.baseview.layout.MyLinearView
         android:id="@+id/deviceWidth"
         style="@style/EventBus_MyLinearView"
         app:leftText="屏幕宽度" />
+
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/deviceHeight"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="屏幕高度" />
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/appWidth"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="App区域宽度" />
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/appHeight"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="App区域高度" />
+
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/statusBarHeight"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="状态栏高度" />
 
 </LinearLayout>
