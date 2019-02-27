@@ -7,8 +7,20 @@
     tools:context=".ui.NotificationMainActivity">
 
     <Button
-        android:id="@+id/open"
+        android:id="@+id/notificationCompat"
         style="@style/ButtonStyle"
-        android:text="打开Notification" />
+        android:text="打开NotificationCompat" />
+
+
+    <Button
+        android:id="@+id/removeNotificationCompat"
+        style="@style/ButtonStyle"
+        android:text="关闭NotificationCompat" />
+
+    <Button
+        android:id="@+id/removeAll"
+        style="@style/ButtonStyle"
+        android:text="清除所有" />
+
 
 </LinearLayout>

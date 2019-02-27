@@ -3,8 +3,8 @@
     package="application.systeminfo">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
 
     <permission android:name="com.myjoke.permission" />
 
@@ -28,9 +28,7 @@
                     android:host="aa"
                     android:port="8080"
                     android:scheme="http" />
-
             </intent-filter>
-
         </activity>
         <activity android:name=".ui.ApplicationInfoActivity">
             <intent-filter>
@@ -38,7 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.ServiceInfoActivity" />
-        <activity android:name=".ui.ResolveInfoActivity"></activity>
+        <activity android:name=".ui.ResolveInfoActivity" />
+        <activity android:name=".ui.DeviceDetailActivity"></activity>
     </application>
 
 </manifest>

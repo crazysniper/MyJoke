@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -18,13 +17,16 @@ import java.util.Collections;
 import java.util.List;
 
 import application.systeminfo.R;
+import application.systeminfo.R2;
 import application.systeminfo.util.SystemInfoConstant;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @Route(path = SystemInfoConstant.SystemMainActivity)
-public class SystemMainActivity extends BaseActivity implements View.OnClickListener {
-
-    private TextView runtime;
-    private Button textView, packageInfo, applicationInfo, activityInfo, serviceInfo, resolveInfo;
+public class SystemMainActivity extends BaseActivity {
+    @BindView(R2.id.runtime)
+    TextView runtime;
 
     @Override
     public int getLayoutId() {
@@ -33,23 +35,8 @@ public class SystemMainActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void initView() {
+        ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
-
-        runtime = findView(R.id.runtime);
-
-        textView = findView(R.id.textView);
-        packageInfo = findView(R.id.packageInfo);
-        applicationInfo = findView(R.id.applicationInfo);
-        activityInfo = findView(R.id.activityInfo);
-        serviceInfo = findView(R.id.serviceInfo);
-        resolveInfo = findView(R.id.resolveInfo);
-
-        textView.setOnClickListener(this);
-        packageInfo.setOnClickListener(this);
-        applicationInfo.setOnClickListener(this);
-        activityInfo.setOnClickListener(this);
-        serviceInfo.setOnClickListener(this);
-        resolveInfo.setOnClickListener(this);
     }
 
     @Override
@@ -89,8 +76,9 @@ public class SystemMainActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-    @Override
+    @OnClick({R2.id.textView, R2.id.packageInfo, R2.id.applicationInfo, R2.id.activityInfo, R2.id.serviceInfo, R2.id.resolveInfo})
     public void onClick(View v) {
+
         if (v.getId() == R.id.textView) {
             ARouter.getInstance().build(SystemInfoConstant.SystemInfoActivity).navigation();
         } else if (v.getId() == R.id.packageInfo) {
@@ -103,6 +91,8 @@ public class SystemMainActivity extends BaseActivity implements View.OnClickList
             ARouter.getInstance().build(SystemInfoConstant.ServiceInfoActivity).navigation();
         } else if (v.getId() == R.id.resolveInfo) {
             ARouter.getInstance().build(SystemInfoConstant.ResolveInfoActivity).navigation();
+        } else if (v.getId() == R.id.deviceInfo) {
+            ARouter.getInstance().build(SystemInfoConstant.DeviceDetailActivity).navigation();
         }
     }
 }

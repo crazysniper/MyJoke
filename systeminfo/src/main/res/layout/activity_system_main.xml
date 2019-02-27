@@ -43,4 +43,10 @@
         android:id="@+id/resolveInfo"
         style="@style/ButtonStyle"
         android:text="ResolveInfo" />
+
+
+    <Button
+        android:id="@+id/deviceInfo"
+        style="@style/ButtonStyle"
+        android:text="DeviceInfo" />
 </LinearLayout>

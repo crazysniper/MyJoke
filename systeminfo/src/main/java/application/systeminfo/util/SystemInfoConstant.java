@@ -13,4 +13,5 @@ public class SystemInfoConstant {
     public static final String PackageInfoActivity = BASE_PATH + "PackageInfoActivity";
     public static final String ResolveInfoActivity = BASE_PATH + "ResolveInfoActivity";
     public static final String ServiceInfoActivity = BASE_PATH + "ServiceInfoActivity";
+    public static final String DeviceDetailActivity = BASE_PATH + "DeviceDetailActivity";
 }

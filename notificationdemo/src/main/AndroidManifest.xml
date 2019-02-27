@@ -3,7 +3,8 @@
     package="application.notificationdemo">
 
     <application>
-        <activity android:name=".ui.NotificationMainActivity"></activity>
+        <activity android:name=".ui.NotificationMainActivity" />
+        <activity android:name=".ui.NotificationDetailActivity"></activity>
     </application>
 
 </manifest>
