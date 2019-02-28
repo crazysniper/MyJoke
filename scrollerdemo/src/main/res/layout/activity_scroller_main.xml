@@ -1,101 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_scroller_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="application.scrollerdemo.ui.ScrollerMainActivity">
 
-
     <LinearLayout
-        android:id="@+id/parent"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:background="@drawable/scroller_bg">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/parent"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/scroller_bg">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:background="@drawable/scroller_bg"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/scrollerTo"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="向右下角scrollerTo" />
+
+                <Button
+                    android:id="@+id/scrollerBy"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="向右下角scrollerBy" />
+
+                <Button
+                    android:id="@+id/scrollerToZheng"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="向左上角scrollerTo" />
+
+                <Button
+                    android:id="@+id/scrollerByZheng"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="向左上角scrollerBy" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/getInfo"
+            style="@style/ButtonStyle"
+            android:text="获取关于scoller的坐标" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:id="@+id/scroll"
+            style="@style/ButtonStyle" />
+
+        <Button
+            android:id="@+id/getLeft"
+            style="@style/ButtonStyle"
+            android:text="获取关于Left、Right、Top、Bottom的坐标" />
+
+        <TextView
+            android:id="@+id/left"
+            style="@style/ButtonStyle" />
+
+        <Button
+            android:id="@+id/getX"
+            style="@style/ButtonStyle"
+            android:text="获取关于x,y的坐标" />
+
+        <TextView
+            android:id="@+id/x"
+            style="@style/ButtonStyle" />
+
+        <Button
+            android:id="@+id/getX2"
+            style="@style/ButtonStyle"
+            android:text="获取关于translationX,translationY的坐标" />
+
+        <TextView
+            android:id="@+id/translationX"
+            style="@style/ButtonStyle" />
+
+        <Button
+            android:id="@+id/anim"
+            style="@style/ButtonStyle"
+            android:text="开启动画" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/scroller_bg"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="TextView" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/offsetLeftAndRight1"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="向左挪动offsetLeftAndRight(负)" />
+
+            <Button
+                android:id="@+id/offsetLeftAndRight2"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="向右挪动offsetLeftAndRight(正)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/offsetTopAndBottom1"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="向上挪动offsetTopAndBottom(负)" />
+
+            <Button
+                android:id="@+id/offsetTopAndBottom2"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="向下挪动offsetTopAndBottom(正)" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/setTranslationX1"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="setTranslationX(负)" />
+
+            <Button
+                android:id="@+id/setTranslationX2"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="setTranslationX(正)" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/setTranslationY1"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="setTranslationY(负)" />
+
+            <Button
+                android:id="@+id/setTranslationY2"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="setTranslationY(正)" />
+        </LinearLayout>
     </LinearLayout>
+</ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/scrollerTo"
-            style="@style/ButtonStyle"
-            android:layout_weight="1"
-            android:text="向右下角scrollerTo" />
-
-        <Button
-            android:id="@+id/scrollerBy"
-            style="@style/ButtonStyle"
-            android:layout_weight="1"
-            android:text="向右下角scrollerBy" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/scrollerToZheng"
-            style="@style/ButtonStyle"
-            android:layout_weight="1"
-            android:text="向左上角scrollerTo" />
-
-        <Button
-            android:id="@+id/scrollerByZheng"
-            style="@style/ButtonStyle"
-            android:layout_weight="1"
-            android:text="向左上角scrollerBy" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/getInfo"
-        style="@style/ButtonStyle"
-        android:text="获取关于scoller的坐标" />
-
-    <Button
-        android:id="@+id/getLeft"
-        style="@style/ButtonStyle"
-        android:text="获取关于Left、Right、Top、Bottom的坐标" />
-
-    <TextView
-        android:id="@+id/left"
-        style="@style/ButtonStyle" />
-
-    <Button
-        android:id="@+id/getX"
-        style="@style/ButtonStyle"
-        android:text="获取关于x,y的坐标" />
-
-    <TextView
-        android:id="@+id/x"
-        style="@style/ButtonStyle" />
-
-    <Button
-        android:id="@+id/getX2"
-        style="@style/ButtonStyle"
-        android:text="获取关于translationX,translationY的坐标" />
-
-    <TextView
-        android:id="@+id/translationX"
-        style="@style/ButtonStyle" />
-
-    <Button
-        android:id="@+id/anim"
-        style="@style/ButtonStyle"
-        android:text="开启动画" />
-
-</LinearLayout>

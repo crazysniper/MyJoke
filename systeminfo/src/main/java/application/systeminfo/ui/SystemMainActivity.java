@@ -76,7 +76,8 @@ public class SystemMainActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R2.id.textView, R2.id.packageInfo, R2.id.applicationInfo, R2.id.activityInfo, R2.id.serviceInfo, R2.id.resolveInfo})
+    @OnClick({R2.id.textView, R2.id.packageInfo, R2.id.applicationInfo, R2.id.activityInfo,
+            R2.id.serviceInfo, R2.id.resolveInfo, R2.id.deviceInfo})
     public void onClick(View v) {
 
         if (v.getId() == R.id.textView) {

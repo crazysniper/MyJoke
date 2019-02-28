@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".ui.DeviceDetailActivity">
 
+    <Button
+        android:id="@+id/getInfo"
+        style="@style/ButtonStyle"
+        android:text="获取" />
+
     <application.baseview.layout.MyLinearView
         android:id="@+id/deviceWidth"
         style="@style/EventBus_MyLinearView"

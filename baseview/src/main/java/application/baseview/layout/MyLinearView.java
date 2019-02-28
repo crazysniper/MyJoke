@@ -131,5 +131,23 @@ public class MyLinearView extends LinearLayout {
         public void rightOnClick(View v);
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasWindowFocus) {
+        super.onWindowFocusChanged(hasWindowFocus);
+        LogUtil.e("MyLinearView onWindowFocusChanged hasWindowFocus=" +
+                hasWindowFocus + "      width=" + getWidth() + "   height=" + getHeight());
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        LogUtil.e("MyLinearView     onAttachedToWindow");
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        LogUtil.e("MyLinearView     onDetachedFromWindow");
+    }
 }
 
