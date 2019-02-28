@@ -44,6 +44,10 @@ public class ActivityFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+        LogUtil.e("ActivityFragment  initView=" + EventBus.getDefault().isRegistered(this));
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -56,13 +60,10 @@ public class ActivityFragment extends BaseFragment {
         ButterKnife.bind(this, view);
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
-        LogUtil.e("ActivityFragment  initView=" + EventBus.getDefault().isRegistered(this));
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
     }
 
     @Override
@@ -75,7 +76,7 @@ public class ActivityFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.btn1:
                 ToastUtil.getInstance().showToast("点击了活动模块里面的按钮");
-                EventBus.getDefault().post(new FragmentEvent("activity", "事件从活动模块来"));
+                EventBus.getDefault().post(new FragmentEvent("activity", "事件从活动模块来:" + System.currentTimeMillis()));
                 break;
         }
     }
@@ -90,12 +91,13 @@ public class ActivityFragment extends BaseFragment {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        LogUtil.e("ActivityFragment  onPause=" + EventBus.getDefault().isRegistered(this));
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtil.e("ActivityFragment  onDestroy=" + EventBus.getDefault().isRegistered(this));
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
     }
+
 
 }

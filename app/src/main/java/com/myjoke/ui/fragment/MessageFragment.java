@@ -45,6 +45,10 @@ public class MessageFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+        LogUtil.e("MessageFragment  initView=" + EventBus.getDefault().isRegistered(this));
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -61,10 +65,7 @@ public class MessageFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        LogUtil.e("MessageFragment  initView=" + EventBus.getDefault().isRegistered(this));
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
+
     }
 
     @Override
@@ -77,7 +78,7 @@ public class MessageFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.btn1:
                 ToastUtil.getInstance().showToast("点击了消息模块里面的按钮");
-                EventBus.getDefault().post(new FragmentEvent("message", "事件从消息模块来"));
+                EventBus.getDefault().post(new FragmentEvent("message", "事件从消息模块来:" + System.currentTimeMillis()));
                 break;
         }
     }
@@ -92,9 +93,9 @@ public class MessageFragment extends BaseFragment {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        LogUtil.e("MessageFragment  onPause=" + EventBus.getDefault().isRegistered(this));
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtil.e("MessageFragment  onDestroy=" + EventBus.getDefault().isRegistered(this));
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
