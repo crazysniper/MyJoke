@@ -14,7 +14,6 @@
       <module fileurl="file://$PROJECT_DIR$/eventdemo/eventdemo.iml" filepath="$PROJECT_DIR$/eventdemo/eventdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/fourmodule/fourmodule.iml" filepath="$PROJECT_DIR$/fourmodule/fourmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/glidedemo/glidedemo.iml" filepath="$PROJECT_DIR$/glidedemo/glidedemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/materialdemo/materialdemo.iml" filepath="$PROJECT_DIR$/materialdemo/materialdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/messagemodule/messagemodule.iml" filepath="$PROJECT_DIR$/messagemodule/messagemodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/myannotations/myannotations.iml" filepath="$PROJECT_DIR$/myannotations/myannotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybind/mybind.iml" filepath="$PROJECT_DIR$/mybind/mybind.iml" />

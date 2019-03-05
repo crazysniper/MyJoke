@@ -1,16 +1,16 @@
-package application.materialdemo.ui;
+package application.supportdesignview.ui;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
 
-import application.materialdemo.R;
-import application.materialdemo.util.MaterialConstant;
+import application.supportdesignview.R;
+import application.supportdesignview.util.SupportDesignConstant;
 
-@Route(path = MaterialConstant.CardViewActivity)
+@Route(path = SupportDesignConstant.CardViewActivity)
 public class CardViewActivity extends BaseActivity {
 
-   @Override
+    @Override
     public int getLayoutId() {
         return R.layout.activity_card_view;
     }

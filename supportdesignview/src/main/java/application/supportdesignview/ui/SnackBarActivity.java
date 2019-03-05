@@ -1,4 +1,4 @@
-package application.materialdemo.ui;
+package application.supportdesignview.ui;
 
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
@@ -10,13 +10,19 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.util.ToastUtil;
 
-import application.materialdemo.R;
-import application.materialdemo.util.MaterialConstant;
+import application.supportdesignview.R;
+import application.supportdesignview.R2;
+import application.supportdesignview.util.SupportDesignConstant;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-@Route(path = MaterialConstant.SnackBarActivity)
+
+@Route(path = SupportDesignConstant.SnackBarActivity)
 public class SnackBarActivity extends BaseActivity implements View.OnClickListener {
 
-    private Button btn1;
+    @BindView(R2.id.btn1)
+    Button btn1;
 
     @Override
     public int getLayoutId() {
@@ -25,10 +31,8 @@ public class SnackBarActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void initView() {
+        ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
-        btn1 = findView(R.id.btn1);
-
-        btn1.setOnClickListener(this);
     }
 
     @Override
@@ -36,7 +40,7 @@ public class SnackBarActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    @Override
+    @OnClick({R2.id.btn1})
     public void onClick(View v) {
         if (v.getId() == R.id.btn1) {
             Snackbar snackbar = Snackbar.make(btn1, "你猜", Snackbar.LENGTH_INDEFINITE).setAction("确定", new View.OnClickListener() {

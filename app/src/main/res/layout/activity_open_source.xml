@@ -15,12 +15,6 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-
-        <Button
-            android:id="@+id/material"
-            style="@style/ButtonStyle"
-            android:text="跳转到Material Design" />
-
         <Button
             android:id="@+id/permission"
             style="@style/ButtonStyle"

@@ -9,7 +9,6 @@ import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.util.ConstantPath;
 
 import application.eventbusdemo.util.EventBusUtil;
-import application.materialdemo.util.MaterialConstant;
 import application.okhttpdemo.util.OkHttpConstant;
 import application.permissiondemo.util.PermissionConstant;
 import application.webviewdemo.util.WebViewConstant;
@@ -35,12 +34,9 @@ public class OpenSourceActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.material, R.id.permission, R.id.okhttp, R.id.webview,R.id.eventbus})
+    @OnClick({R.id.permission, R.id.okhttp, R.id.webview, R.id.eventbus})
     public void click(View view) {
         switch (view.getId()) {
-            case R.id.material:
-                ARouter.getInstance().build(MaterialConstant.MaterialMainActivity).navigation();
-                break;
             case R.id.permission:
                 ARouter.getInstance().build(PermissionConstant.PermissionMainActivity).navigation();
                 break;

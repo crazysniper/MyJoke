@@ -92,7 +92,6 @@ dependencies {
         implementation project(':dialogdemo')
         implementation project(':scrollerdemo')
         implementation project(':eventdemo')
-        implementation project(':materialdemo')
         implementation project(':permissiondemo')
         implementation project(':okhttpdemo')
         implementation project(':glidedemo')

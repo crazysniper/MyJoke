@@ -9,7 +9,9 @@
         <activity android:name=".ui.ConstraintLayoutActivity" />
         <activity android:name=".ui.SupportDesignActivity" />
         <activity android:name=".ui.AsyncTaskActivity" />
-        <activity android:name=".ui.TestDoubleClickActivity"></activity>
+        <activity android:name=".ui.TestDoubleClickActivity" />
+        <activity android:name=".ui.CardViewActivity" />
+        <activity android:name=".ui.SnackBarActivity"></activity>
     </application>
 
 </manifest>

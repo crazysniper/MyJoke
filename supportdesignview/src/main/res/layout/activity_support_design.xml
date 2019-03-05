@@ -8,6 +8,16 @@
     tools:context="application.supportdesignview.ui.SupportDesignActivity">
 
     <Button
+        android:id="@+id/cardView"
+        style="@style/ButtonStyle"
+        android:text="CardView" />
+
+    <Button
+        android:id="@+id/snackBar"
+        style="@style/ButtonStyle"
+        android:text="SnackBar" />
+
+    <Button
         android:id="@+id/constraintLayout"
         style="@style/ButtonStyle"
         android:layout_marginTop="0dp"

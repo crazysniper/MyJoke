@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_material_main"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_snack_bar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/cardView"
-        style="@style/ButtonStyle"
-        android:text="CardView" />
 
     <Button
-        android:id="@+id/snackBar"
+        android:id="@+id/btn1"
         style="@style/ButtonStyle"
-        android:text="SnackBar" />
-
+        android:text="打开Snackbar" />
 
 </LinearLayout>
