@@ -111,6 +111,10 @@ public class MyLinearView extends LinearLayout {
         }
     }
 
+    public String getLeftText() {
+        return leftTextView.getText().toString();
+    }
+
     public void setRightText(String rightText) {
         if (rightTextView != null) {
             rightTextView.setText(rightText);

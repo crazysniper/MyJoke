@@ -17,4 +17,5 @@ public class ConstantPath {
     public static final String OpenSourceActivity = BASE_PATH + "OpenSourceActivity";
 
     public static final String LoginActivity = BASE_PATH + "LoginActivity";
+    public static final String TabBarActivity = BASE_PATH + "TabBarActivity";
 }

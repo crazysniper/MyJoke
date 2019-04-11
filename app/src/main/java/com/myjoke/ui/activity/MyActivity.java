@@ -1,6 +1,8 @@
 package com.myjoke.ui.activity;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -22,6 +24,9 @@ public class MyActivity extends BaseActivity {
 
     @BindView(R.id.myView)
     MyView myView;
+    @BindView(R.id.flexLayout)
+    Button flexLayout;
+
 
     @BindView(R.id.myViewGroup)
     MyViewGroup myViewGroup;
@@ -42,9 +47,13 @@ public class MyActivity extends BaseActivity {
         LogUtil.e("屏幕宽度==" + ScreenUtil.getScreenWidth(this));
         LogUtil.e("屏幕高度==" + ScreenUtil.getScreenHeight(this));
         LogUtil.e("屏幕密度比例==" + ScreenUtil.getDensity(this));
+
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) flexLayout.getLayoutParams();
+        layoutParams.width=200;
+//        myView.setLayoutParams(layoutParams);
     }
 
-    @OnClick({R.id.myView, R.id.myViewGroup, R.id.flexLayout})
+    @OnClick({R.id.myView, R.id.myViewGroup, R.id.flexLayout,R.id.tabbar})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.myView:
@@ -55,6 +64,9 @@ public class MyActivity extends BaseActivity {
                 break;
             case R.id.flexLayout:
                 ARouter.getInstance().build(ConstantPath.FlexLayoutActivity).navigation();
+                break;
+            case R.id.tabbar:
+                ARouter.getInstance().build(ConstantPath.TabBarActivity).navigation();
                 break;
         }
     }

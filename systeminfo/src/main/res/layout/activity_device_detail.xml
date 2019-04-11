@@ -39,4 +39,9 @@
         style="@style/EventBus_MyLinearView"
         app:leftText="状态栏高度" />
 
+
+    <application.baseview.layout.MyLinearView
+        android:id="@+id/textToSpeech"
+        style="@style/EventBus_MyLinearView"
+        app:leftText="文字转语音" />
 </LinearLayout>

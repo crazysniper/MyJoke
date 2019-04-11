@@ -59,7 +59,8 @@
         <activity android:name=".ui.activity.ArouteActivity" />
         <activity android:name=".ui.activity.FlexLayoutActivity" />
         <activity android:name=".ui.activity.login.LoginActivity" />
-        <activity android:name=".ui.activity.OpenSourceActivity"></activity>
+        <activity android:name=".ui.activity.OpenSourceActivity" />
+        <activity android:name=".ui.activity.TabBarActivity"></activity>
     </application>
 
 </manifest>
