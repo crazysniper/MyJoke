@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
@@ -16,6 +17,7 @@ import com.example.annotations.MyBindView;
 import com.myjoke.R;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.base.BaseFragment;
+import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.ToastUtil;
 import com.myjoke.ui.fragment.ActivityFragment;
 import com.myjoke.ui.fragment.HomeFragment;
@@ -29,6 +31,7 @@ import java.util.List;
 import application.newsmodule.fragment.NewsFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @Route(path = ConstantPath.MainActivity)
 public class MainActivity extends BaseActivity {
@@ -41,8 +44,8 @@ public class MainActivity extends BaseActivity {
     @MyBindView(R.id.linearLayout)
     LinearLayout linearLayout2;
 
-    @MyBindView(android.R.id.tabhost)
-    FragmentTabHost tabHost2;
+    @BindView(R.id.btn)
+    Button btn;
 
     private List<TabItem> tabItemList = new ArrayList<>();
 
@@ -88,6 +91,33 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @OnClick({R.id.btn})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn:
+                ToastUtil.getInstance().showToast("从Activity中传值到Fragment");
+                // 这边因为首先就加载了第一个Fragment，所以获取到的Fragment不是空。切换之后，就会又变成空。
+                HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag(tabItemList.get(0).getTitle());
+                if (homeFragment != null) {
+                    LogUtil.e("homeFragment不为空");
+                    View homeView = homeFragment.getView();
+                    if (homeView != null) {
+                        LogUtil.e("homeView不为空");
+                        Button button = (Button) homeView.findViewById(R.id.four);
+                        if (button != null) {
+                            LogUtil.e("button不为空");
+                            button.setText(button.getText() + "-从Activity中传值过来");
+                        }
+                    }
+                }
+                // 这边因为还没有加载Fragment，所以获取的messageFragment是空。
+                MessageFragment messageFragment = (MessageFragment) getSupportFragmentManager().findFragmentByTag(tabItemList.get(4).getTitle());
+                LogUtil.e("messageFragment!=null--->" + Boolean.toString(messageFragment != null));
+
+                break;
+        }
     }
 
     public void initTabList() {
@@ -200,10 +230,10 @@ public class MainActivity extends BaseActivity {
 
         public void setSelected(boolean selected) {
             if (selected) {
-                tabTitle.setTextColor(getColor(R.color.tab_title_selected_color));
+                tabTitle.setTextColor(getResources().getColor(R.color.tab_title_selected_color));
                 tabImg.setImageResource(imageSelected);
             } else {
-                tabTitle.setTextColor(getColor(R.color.tab_title_default_color));
+                tabTitle.setTextColor(getResources().getColor(R.color.tab_title_default_color));
                 tabImg.setImageResource(imageNormal);
             }
         }

@@ -26,6 +26,7 @@ import java.io.IOException;
 import application.dialogdemo.utils.DialogConstant;
 import application.eventdemo.util.EventConstant;
 import application.fourmodule.util.FourModuleConstant;
+import application.inputlibrary.util.InputUtil;
 import application.notificationdemo.util.NotificationUtil;
 import application.recyclerviewdemo.util.RecyclerViewConstant;
 import application.scrollerdemo.util.ScrollerConstant;
@@ -222,7 +223,7 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick({R.id.btn1, R.id.broadcast, R.id.view, R.id.fragmentAroute, R.id.recyclerModule,
             R.id.supportDesignModule, R.id.sysModule, R.id.dialogModule, R.id.scrollerModule,
-            R.id.eventModule, R.id.viewpager, R.id.four, R.id.notification, R.id.openSource})
+            R.id.eventModule, R.id.viewpager, R.id.four, R.id.notification, R.id.openSource,R.id.input})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.four:
@@ -280,6 +281,9 @@ public class HomeFragment extends BaseFragment {
                 break;
             case R.id.notification:
                 ARouter.getInstance().build(NotificationUtil.NotificationMainActivity).navigation();
+                break;
+            case R.id.input:
+                ARouter.getInstance().build(InputUtil.InputMainActivity).navigation();
                 break;
             case R.id.openSource:
                 ARouter.getInstance().build(ConstantPath.OpenSourceActivity).navigation();

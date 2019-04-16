@@ -103,6 +103,10 @@
             style="@style/ButtonStyle"
             android:text="跳转到ViewPager" />
 
+        <Button
+            android:id="@+id/input"
+            style="@style/ButtonStyle"
+            android:text="跳转到软键盘" />
 
         <Button
             android:id="@+id/notification"

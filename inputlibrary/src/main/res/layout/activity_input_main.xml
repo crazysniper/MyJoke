@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.InputMainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/stateUnspecified"
+            style="@style/ButtonStyle"
+            android:text="stateUnspecified" />
+
+
+        <Button
+            android:id="@+id/stateUnchanged"
+            style="@style/ButtonStyle"
+            android:text="stateUnchanged" />
+
+
+        <Button
+            android:id="@+id/stateHidden"
+            style="@style/ButtonStyle"
+            android:text="stateHidden" />
+
+
+        <Button
+            android:id="@+id/stateAlwaysHidden"
+            style="@style/ButtonStyle"
+            android:text="stateAlwaysHidden" />
+
+        <Button
+            android:id="@+id/stateVisible"
+            style="@style/ButtonStyle"
+            android:text="stateVisible" />
+
+        <Button
+            android:id="@+id/stateAlwaysVisible"
+            style="@style/ButtonStyle"
+            android:text="stateAlwaysVisible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/black" />
+
+        <Button
+            android:id="@+id/adjustUnspecified"
+            style="@style/ButtonStyle"
+            android:text="adjustUnspecified" />
+
+        <Button
+            android:id="@+id/adjustResize"
+            style="@style/ButtonStyle"
+            android:text="adjustResize" />
+
+        <Button
+            android:id="@+id/adjustPan"
+            style="@style/ButtonStyle"
+            android:text="adjustPan" />
+
+        <Button
+            android:id="@+id/adjustNoting"
+            style="@style/ButtonStyle"
+            android:text="adjustNoting" />
+    </LinearLayout>
+
+</ScrollView>

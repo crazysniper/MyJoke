@@ -4,28 +4,41 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.baselibray.util.ScreenUtil;
+import com.myjoke.baselibray.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import application.viewpagerdemo.R;
+import application.viewpagerdemo.R2;
 import application.viewpagerdemo.TabItem;
 import application.viewpagerdemo.adapter.ViewFragmentPagerAdapter;
 import application.viewpagerdemo.ui.fragment.TabFragment;
 import application.viewpagerdemo.util.ViewPagerConstant;
+import application.viewpagerdemo.view.MyViewPager;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @Route(path = ViewPagerConstant.ViewPager_Fragment_Activity)
-public class ViewPager_Fragment_Activity extends BaseActivity implements View.OnClickListener {
+public class ViewPager_Fragment_Activity extends BaseActivity implements View.OnClickListener, TabFragment.ToActivityListener {
 
-    private ViewPager viewPager;
+
+    @BindView(R2.id.btn)
+    Button btn;
+
+    private MyViewPager viewPager;
     private LinearLayout tab_content;
     private View line;
+
+    ViewFragmentPagerAdapter adapter;
 
     private static final String TAG = "ViewPager_View_Activity";
     private List<Fragment> fragmentList = new ArrayList<>();
@@ -34,7 +47,6 @@ public class ViewPager_Fragment_Activity extends BaseActivity implements View.On
 
     private int lastSelectedIndex = 0;
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_view_pager__fragment;
@@ -42,6 +54,7 @@ public class ViewPager_Fragment_Activity extends BaseActivity implements View.On
 
     @Override
     public void initView() {
+        ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
         viewPager = findView(R.id.viewPager);
         tab_content = findView(R.id.tab_content);
@@ -75,7 +88,7 @@ public class ViewPager_Fragment_Activity extends BaseActivity implements View.On
                 }
             });
         }
-        ViewFragmentPagerAdapter adapter = new ViewFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
+        adapter = new ViewFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(adapter);
 
 
@@ -118,15 +131,31 @@ public class ViewPager_Fragment_Activity extends BaseActivity implements View.On
 
     }
 
+    @OnClick({R2.id.btn})
+    public void onClick(View view) {
+        if (view.getId() == R.id.btn) {
+//            TabFragment tabFragment = (TabFragment) adapter.getItem(lastSelectedIndex);// 不用这种方法，因为getItem会重新创建，原因未知，网上说的。
+            TabFragment tabFragment = (TabFragment) getFragment(lastSelectedIndex);
+            tabFragment.setTitle(tabFragment.getTitle() + "-接收到了Activity中的值");
+        }
+    }
+
     private void addFragments(String title) {
         TabFragment tabFragment = TabFragment.newInstance(title);
 
         fragmentList.add(tabFragment);
     }
 
-
     @Override
-    public void onClick(View v) {
+    public void toActivity(String text) {
+        ToastUtil.getInstance().showToast(text);
+        btn.setText(btn.getText() + "A,");
+    }
 
+    public Fragment getFragment(int index) {
+        if (index < 0 || index >= fragmentList.size()) {
+            throw new IllegalArgumentException("下标异常");
+        }
+        return fragmentList.get(index);
     }
 }

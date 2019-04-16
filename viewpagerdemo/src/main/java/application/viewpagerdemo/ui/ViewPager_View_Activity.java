@@ -59,7 +59,7 @@ public class ViewPager_View_Activity extends BaseActivity {
             addViews(titles[index]);
 
             TabItem tabItem = new TabItem(this, R.drawable.tab_wechat, R.drawable.tab_wechat_selected, titles[index], layoutParams,
-                    getColor(R.color.tab_wx_text_color), getColor(R.color.tab_wx_text_color_selected)
+                    getResources().getColor(R.color.tab_wx_text_color), getResources().getColor(R.color.tab_wx_text_color_selected)
             );
             tabItemList.add(tabItem);
             tab_content.addView(tabItem.getView());

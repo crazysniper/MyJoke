@@ -101,6 +101,7 @@ dependencies {
         implementation project(':webviewdemo')
         implementation project(':notificationdemo')
         implementation project(':eventbusdemo')
+        implementation project(':inputlibrary')
 
 
         implementation project(':newsmodule')
