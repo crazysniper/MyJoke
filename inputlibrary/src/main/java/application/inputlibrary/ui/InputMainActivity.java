@@ -1,9 +1,9 @@
 package application.inputlibrary.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
@@ -38,28 +38,29 @@ public class InputMainActivity extends BaseActivity {
             R2.id.stateVisible, R2.id.stateAlwaysVisible,
             R2.id.adjustUnspecified, R2.id.adjustResize, R2.id.adjustPan, R2.id.adjustNoting})
     public void onClick(View view) {
-        Postcard postcard = ARouter.getInstance().build(InputUtil.InputDemoActivity);
+//        Postcard postcard = ARouter.getInstance().build(InputUtil.InputDemoActivity);
+        Intent intent = new Intent(this, InputDemoActivity.class);
         if (view.getId() == R.id.stateUnspecified) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
         } else if (view.getId() == R.id.stateUnchanged) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED);
         } else if (view.getId() == R.id.stateHidden) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         } else if (view.getId() == R.id.stateAlwaysHidden) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         } else if (view.getId() == R.id.stateVisible) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         } else if (view.getId() == R.id.stateAlwaysVisible) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         } else if (view.getId() == R.id.adjustUnspecified) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED);
         } else if (view.getId() == R.id.adjustResize) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         } else if (view.getId() == R.id.adjustPan) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         } else if (view.getId() == R.id.adjustNoting) {
-            postcard.withInt("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+            intent.putExtra("mode", WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         }
-        postcard.navigation();
+        startActivity(intent);
     }
 }

@@ -1,6 +1,5 @@
 package application.inputlibrary.ui;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.myjoke.baselibray.base.BaseActivity;
@@ -14,11 +13,12 @@ import butterknife.ButterKnife;
 @Route(path = InputUtil.InputDemoActivity)
 public class InputDemoActivity extends BaseActivity {
 
-    @Autowired(name = "mode")//
+
     public int mode;
 
     @Override
     public int getLayoutId() {
+        mode = getIntent().getIntExtra("mode", 0);
         LogUtil.e("MODE==" + mode);
         ARouter.getInstance().inject(this);
         getWindow().setSoftInputMode(mode);
