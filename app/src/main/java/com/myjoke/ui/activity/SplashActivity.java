@@ -3,6 +3,7 @@ package com.myjoke.ui.activity;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -31,6 +32,8 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
+        setTheme(R.style.AppTheme);//恢复原有的样式。在setContentView之前设置。
+        requestWindowFeature(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.activity_splash;
     }
 
