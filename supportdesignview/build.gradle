@@ -33,4 +33,5 @@ dependencies {
     api project(':baselibrary')
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

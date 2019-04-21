@@ -12,6 +12,7 @@ import com.myjoke.baselibray.util.LogUtil;
 import com.myjoke.baselibray.util.SpUtil;
 import com.myjoke.baselibray.util.ToastUtil;
 import com.myjoke.bean.PackageInfoBean;
+import com.myjoke.callback.ForegroundCallbacks;
 import com.myjoke.util.PackageUtil;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -59,6 +60,8 @@ public class MyApplication extends Application {
             LogUtil.e("BaseActivity", "Exception  " + e.getMessage());
             e.printStackTrace();
         }
+
+        registerActivityLifecycleCallbacks(new ForegroundCallbacks());
     }
 
     private void modulesApplicationInit() throws ClassNotFoundException, IllegalAccessException, InstantiationException {

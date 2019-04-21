@@ -99,6 +99,10 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
+                        LogUtil.e("点击下标=" + position + ",getItemCount==" + getItemCount());
+                        LogUtil.e("getPosition=" + holder.getPosition() + ",getLayoutPosition==" + holder.getLayoutPosition());
+                        LogUtil.e("getAdapterPosition=" + holder.getAdapterPosition() + ",getOldPosition==" + holder.getOldPosition());
+                        LogUtil.e("getItemId=" + holder.getItemId() + ",getItemViewType==" + holder.getItemViewType() + ",,,isRecyclable==" + holder.isRecyclable());
                         listener.onClick(((LinearLayoutViewHolder) holder).itemView, position);
                     }
                 }
@@ -127,7 +131,7 @@ public class LinearLayoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        LogUtil.e("LinearLayoutAdapter", "getItemCount  getItemCount=" + stuList.size());
+//        LogUtil.e("LinearLayoutAdapter", "getItemCount  getItemCount=" + stuList.size());
         return stuList.size();
     }
 

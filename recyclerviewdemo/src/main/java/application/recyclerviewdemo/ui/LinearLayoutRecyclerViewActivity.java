@@ -88,7 +88,8 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                recyclerView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+//                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 LogUtil.e("LinearLayoutRecyclerViewActivity  recyclerView.getHeight()=" + recyclerView.getHeight());
             }
         });
@@ -105,7 +106,18 @@ public class LinearLayoutRecyclerViewActivity extends BaseActivity implements Li
 
     @Override
     public void onClick(View view, int position) {
-        ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "点击=" + position);
+        int childCount = recyclerView.getChildCount();
+        View childView = recyclerView.getChildAt(position);
+        int childLayoutPosition = recyclerView.getChildLayoutPosition(childView);
+        int childAdapterPosition = recyclerView.getChildAdapterPosition(childView);
+
+        LogUtil.e("position==" + position + ",,,childCount==" + childCount + "   ,,,childLayoutPosition==" + childLayoutPosition + "     ,,childAdapterPosition==" + childAdapterPosition);
+
+//        ToastUtil.getInstance().showToast(LinearLayoutRecyclerViewActivity.this, "点击=" + position);
+
+
+        studentList.get(position).setName("修改之后的名称");
+        adapter.notifyItemChanged(position);
     }
 
     @Override
