@@ -12,4 +12,8 @@
         style="@style/ButtonStyle"
         android:text="Glide" />
 
+    <Button
+        android:id="@+id/gif"
+        style="@style/ButtonStyle"
+        android:text="加载gif" />
 </LinearLayout>

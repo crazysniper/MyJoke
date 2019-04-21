@@ -9,6 +9,7 @@ import com.myjoke.baselibray.base.BaseActivity;
 import com.myjoke.util.ConstantPath;
 
 import application.eventbusdemo.util.EventBusUtil;
+import application.glidedemo.util.GlideUtil;
 import application.okhttpdemo.util.OkHttpConstant;
 import application.permissiondemo.util.PermissionConstant;
 import application.webviewdemo.util.WebViewConstant;
@@ -34,7 +35,7 @@ public class OpenSourceActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.permission, R.id.okhttp, R.id.webview, R.id.eventbus})
+    @OnClick({R.id.permission, R.id.okhttp, R.id.webview, R.id.eventbus,R.id.glide})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.permission:
@@ -48,6 +49,9 @@ public class OpenSourceActivity extends BaseActivity {
                 break;
             case R.id.eventbus:
                 ARouter.getInstance().build(EventBusUtil.EventBusMainActivity).navigation();
+                break;
+            case R.id.glide:
+                ARouter.getInstance().build(GlideUtil.GlideMainActivity).navigation();
                 break;
         }
     }

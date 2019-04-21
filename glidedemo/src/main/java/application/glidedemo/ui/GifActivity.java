@@ -1,30 +1,41 @@
 package application.glidedemo.ui;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.Glide;
 import com.myjoke.baselibray.base.BaseActivity;
 
-import application.glidedemo.R2;
 import application.glidedemo.R;
+import application.glidedemo.R2;
 import application.glidedemo.util.GlideUtil;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-@Route(path = GlideUtil.GlideMainActivity)
-public class GlideMainActivity extends BaseActivity {
+@Route(path = GlideUtil.GifActivity)
+public class GifActivity extends BaseActivity {
+
+    @BindView(R2.id.start)
+    Button start;
+
+    @BindView(R2.id.gif)
+    ImageView gifView;
+
+    private String gifUrl = "http://wx2.sinaimg.cn/large/006tbyQzly1g12h21ujvng305008we82.gif";
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_glide_main;
+        return R.layout.activity_gif;
     }
 
     @Override
     public void initView() {
         ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
-//        Glide.with(this);
     }
 
     @Override
@@ -32,12 +43,10 @@ public class GlideMainActivity extends BaseActivity {
 
     }
 
-    @OnClick({R2.id.glide, R2.id.gif})
+    @OnClick({R2.id.start})
     public void onClick(View view) {
-        if (view.getId() == R.id.glide) {
-            ARouter.getInstance().build(GlideUtil.GlideActivity).navigation();
-        } else if (view.getId() == R.id.gif) {
-            ARouter.getInstance().build(GlideUtil.GifActivity).navigation();
+        if (view.getId() == R.id.start) {
+            Glide.with(this).load(gifUrl).into(gifView);
         }
     }
 }

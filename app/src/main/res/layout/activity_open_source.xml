@@ -35,6 +35,11 @@
             style="@style/ButtonStyle"
             android:text="跳转到EventBus" />
 
+        <Button
+            android:id="@+id/glide"
+            style="@style/ButtonStyle"
+            android:text="跳转到Glide" />
+
     </LinearLayout>
 
 </ScrollView>
