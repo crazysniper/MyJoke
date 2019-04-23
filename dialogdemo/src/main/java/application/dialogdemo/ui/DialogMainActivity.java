@@ -1,13 +1,18 @@
 package application.dialogdemo.ui;
 
+import android.animation.Animator;
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,11 +31,13 @@ import application.dialogdemo.utils.DialogConstant;
 @Route(path = DialogConstant.DialogMainActivity)
 public class DialogMainActivity extends BaseActivity {
 
-    private Button openDialog, openPopupWindow, openServiceDialog, openAction;
+    private Button openDialog, openPopupWindow, openServiceDialog, openAction, openAnim;
     private LinearLayout activity_dialog_main;
     private MyDialog dialog;
+    private ImageView bg;
 
     private EditText phone;
+    private int centerX, centerY;
 
     @Override
     public int getLayoutId() {
@@ -47,6 +54,8 @@ public class DialogMainActivity extends BaseActivity {
         openAction = (Button) findViewById(R.id.openAction);
         activity_dialog_main = (LinearLayout) findViewById(R.id.activity_dialog_main);
         phone = findView(R.id.phone);
+        openAnim = findView(R.id.openAnim);
+        bg = findView(R.id.bg);
 
         openDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +84,44 @@ public class DialogMainActivity extends BaseActivity {
                 ARouter.getInstance().build(DialogConstant.ActionActivity).navigation();
             }
         });
+
+        centerX = getResources().getDisplayMetrics().widthPixels / 2;
+        centerY = getResources().getDisplayMetrics().heightPixels / 2;
+
+        openAnim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                    Animator animOuter = ViewAnimationUtils.createCircularReveal(bg, centerX, centerY, 10, 300);
+                    animOuter.setInterpolator(new AccelerateDecelerateInterpolator());//插补器有没有不影响
+                    animOuter.setDuration(3000);
+                    animOuter.start();
+
+                    animOuter.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    });
+                }
+            }
+        });
+
 
         phone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -121,7 +168,7 @@ public class DialogMainActivity extends BaseActivity {
         phone.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                LogUtil.e("actionId="+actionId);
+                LogUtil.e("actionId=" + actionId);
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     ToastUtil.getInstance().showToast(DialogMainActivity.this, phone.getText().toString());
                 }

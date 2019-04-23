@@ -13,7 +13,12 @@
         <activity android:name=".ui.ServiceMainActivity" />
         <activity android:name=".ui.BroadcastMainActivity" />
         <activity android:name=".ui.ContentProviderMainActivity" />
-        <activity android:name=".ui.contentprovider.ContactActivity"></activity>
+        <activity android:name=".ui.contentprovider.ContactActivity" />
+
+        <service
+            android:name=".ui.service.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

@@ -27,6 +27,12 @@
         style="@style/ButtonStyle"
         android:text="打开Action" />
 
+
+    <Button
+        android:id="@+id/openAnim"
+        style="@style/ButtonStyle"
+        android:text="打开动画" />
+
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
@@ -39,5 +45,11 @@
         android:textColor="#FF4081"
         android:textColorHint="#878787"
         android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg" />
 
 </LinearLayout>

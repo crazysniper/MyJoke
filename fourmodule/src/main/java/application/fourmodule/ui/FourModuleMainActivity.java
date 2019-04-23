@@ -31,10 +31,12 @@ public class FourModuleMainActivity extends BaseActivity {
 
     }
 
-    @OnClick({R2.id.contact})
+    @OnClick({R2.id.contact,R2.id.service})
     public void onClikc(View view) {
         if (view.getId() == R.id.contact) {
             ARouter.getInstance().build(FourModuleConstant.ContactActivity).navigation();
+        } else if (view.getId() == R.id.service) {
+            ARouter.getInstance().build(FourModuleConstant.ServiceMainActivity).navigation();
         }
     }
 

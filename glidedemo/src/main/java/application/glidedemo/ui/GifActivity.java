@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.myjoke.baselibray.base.BaseActivity;
 
 import application.glidedemo.R;
@@ -46,7 +48,9 @@ public class GifActivity extends BaseActivity {
     @OnClick({R2.id.start})
     public void onClick(View view) {
         if (view.getId() == R.id.start) {
-            Glide.with(this).load(gifUrl).into(gifView);
+            RequestOptions options=  new RequestOptions().placeholder(R.drawable.btn_shape).diskCacheStrategy(DiskCacheStrategy.ALL);
+            Glide.with(this).load(gifUrl).apply(options).into(gifView);
+            Glide.with(this).load(gifUrl).preload();
         }
     }
 }
