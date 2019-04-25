@@ -59,6 +59,10 @@
             android:layout_height="wrap_content"
             android:digits="12345"
             android:hint="测试" />
+        <Button
+            android:id="@+id/basicDemo"
+            style="@style/ButtonStyle"
+            android:text="跳转到基础" />
 
         <Button
             android:id="@+id/recyclerModule"

@@ -23,6 +23,7 @@ import com.myjoke.util.ConstantPath;
 import java.io.File;
 import java.io.IOException;
 
+import application.basicdemo.util.BasicUtil;
 import application.camerademo.util.CameraUtil;
 import application.dialogdemo.utils.DialogConstant;
 import application.eventdemo.util.EventConstant;
@@ -224,7 +225,8 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick({R.id.btn1, R.id.broadcast, R.id.view, R.id.fragmentAroute, R.id.recyclerModule,
             R.id.supportDesignModule, R.id.sysModule, R.id.dialogModule, R.id.scrollerModule,
-            R.id.eventModule, R.id.viewpager, R.id.four, R.id.notification, R.id.openSource, R.id.input, R.id.openCamera})
+            R.id.eventModule, R.id.viewpager, R.id.four, R.id.notification, R.id.openSource,
+            R.id.input, R.id.openCamera,R.id.basicDemo})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.four:
@@ -291,6 +293,9 @@ public class HomeFragment extends BaseFragment {
                 break;
             case R.id.openCamera:
                 ARouter.getInstance().build(CameraUtil.CameraMainActivity).navigation();
+                break;
+            case R.id.basicDemo:
+                ARouter.getInstance().build(BasicUtil.BasicMainActivity).navigation();
                 break;
         }
     }
