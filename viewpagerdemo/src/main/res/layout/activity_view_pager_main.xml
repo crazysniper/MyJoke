@@ -9,9 +9,13 @@
         style="@style/ButtonStyle"
         android:text="ViewPager+View" />
 
-
     <Button
         android:id="@+id/btn2"
         style="@style/ButtonStyle"
         android:text="ViewPager+Fragment" />
+
+    <Button
+        android:id="@+id/btn3"
+        style="@style/ButtonStyle"
+        android:text="Fragment  add hide show" />
 </LinearLayout>

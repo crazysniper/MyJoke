@@ -21,4 +21,8 @@
         style="@style/ButtonStyle"
         android:text="StaggeredRecyclerViewDemo" />
 
+    <Button
+        android:id="@+id/listView"
+        style="@style/ButtonStyle"
+        android:text="ListView" />
 </LinearLayout>

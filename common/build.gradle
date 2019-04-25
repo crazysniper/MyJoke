@@ -26,46 +26,40 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-//    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-//    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.2', {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    //    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.2', {
+    //        exclude group: 'com.android.support', module: 'support-annotations'
+    //    })
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation 'junit:junit:4.12'
-
     api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     api "com.android.support:design:$rootProject.supportLibraryVersion"
-
     // aroutercom.jakewharton:butterknife
-    api ("com.alibaba:arouter-api:$rootProject.arouterApiVersion", {
-        exclude (group: 'com.android.support', module: 'support-v4')
+    api("com.alibaba:arouter-api:$rootProject.arouterApiVersion", {
+        exclude(group: 'com.android.support', module: 'support-v4')
     })
-//    implementation "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
+    //    implementation "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
-
     // butterknife
     api "com.jakewharton:butterknife:$rootProject.bufferknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.bufferknifeVersion"
-
     // eventbus
     api "org.greenrobot:eventbus:$rootProject.eventbusVersion"
     annotationProcessor "org.greenrobot:eventbus-annotation-processor:$rootProject.eventbusVersion"
-
     // okhttp3
     api 'com.squareup.okhttp3:okhttp:3.12.0'
-
     // gson
     api 'com.google.code.gson:gson:2.8.5'
-
     // glide
     api 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-
-
+    api 'com.yanzhenjie.permission:support:2.0.1'
 }

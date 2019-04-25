@@ -21,10 +21,10 @@ import application.baseview.bar.style.TitleBarNightStyle;
 import application.baseview.bar.style.TitleBarTransparentStyle;
 
 /**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/TitleBar
- *    time   : 2018/08/17
- *    desc   : Android 通用标题栏
+ * author : Android 轮子哥
+ * github : https://github.com/getActivity/TitleBar
+ * time   : 2018/08/17
+ * desc   : Android 通用标题栏
  */
 public class TitleBar extends FrameLayout
         implements View.OnClickListener, Runnable {
@@ -152,7 +152,7 @@ public class TitleBar extends FrameLayout
 
         if (array.hasValue(R.styleable.TitleBar_leftIcon)) {
             setLeftIcon(getContext().getResources().getDrawable(array.getResourceId(R.styleable.TitleBar_leftIcon, 0)));
-        }else {
+        } else {
             if (array.getBoolean(R.styleable.TitleBar_backButton, style.getBackIcon() != null)) {
                 // 显示返回图标
                 setLeftIcon(style.getBackIcon());
@@ -164,32 +164,39 @@ public class TitleBar extends FrameLayout
         }
 
         // 文字颜色设置
-        setLeftColor(array.getColor(R.styleable.TitleBar_leftColor, style.getLeftColor()));
-        setTitleColor(array.getColor(R.styleable.TitleBar_titleColor, style.getTitleColor()));
-        setRightColor(array.getColor(R.styleable.TitleBar_rightColor, style.getRightColor()));
+//        setLeftColor(array.getColor(R.styleable.TitleBar_leftColor, style.getLeftColor()));
+//        setTitleColor(array.getColor(R.styleable.TitleBar_titleColor, style.getTitleColor()));
+//        setRightColor(array.getColor(R.styleable.TitleBar_rightColor, style.getRightColor()));
+        setTextColor(mLeftView, array.getColor(R.styleable.TitleBar_leftColor, style.getLeftColor()));
+        setTextColor(mTitleView, array.getColor(R.styleable.TitleBar_titleColor, style.getTitleColor()));
+        setTextColor(mRightView, array.getColor(R.styleable.TitleBar_rightColor, style.getRightColor()));
 
         // 文字大小设置
-        setLeftSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_leftSize, (int) style.getLeftSize()));
-        setTitleSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_titleSize, (int) style.getTitleSize()));
-        setRightSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_rightSize, (int) style.getRightSize()));
+//        setLeftSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_leftSize, (int) style.getLeftSize()));
+//        setTitleSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_titleSize, (int) style.getTitleSize()));
+//        setRightSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_rightSize, (int) style.getRightSize()));
+
+        setTextSize(mLeftView, TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_leftSize, (int) style.getLeftSize()));
+        setTextSize(mTitleView, TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_titleSize, (int) style.getTitleSize()));
+        setTextSize(mRightView, TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_rightSize, (int) style.getRightSize()));
 
         // 背景设置
         if (array.hasValue(R.styleable.TitleBar_leftBackground)) {
             setLeftBackground(array.getDrawable(R.styleable.TitleBar_leftBackground));
-        }else {
+        } else {
             setLeftBackground(style.getLeftBackground());
         }
 
         if (array.hasValue(R.styleable.TitleBar_rightBackground)) {
             setRightBackground(array.getDrawable(R.styleable.TitleBar_rightBackground));
-        }else {
+        } else {
             setRightBackground(style.getRightBackground());
         }
 
         // 分割线设置
         if (array.hasValue(R.styleable.TitleBar_lineColor)) {
             setLineDrawable(array.getDrawable(R.styleable.TitleBar_lineColor));
-        }else {
+        } else {
             setLineDrawable(style.getLineDrawable());
         }
 
@@ -203,7 +210,7 @@ public class TitleBar extends FrameLayout
         if (getBackground() == null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 setBackground(style.getBackground());
-            }else {
+            } else {
                 setBackgroundDrawable(style.getBackground());
             }
         }
@@ -241,9 +248,9 @@ public class TitleBar extends FrameLayout
         final int id = v.getId();
         if (id == R.id.bar_id_left_view) {
             getOnTitleBarListener().onLeftClick(v);
-        }else if (id == R.id.bar_id_title_view) {
+        } else if (id == R.id.bar_id_title_view) {
             getOnTitleBarListener().onTitleClick(v);
-        }else if (id == R.id.bar_id_right_view) {
+        } else if (id == R.id.bar_id_right_view) {
             getOnTitleBarListener().onRightClick(v);
         }
     }
@@ -358,6 +365,16 @@ public class TitleBar extends FrameLayout
         mTitleView.setTextColor(color);
     }
 
+    public void setTextColor(TextView view, int color) {
+        view.setTextColor(color);
+    }
+
+    public void setTextColor(int color, TextView... views) {
+        for (TextView view : views) {
+            view.setTextColor(color);
+        }
+    }
+
     /**
      * 设置左标题颜色
      */
@@ -384,7 +401,7 @@ public class TitleBar extends FrameLayout
     public void setLeftBackground(Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mLeftView.setBackground(drawable);
-        }else {
+        } else {
             mLeftView.setBackgroundDrawable(drawable);
         }
         post(this);
@@ -402,9 +419,15 @@ public class TitleBar extends FrameLayout
     public void setRightBackground(Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mRightView.setBackground(drawable);
-        }else {
+        } else {
             mRightView.setBackgroundDrawable(drawable);
         }
+        post(this);
+    }
+
+
+    public void setTextSize(TextView textView,int unit, float size){
+        textView.setTextSize(unit, size);
         post(this);
     }
 
@@ -445,10 +468,11 @@ public class TitleBar extends FrameLayout
     public void setLineColor(int color) {
         setLineDrawable(new ColorDrawable(color));
     }
+
     public void setLineDrawable(Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mLineView.setBackground(drawable);
-        }else {
+        } else {
             mLineView.setBackgroundDrawable(drawable);
         }
     }
@@ -500,10 +524,10 @@ public class TitleBar extends FrameLayout
     /**
      * 统一全局的TitleBar样式，建议在{@link android.app.Application#onCreate()}中初始化
      *
-     * @param style         样式实现类，框架已经实现三种不同的样式
-     *                      日间模式：{@link TitleBarLightStyle}
-     *                      夜间模式：{@link TitleBarNightStyle}
-     *                      透明模式：{@link TitleBarTransparentStyle}
+     * @param style 样式实现类，框架已经实现三种不同的样式
+     *              日间模式：{@link TitleBarLightStyle}
+     *              夜间模式：{@link TitleBarNightStyle}
+     *              透明模式：{@link TitleBarTransparentStyle}
      */
     public static void initStyle(ITitleBarStyle style) {
         TitleBar.sDefaultStyle = style;

@@ -65,9 +65,17 @@ public abstract class BaseLazyFragment extends Fragment {
         }
     }
 
+    public boolean Visible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
     private void init() {
         LogUtil.e("init   isPrepared=" + isPrepared + "       isVisible=" + isVisible + "     mHasLoadedOnce=" + mHasLoadedOnce);
-        if (!isPrepared || !isVisible || mHasLoadedOnce) {
+        if (!isPrepared || !Visible() || mHasLoadedOnce) {
             return;
         }
         activity = getActivity();

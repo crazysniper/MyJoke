@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.CameraMainActivity">
+
+    <Button
+        android:id="@+id/openCamera"
+        style="@style/ButtonStyle"
+        android:text="相机" />
+
+    <Button
+        android:id="@+id/openAlbum"
+        style="@style/ButtonStyle"
+        android:text="系统相册" />
+
+    <Button
+        android:id="@+id/openAlbum2"
+        style="@style/ButtonStyle"
+        android:text="自定义相册" />
+
+    <TextView
+        android:id="@+id/path"
+        android:text="图片路径"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+
+
+</LinearLayout>

@@ -61,7 +61,7 @@ public class MyApplication extends Application {
             e.printStackTrace();
         }
 
-        registerActivityLifecycleCallbacks(new ForegroundCallbacks());
+//        registerActivityLifecycleCallbacks(new ForegroundCallbacks());
     }
 
     private void modulesApplicationInit() throws ClassNotFoundException, IllegalAccessException, InstantiationException {

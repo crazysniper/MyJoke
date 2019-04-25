@@ -114,6 +114,12 @@
             android:text="跳转到Notification" />
 
         <Button
+            android:id="@+id/openCamera"
+            style="@style/ButtonStyle"
+            android:text="跳转到相机相册" />
+
+
+        <Button
             android:id="@+id/openSource"
             style="@style/ButtonStyle"
             android:text="跳转到开源组件" />

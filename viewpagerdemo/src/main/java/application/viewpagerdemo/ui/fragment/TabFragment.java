@@ -26,7 +26,7 @@ import butterknife.OnClick;
 
 public class TabFragment extends BaseLazyFragment {
 
-    private String title;
+    private String title, type;
     @BindView(R2.id.listView)
     ListView listView;
 
@@ -35,25 +35,34 @@ public class TabFragment extends BaseLazyFragment {
 
     private ToActivityListener listener;
 
-    public static TabFragment newInstance(String title) {
+    public static TabFragment newInstance(String title, String type) {
+        LogUtil.e("newInstance      title=" + title + "     type=" + type);
         TabFragment tabFragment = new TabFragment();
         Bundle bundle = new Bundle();
         bundle.putString("title", title);
+        bundle.putString("type", type);
         tabFragment.setArguments(bundle);
         return tabFragment;
     }
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        listener = (ToActivityListener) context;
+        LogUtil.e("onAttach");
+        if (context instanceof ToActivityListener) {
+            listener = (ToActivityListener) context;
+        }
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtil.e("onCreate" + (getArguments() != null));
         if (getArguments() != null) {
             title = getArguments().getString("title");
+            type = getArguments().getString("type");
         }
     }
 
@@ -77,6 +86,16 @@ public class TabFragment extends BaseLazyFragment {
         }
         TabItemListAdapter adapter = new TabItemListAdapter(dataList);
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean Visible() {
+        if ("1".equals(type) || "2".equals(type)) {
+            return super.Visible();
+        } else if ("3".equals(type)) {
+            return true;     // 如果来源于FragmentTransaction切换的话
+        }
+        return super.Visible();
     }
 
     @OnClick({R2.id.textView})
@@ -103,5 +122,11 @@ public class TabFragment extends BaseLazyFragment {
 
     public interface ToActivityListener {
         public void toActivity(String text);
+    }
+
+    @Override
+    public void onDetach() {
+        listener = null;
+        super.onDetach();
     }
 }

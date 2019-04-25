@@ -8,7 +8,8 @@
         android:supportsRtl="true">
         <activity android:name=".ui.ViewPagerMainActivity" />
         <activity android:name=".ui.ViewPager_View_Activity" />
-        <activity android:name=".ui.ViewPager_Fragment_Activity"></activity>
+        <activity android:name=".ui.ViewPager_Fragment_Activity" />
+        <activity android:name=".ui.FragmentsActivity"></activity>
     </application>
 
 </manifest>

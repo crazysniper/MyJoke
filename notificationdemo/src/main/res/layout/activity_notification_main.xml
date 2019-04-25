@@ -23,4 +23,30 @@
         android:text="清除所有" />
 
 
+    <Button
+        android:id="@+id/removeNotificationChannel"
+        style="@style/ButtonStyle"
+        android:text="删除渠道" />
+
+    <Button
+        android:id="@+id/removeNotificationChannelGroup"
+        style="@style/ButtonStyle"
+        android:text="删除渠道组" />
+
+
+    <Button
+        android:id="@+id/createNotificationChannel"
+        style="@style/ButtonStyle"
+        android:text="创建了两个通知渠道" />
+
+    <Button
+        style="@style/ButtonStyle"
+        android:onClick="sendChatMsg"
+        android:text="发送聊天消息" />
+
+    <Button
+        style="@style/ButtonStyle"
+        android:onClick="sendSubscribeMsg"
+        android:text="发送订阅消息" />
+
 </LinearLayout>

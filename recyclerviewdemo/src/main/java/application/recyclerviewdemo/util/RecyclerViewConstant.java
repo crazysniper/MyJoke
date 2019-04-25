@@ -11,4 +11,5 @@ public class RecyclerViewConstant {
     public static final String LinearLayoutRecyclerViewActivity = BASE_PATH + "LinearLayoutRecyclerViewActivity";
     public static final String GridLayoutRecyclerViewActivity = BASE_PATH + "GridLayoutRecyclerViewActivity";
     public static final String StaggeredLayoutRecyclerViewActivity = BASE_PATH + "StaggeredLayoutRecyclerViewActivity";
+    public static final String ListViewActivity = BASE_PATH + "ListViewActivity";
 }

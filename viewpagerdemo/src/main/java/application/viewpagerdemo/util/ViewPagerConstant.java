@@ -9,4 +9,5 @@ public class ViewPagerConstant {
     public static final String ViewPagerMainActivity = BASE_PATH + "ViewPagerMainActivity";
     public static final String ViewPager_View_Activity = BASE_PATH + "ViewPager_View_Activity";
     public static final String ViewPager_Fragment_Activity = BASE_PATH + "ViewPager_Fragment_Activity";
+    public static final String FragmentsActivity = BASE_PATH + "FragmentsActivity";
 }

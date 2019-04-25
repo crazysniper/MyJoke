@@ -141,7 +141,7 @@ public class ViewPager_Fragment_Activity extends BaseActivity implements View.On
     }
 
     private void addFragments(String title) {
-        TabFragment tabFragment = TabFragment.newInstance(title);
+        TabFragment tabFragment = TabFragment.newInstance(title, "1");
 
         fragmentList.add(tabFragment);
     }
